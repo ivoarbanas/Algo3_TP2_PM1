@@ -1,19 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
+import java.lang.reflect.Array;
+
 abstract class VerdaderoFalso extends Pregunta {
 
-    protected String enunciado;
-    protected OpcionCorrecta opcionCorrecta;
-    protected OpcionIncorrecta opcionIncorrecta;
-
     public VerdaderoFalso(String enunciado, OpcionCorrecta opcionCorrecta, OpcionIncorrecta opcionIncorrecta){
-        this.enunciado = enunciado;
-        this.opcionCorrecta = opcionCorrecta;
-        this.opcionIncorrecta = opcionIncorrecta;
+        super(enunciado);
+        opcionesCorrectas.add(opcionCorrecta);
+        opcionesIncorrectas.add(opcionIncorrecta);
     }
-
-    public OpcionCorrecta obtenerOpcionCorrecta() {
-        return opcionCorrecta;
-    }
+    public abstract void respuestaEsCorrecta(Usuario jugador);
+    public abstract void respuestaEsIncorrecta(Usuario jugador);
 
 }
