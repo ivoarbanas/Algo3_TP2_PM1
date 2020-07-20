@@ -4,8 +4,8 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso{
     //lo creamos aca pero va a ir en la clase Kahoot
     private SistemaPuntaje sistemaPuntaje;
 
-    public VerdaderoFalsoClasico(String enunciado, OpcionCorrecta opcionCorrecta, OpcionIncorrecta opcionIncorrecta){
-        super(enunciado,opcionCorrecta,opcionIncorrecta);
+    public VerdaderoFalsoClasico(String enunciado, String opcionCorrectaValor, String opcionIncorrectaValor){
+        super(enunciado,opcionCorrectaValor,opcionIncorrectaValor);
         sistemaPuntaje = new SistemaPuntaje();
     }
     @Override
