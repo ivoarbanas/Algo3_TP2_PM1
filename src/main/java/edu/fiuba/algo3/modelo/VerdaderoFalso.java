@@ -4,8 +4,10 @@ import java.lang.reflect.Array;
 
 abstract class VerdaderoFalso extends Pregunta {
 
-    public VerdaderoFalso(String enunciado, OpcionCorrecta opcionCorrecta, OpcionIncorrecta opcionIncorrecta){
+    public VerdaderoFalso(String enunciado, String opcionCorrectaValor, String opcionIncorrectaValor){
         super(enunciado);
+        OpcionCorrecta opcionCorrecta = new OpcionCorrecta(opcionCorrectaValor);
+        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta(opcionIncorrectaValor);
         opcionesCorrectas.add(opcionCorrecta);
         opcionesIncorrectas.add(opcionIncorrecta);
     }
