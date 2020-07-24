@@ -5,17 +5,15 @@ import java.util.ArrayList;
 abstract class Pregunta {
 
     protected String enunciado;
-    protected ArrayList <OpcionCorrecta> opcionesCorrectas;
-    protected ArrayList <OpcionIncorrecta> opcionesIncorrectas;
+    protected ArrayList <Opcion> opciones;
 
     public Pregunta(String enunciado){
         this.enunciado = enunciado;
-        opcionesCorrectas = new ArrayList<>();
-        opcionesIncorrectas = new ArrayList<>();
+        opciones = new ArrayList<>();
     }
 
-    public ArrayList<OpcionCorrecta> opcionesCorrectas() {
-        return opcionesCorrectas;
+    public ArrayList<Opcion> opciones() {
+        return opciones;
     }
     public abstract void respuestaEsCorrecta(Usuario jugador);
     public abstract void respuestaEsIncorrecta(Usuario jugador);

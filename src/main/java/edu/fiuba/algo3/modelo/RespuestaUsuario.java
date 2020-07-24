@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
 public class RespuestaUsuario {
-    private String respuesta;
+    private Opcion respuesta;
 
-    public RespuestaUsuario(String respuesta){
+    public RespuestaUsuario(Opcion respuesta){
         this.respuesta = respuesta;
     }
-    public String valor(){
+    public Opcion valor(){
         return respuesta;
     }
 }

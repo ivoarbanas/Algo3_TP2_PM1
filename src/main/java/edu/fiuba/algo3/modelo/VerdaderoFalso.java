@@ -8,8 +8,8 @@ abstract class VerdaderoFalso extends Pregunta {
         super(enunciado);
         OpcionCorrecta opcionCorrecta = new OpcionCorrecta(opcionCorrectaValor);
         OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta(opcionIncorrectaValor);
-        opcionesCorrectas.add(opcionCorrecta);
-        opcionesIncorrectas.add(opcionIncorrecta);
+        opciones.add(opcionCorrecta);
+        opciones.add(opcionIncorrecta);
     }
     public abstract void respuestaEsCorrecta(Usuario jugador);
     public abstract void respuestaEsIncorrecta(Usuario jugador);

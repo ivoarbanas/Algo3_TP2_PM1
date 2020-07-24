@@ -11,7 +11,7 @@ public class VerdaderoFalsoTest {
         OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Verdadero");
         OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Falso");
         VerdaderoFalsoClasico pregunta = new VerdaderoFalsoClasico("Aprobé el parcial","Verdadero","Falso");
-        assertEquals(opcionCorrecta.valor(), pregunta.opcionesCorrectas().get(0).valor());
+        assertEquals(opcionCorrecta.valor(), pregunta.opciones().get(0).valor());
     }
 
     @Test
@@ -24,12 +24,11 @@ public class VerdaderoFalsoTest {
         jugador1.vaciarRespuestas();
         jugador2.vaciarRespuestas();
         //
-        jugador1.nuevaRespuesta("Verdadero");
-        jugador2.nuevaRespuesta("Falso");
+        jugador1.elegirRespuesta(pregunta);//elijo 0
+        jugador2.elegirRespuesta(pregunta);//elijo 1
         Verificador verificador = new Verificador();
         verificador.verificar(pregunta, jugador1);
         verificador.verificar(pregunta, jugador2);
-
         assertEquals(jugador1.puntos().valor(), 1);
         assertEquals(jugador2.puntos().valor(), 0);
     }
