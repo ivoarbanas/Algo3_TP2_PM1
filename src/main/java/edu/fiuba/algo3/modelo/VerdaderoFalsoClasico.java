@@ -15,6 +15,6 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso{
 
     @Override
     public void respuestaEsIncorrecta(Usuario jugador) {
-        //no hace nada
+      //no hace nada
     }
 }

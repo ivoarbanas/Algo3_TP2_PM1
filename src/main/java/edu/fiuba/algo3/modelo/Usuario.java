@@ -31,4 +31,6 @@ public class Usuario {
         return puntos;
     }
 
+    public int cantidadRespuestasDelUsuario(){ return respuestasDelUsuario.size(); }
+
 }
