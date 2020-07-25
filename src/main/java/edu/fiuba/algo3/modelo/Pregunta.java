@@ -17,12 +17,4 @@ abstract class Pregunta {
     }
     public abstract void respuestaEsCorrecta(Usuario jugador);
     public abstract void respuestaEsIncorrecta(Usuario jugador);
-
-    public int cantidadOpcionesCorrectas(){
-        return (opcionesCorrectas.size());
-    }
-
-    public int cantidadOpcionesIncorrectas(){ return (opcionesIncorrectas.size()); }
-
-    // CAPAZ SOLO ES NECESARIO PARA MULTIPLE CHOICE
 }

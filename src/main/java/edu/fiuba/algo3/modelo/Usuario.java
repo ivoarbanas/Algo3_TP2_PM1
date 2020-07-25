@@ -41,6 +41,4 @@ public class Usuario {
         int eleccion = scanner.nextInt();
         nuevaRespuesta(pregunta.opciones().get(eleccion));
     }
-    public int cantidadRespuestasDelUsuario(){ return respuestasDelUsuario.size(); }
-
 }
