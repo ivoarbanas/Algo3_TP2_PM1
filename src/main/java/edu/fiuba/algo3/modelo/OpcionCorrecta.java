@@ -6,9 +6,10 @@ public class OpcionCorrecta extends Opcion {
         super(valor);
     }
 
-    public void asignacionPuntaje(RespuestaUsuario respuestaDelUsuario, Pregunta pregunta, Usuario jugador){
+    public void asignacionPuntaje(RespuestaUsuario respuestaDelUsuario, Pregunta pregunta, Usuario jugador, int respuestasVerificadas){
         if(this == respuestaDelUsuario.valor()){
-            pregunta.respuestaEsCorrecta(jugador);
+            respuestasVerificadas++;
+            pregunta.respuestaEsCorrecta(jugador, respuestasVerificadas);
         }
     }
 }

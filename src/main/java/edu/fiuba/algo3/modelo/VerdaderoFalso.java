@@ -11,7 +11,7 @@ abstract class VerdaderoFalso extends Pregunta {
         opciones.add(opcionCorrecta);
         opciones.add(opcionIncorrecta);
     }
-    public abstract void respuestaEsCorrecta(Usuario jugador);
+    public abstract void respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
     public abstract void respuestaEsIncorrecta(Usuario jugador);
 
 }

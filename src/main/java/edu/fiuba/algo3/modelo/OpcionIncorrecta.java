@@ -6,7 +6,9 @@ public class OpcionIncorrecta extends Opcion{
         super(valor);
     }
 
-    public void asignacionPuntaje(RespuestaUsuario respuestaDelUsuario, Pregunta pregunta, Usuario jugador){
-        pregunta.respuestaEsIncorrecta(jugador);
+    public void asignacionPuntaje(RespuestaUsuario respuestaDelUsuario, Pregunta pregunta, Usuario jugador, int respuestasVerificadas){
+        if(this == respuestaDelUsuario.valor()){
+            pregunta.respuestaEsIncorrecta(jugador);
+        }
     }
 }
