@@ -15,9 +15,20 @@ public class Usuario {
         respuestasDelUsuario = new ArrayList();
     }
 
-    public void nuevaRespuesta(Opcion respuesta) {
-        RespuestaUsuario nuevaRespuesta = new RespuestaUsuario(respuesta);
-        respuestasDelUsuario.add(nuevaRespuesta);
+    private boolean respuestaYaCreada(Opcion respuestaNueva){
+        for(int i=0; i<cantidadRespuestasDelUsuario() ;i++){
+            if(respuestaNueva == respuestasDelUsuario.get(i).valor()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void nuevaRespuesta(Opcion respuestaNueva) {
+        if(!respuestaYaCreada(respuestaNueva)){
+            RespuestaUsuario nuevaRespuesta = new RespuestaUsuario(respuestaNueva);
+            respuestasDelUsuario.add(nuevaRespuesta);
+        }
     }
     public void vaciarRespuestas(){
         respuestasDelUsuario.clear();

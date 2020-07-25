@@ -8,7 +8,6 @@ public class OpcionCorrecta extends Opcion {
 
     public void asignacionPuntaje(RespuestaUsuario respuestaDelUsuario, Pregunta pregunta, Usuario jugador, int respuestasVerificadas){
         if(this == respuestaDelUsuario.valor()){
-            respuestasVerificadas++;
             pregunta.respuestaEsCorrecta(jugador, respuestasVerificadas);
         }
     }

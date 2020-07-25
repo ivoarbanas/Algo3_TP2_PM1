@@ -12,6 +12,7 @@ public class Verificador {
     public void verificar(Pregunta pregunta, Usuario jugador){
         int cantidadVerificadas = 0;
         for(int i=0; i<jugador.respuestas().size(); i++){
+            cantidadVerificadas++;
             for(int j=0; j<(pregunta.opciones()).size(); j++){
                 pregunta.opciones().get(j).asignacionPuntaje(jugador.respuestas().get(i), pregunta, jugador, cantidadVerificadas);
             }

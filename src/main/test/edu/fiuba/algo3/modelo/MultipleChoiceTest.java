@@ -56,9 +56,16 @@ public class MultipleChoiceTest {
         jugador1.elegirRespuesta(pregunta);// 1
         jugador1.elegirRespuesta(pregunta);// 2
         jugador1.elegirRespuesta(pregunta);// 3
+        jugador2.elegirRespuesta(pregunta);// 0
+        jugador2.elegirRespuesta(pregunta);// 1
+        jugador2.elegirRespuesta(pregunta);// 2
         Verificador verificador = new Verificador();
         verificador.verificar(pregunta, jugador1);
+        verificador.verificar(pregunta, jugador2);
         assertEquals(jugador1.puntos().valor(), 0);
+        assertEquals(jugador1.respuestasDelUsuario.size(), 4);
+        assertEquals(jugador2.puntos().valor(), 1);
+        assertEquals(3, jugador2.respuestasDelUsuario.size());
     }
 
 }
