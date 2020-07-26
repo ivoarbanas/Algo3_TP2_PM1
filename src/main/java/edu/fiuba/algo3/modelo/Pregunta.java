@@ -6,7 +6,6 @@ abstract class Pregunta {
 
     protected String enunciado;
     protected ArrayList <Opcion> opciones;
-    protected int cantidadOpcionesValidas;
 
     public Pregunta(String enunciado){
         this.enunciado = enunciado;
@@ -19,8 +18,12 @@ abstract class Pregunta {
     public abstract int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
     public abstract int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
 
-    public int cantidadOpcionesCorrectas(){
-        return (cantidadOpcionesValidas);
+    public int verificar(Usuario jugador, int cantidadVerificadas, int opcion) {
+        return opciones().get(opcion).verificar(jugador.respuestas().get(cantidadVerificadas-1), this, jugador, cantidadVerificadas);
+    }
+
+    public void agregarOpcion(Opcion opcion) {
+        opciones.add(opcion);
     }
 
 

@@ -6,10 +6,14 @@ public class OpcionIncorrecta extends Opcion{
         super(valor);
     }
 
-    public int asignacionPuntaje(RespuestaUsuario respuestaDelUsuario, Pregunta pregunta, Usuario jugador, int respuestasVerificadas){
+    public int verificar(RespuestaUsuario respuestaDelUsuario, Pregunta pregunta, Usuario jugador, int respuestasVerificadas){
         if(this == respuestaDelUsuario.valor()){
             return pregunta.respuestaEsIncorrecta(jugador,respuestasVerificadas);
         }
+        return 0;
+    }
+
+    public int esCorrecta(){
         return 0;
     }
 }

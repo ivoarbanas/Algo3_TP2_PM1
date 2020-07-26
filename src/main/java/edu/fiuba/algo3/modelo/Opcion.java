@@ -12,5 +12,7 @@ abstract class Opcion {
         return valor;
     }
 
-    public abstract int asignacionPuntaje(RespuestaUsuario respuestaUsuario, Pregunta pregunta, Usuario jugador, int cantidadVerificadas);
+    public abstract int verificar(RespuestaUsuario respuestaUsuario, Pregunta pregunta, Usuario jugador, int cantidadVerificadas);
+
+    public abstract int esCorrecta();
 }

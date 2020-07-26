@@ -11,11 +11,12 @@ public class MultipleChoiceTest {
         OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
         OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Dieciseis");
         OpcionCorrecta opcionCorrecta3 = new OpcionCorrecta("Seis");
+        OpcionIncorrecta opcionIncorrecta1 = new OpcionIncorrecta("Uno");
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Que numero es mayor a cinco");
-        pregunta.agregarOpcionCorrecta("Ocho");
-        pregunta.agregarOpcionCorrecta("Dieciseis");
-        pregunta.agregarOpcionCorrecta("Seis");
-        pregunta.agregarOpcionIncorrecta("Uno");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        pregunta.agregarOpcion(opcionCorrecta3);
+        pregunta.agregarOpcion(opcionIncorrecta1);
 
 
         assertEquals(opcionCorrecta1.valor(),pregunta.opciones().get(0).valor());
@@ -28,10 +29,11 @@ public class MultipleChoiceTest {
     public void seCreaPreguntaMultipleChoiceParcialIndicandoRespuestaCorrecta() {
         OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Diecinueve");
         OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Tres mil");
+        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Uno");
         MultipleChoiceParcial pregunta = new MultipleChoiceParcial("Que numero es mayor a cinco");
-        pregunta.agregarOpcionCorrecta("Diecinueve");
-        pregunta.agregarOpcionCorrecta("Tres mil");
-        pregunta.agregarOpcionIncorrecta("Uno");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        pregunta.agregarOpcion(opcionIncorrecta);
 
 
         assertEquals(opcionCorrecta1.valor(),pregunta.opciones().get(0).valor());
@@ -43,11 +45,15 @@ public class MultipleChoiceTest {
      public void recibeUnaListaDeRespuestasEnMultipleChoiceClasicoYAsignaPuntosCorrectamente() {
         Usuario jugador1 = new Usuario("Manuel");
         Usuario jugador2 = new Usuario("Luciano");
+        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
+        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Dieciseis");
+        OpcionCorrecta opcionCorrecta3 = new OpcionCorrecta("Seis");
+        OpcionIncorrecta opcionIncorrecta1 = new OpcionIncorrecta("Uno");
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Que numero es mayor a cinco");
-        pregunta.agregarOpcionCorrecta("Ocho");
-        pregunta.agregarOpcionCorrecta("Dieciseis");
-        pregunta.agregarOpcionCorrecta("Seis");
-        pregunta.agregarOpcionIncorrecta("Uno");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        pregunta.agregarOpcion(opcionCorrecta3);
+        pregunta.agregarOpcion(opcionIncorrecta1);
         jugador1.elegirRespuestaParaPrueba(pregunta,0);// 0
         jugador1.elegirRespuestaParaPrueba(pregunta,1);// 1
         jugador1.elegirRespuestaParaPrueba(pregunta,2);// 2
@@ -63,8 +69,8 @@ public class MultipleChoiceTest {
         sistemaPuntaje.cambiarPuntaje(jugador2,puntajeParcialJugador2);
 
 
-        assertEquals(jugador1.puntos().valor(), 0);
-        assertEquals(jugador1.respuestasDelUsuario.size(), 4);
+        assertEquals(0, jugador1.puntos().valor());
+        assertEquals(4, jugador1.respuestasDelUsuario.size());
         assertEquals(1, jugador2.puntos().valor());
         assertEquals(3, jugador2.respuestasDelUsuario.size());
     }
@@ -74,11 +80,15 @@ public class MultipleChoiceTest {
     public void recibeUnaListaDeRespuestasEnMultipleChoiceParcialYAsignaPuntosCorrectamente() {
         Usuario jugador1 = new Usuario("Manuel");
         Usuario jugador2 = new Usuario("Luciano");
+        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
+        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Dieciseis");
+        OpcionCorrecta opcionCorrecta3 = new OpcionCorrecta("Seis");
+        OpcionIncorrecta opcionIncorrecta1 = new OpcionIncorrecta("Uno");
         MultipleChoiceParcial pregunta = new MultipleChoiceParcial("Que numero es mayor a cinco");
-        pregunta.agregarOpcionCorrecta("Ocho");
-        pregunta.agregarOpcionCorrecta("Dieciseis");
-        pregunta.agregarOpcionCorrecta("Seis");
-        pregunta.agregarOpcionIncorrecta("Uno");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        pregunta.agregarOpcion(opcionCorrecta3);
+        pregunta.agregarOpcion(opcionIncorrecta1);
         jugador1.elegirRespuestaParaPrueba(pregunta,0);
         jugador1.elegirRespuestaParaPrueba(pregunta,1);
         jugador1.elegirRespuestaParaPrueba(pregunta,2);
