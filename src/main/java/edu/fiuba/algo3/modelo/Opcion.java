@@ -12,5 +12,5 @@ abstract class Opcion {
         return valor;
     }
 
-    public abstract void asignacionPuntaje(RespuestaUsuario respuestaUsuario, Pregunta pregunta, Usuario jugador, int cantidadVerificadas);
+    public abstract int asignacionPuntaje(RespuestaUsuario respuestaUsuario, Pregunta pregunta, Usuario jugador, int cantidadVerificadas);
 }

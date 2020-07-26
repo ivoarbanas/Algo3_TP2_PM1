@@ -12,8 +12,8 @@ abstract class MultipleChoice extends Pregunta {
         cantidadDeOpciones = 0;
     }
 
-    public abstract void respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
-    public abstract void respuestaEsIncorrecta(Usuario jugador);
+    public abstract int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
+    public abstract int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
 
     public void agregarOpcionCorrecta(String opcionCorrecta){
         if( cantidadDeOpciones < 6) {

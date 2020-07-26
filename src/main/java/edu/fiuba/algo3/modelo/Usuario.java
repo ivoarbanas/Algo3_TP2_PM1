@@ -8,11 +8,13 @@ public class Usuario {
     private Puntos puntos;
     ArrayList<RespuestaUsuario> respuestasDelUsuario;
     ArrayList<Opcion> opcionesDeLaPregunta;
+    private boolean todasCorrectas; //cuando cambia de ronda esto de reinicia
 
     public Usuario (String nombre){
         this.nombre = nombre;
         puntos = new Puntos();
         respuestasDelUsuario = new ArrayList();
+        todasCorrectas = true;
     }
 
     private boolean respuestaYaCreada(Opcion respuestaNueva){
@@ -30,7 +32,7 @@ public class Usuario {
             respuestasDelUsuario.add(nuevaRespuesta);
         }
     }
-    public void vaciarRespuestas(){
+    private void vaciarRespuestas(){
         respuestasDelUsuario.clear();
     }
 
@@ -52,6 +54,26 @@ public class Usuario {
         int eleccion = scanner.nextInt();
         nuevaRespuesta(pregunta.opciones().get(eleccion));
     }
-    public int cantidadRespuestasDelUsuario(){ return respuestasDelUsuario.size(); }
 
+    public void elegirRespuestaParaPrueba(Pregunta pregunta,int eleccion) {
+        nuevaRespuesta(pregunta.opciones().get(eleccion));
+    }
+
+    public int cantidadRespuestasDelUsuario(){
+        return respuestasDelUsuario.size();
+    }
+
+    public boolean sonTodasCorrectas(){
+        return todasCorrectas;
+    }
+
+    public void nuevaRonda() {
+        todasCorrectas = true;
+        vaciarRespuestas();
+    }
+
+    public void respuestaIncorrecta() {
+        todasCorrectas = false;
+    }
 }
+

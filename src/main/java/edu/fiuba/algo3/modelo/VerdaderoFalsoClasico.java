@@ -1,20 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso{
-    //lo creamos aca pero va a ir en la clase Kahoot
-    private SistemaPuntaje sistemaPuntaje;
 
-    public VerdaderoFalsoClasico(String enunciado, String opcionCorrectaValor, String opcionIncorrectaValor){
-        super(enunciado,opcionCorrectaValor,opcionIncorrectaValor);
-        sistemaPuntaje = new SistemaPuntaje();
+    public VerdaderoFalsoClasico(String enunciado, boolean esVerdadera){
+        super(enunciado, esVerdadera);
     }
     @Override
-    public void respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
-        sistemaPuntaje.cambiarPuntaje(jugador, 1);
+    public int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
+        return 1;
     }
 
     @Override
-    public void respuestaEsIncorrecta(Usuario jugador) {
-      //no hace nada
+    public int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas) {
+        return 0;
     }
 }

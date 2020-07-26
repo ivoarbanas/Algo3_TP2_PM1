@@ -1,0 +1,11 @@
+-Cambiar asignacionPuntaje (nombre del metodo)
+
+-Metodo opcion para sumar opcionesValidas y no tener agregarOpcionCorrecta/inco (que reciba objetos tipo Opcion)
+
+-Ver si es mejor que le hable sistemaPuntaje a Verificador y no k! directamente
+
+-Crear objeto rondas
+
+-Cambiar UML (agregar metodos, atributos y exclusividad de puntaje)
+
+-Comentario rompe encapsulamiento (Verificador)

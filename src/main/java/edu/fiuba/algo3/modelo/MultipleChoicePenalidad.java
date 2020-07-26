@@ -11,12 +11,12 @@ public class MultipleChoicePenalidad extends MultipleChoice {
         sistemaPuntaje = new SistemaPuntaje();
     }
 
-    public void respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
-        sistemaPuntaje.cambiarPuntaje(jugador,1);
+    public int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
+        return 1;
     }
 
-    public void respuestaEsIncorrecta(Usuario jugador){
-        sistemaPuntaje.cambiarPuntaje(jugador,-1);
+    public int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas){
+        return -1;
     }
 
 }

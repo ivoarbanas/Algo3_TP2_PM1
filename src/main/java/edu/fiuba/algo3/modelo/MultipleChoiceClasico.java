@@ -4,20 +4,19 @@ import java.lang.reflect.Array;
 
 public class MultipleChoiceClasico extends MultipleChoice {
 
-    private SistemaPuntaje sistemaPuntaje;
 
     public MultipleChoiceClasico(String enunciado){
         super(enunciado);
-        sistemaPuntaje = new SistemaPuntaje();
     }
 
-    public void respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
+    public int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
         if(cantidadOpcionesValidas == jugador.respuestasDelUsuario.size() && cantidadOpcionesValidas == respuestasVerificadas){
-            sistemaPuntaje.cambiarPuntaje(jugador,1);
+            return 1;
         }
+        return 0;
     }
-    public void respuestaEsIncorrecta(Usuario jugador){
-        // no hace nada
+    public int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas){
+        return 0;
     }
 
 }

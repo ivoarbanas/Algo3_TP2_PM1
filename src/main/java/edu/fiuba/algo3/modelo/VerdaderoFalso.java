@@ -4,14 +4,32 @@ import java.lang.reflect.Array;
 
 abstract class VerdaderoFalso extends Pregunta {
 
-    public VerdaderoFalso(String enunciado, String opcionCorrectaValor, String opcionIncorrectaValor){
+
+    public VerdaderoFalso(String enunciado, boolean esVerdadera){
         super(enunciado);
-        OpcionCorrecta opcionCorrecta = new OpcionCorrecta(opcionCorrectaValor);
-        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta(opcionIncorrectaValor);
+        if (esVerdadera){
+            crearPreguntaVerdadera();
+        }
+        else {
+            crearPreguntaFalsa();
+        }
+
+
+    }
+
+    private void crearPreguntaVerdadera(){
+        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Verdadero");
+        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Falso");
         opciones.add(opcionCorrecta);
         opciones.add(opcionIncorrecta);
     }
-    public abstract void respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
-    public abstract void respuestaEsIncorrecta(Usuario jugador);
+    private void crearPreguntaFalsa(){
+        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Falso");
+        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Verdadero");
+        opciones.add(opcionCorrecta);
+        opciones.add(opcionIncorrecta);
+    }
+    public abstract int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
+    public abstract int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
 
 }

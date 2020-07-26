@@ -10,27 +10,29 @@ public class VerdaderoFalsoTest {
 
         OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Verdadero");
         OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Falso");
-        VerdaderoFalsoClasico pregunta = new VerdaderoFalsoClasico("Aprobé el parcial","Verdadero","Falso");
+        VerdaderoFalsoClasico pregunta = new VerdaderoFalsoClasico("Aprobé el parcial",true);
+
+
         assertEquals(opcionCorrecta.valor(), pregunta.opciones().get(0).valor());
     }
 
     @Test
     public void recibeUnaListaDeRespuestasYAsignaCorrectamentePuntosALosJugadoresQueRespondieronCorrectamente(){
-
+        SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Jorge");
         Usuario jugador2 = new Usuario("Ramiro");
-        VerdaderoFalsoClasico pregunta = new VerdaderoFalsoClasico("Aprobé el parcial","Verdadero","Falso");
-        //metodo de K! que habla con sus usuarios para limpiar sus respuestas anteriores
-        jugador1.vaciarRespuestas();
-        jugador2.vaciarRespuestas();
-        //
-        jugador1.elegirRespuesta(pregunta);//elijo 0
-        jugador2.elegirRespuesta(pregunta);//elijo 1
+        VerdaderoFalsoClasico pregunta = new VerdaderoFalsoClasico("Aprobé el parcial",true);
+        jugador1.elegirRespuestaParaPrueba(pregunta,0);//elijo 0
+        jugador2.elegirRespuestaParaPrueba(pregunta,1);//elijo 1
         Verificador verificador = new Verificador();
-        verificador.verificar(pregunta, jugador1);
-        verificador.verificar(pregunta, jugador2);
-        assertEquals(jugador1.puntos().valor(), 1);
-        assertEquals(jugador2.puntos().valor(), 0);
+        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        int puntajeParcialJugador2 = verificador.verificar(pregunta, jugador2);
+        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+        sistemaPuntaje.cambiarPuntaje(jugador2,puntajeParcialJugador2);
+
+
+        assertEquals(1, jugador1.puntos().valor());
+        assertEquals(0, jugador2.puntos().valor());
     }
 
     @Test
@@ -38,19 +40,19 @@ public class VerdaderoFalsoTest {
 
         Usuario jugador1 = new Usuario("Manuel");
         Usuario jugador2 = new Usuario("Luciano");
-        VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobé el parcial","Verdadero","Falso");
-        //metodo de K! que habla con sus usuarios para limpiar sus respuestas anteriores
-        jugador1.vaciarRespuestas();
-        jugador2.vaciarRespuestas();
-        //
-        jugador1.elegirRespuesta(pregunta);//elijo 0
-        jugador2.elegirRespuesta(pregunta);//elijo 1
+        VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobé el parcial",true);
+        jugador1.elegirRespuestaParaPrueba(pregunta,0);//elijo 0
+        jugador2.elegirRespuestaParaPrueba(pregunta,1);//elijo 1
         Verificador verificador = new Verificador();
-        verificador.verificar(pregunta, jugador1);
-        verificador.verificar(pregunta, jugador2);
+        SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
+        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        int puntajeParcialJugador2 = verificador.verificar(pregunta, jugador2);
+        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+        sistemaPuntaje.cambiarPuntaje(jugador2,puntajeParcialJugador2);
 
-        assertEquals(jugador1.puntos().valor(), 1);
-        assertEquals(jugador2.puntos().valor(), -1);
+
+        assertEquals(1, jugador1.puntos().valor());
+        assertEquals(-1, jugador2.puntos().valor());
     }
 
     @Test
@@ -58,7 +60,9 @@ public class VerdaderoFalsoTest {
 
         OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Verdadero");
         OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Falso");
-        VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobé el parcial","Verdadero","Falso");
+        VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobé el parcial",true);
+
+
         assertEquals(opcionCorrecta.valor(), pregunta.opciones().get(0).valor());
     }
 

@@ -16,8 +16,8 @@ abstract class Pregunta {
     public ArrayList<Opcion> opciones() {
         return opciones;
     }
-    public abstract void respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
-    public abstract void respuestaEsIncorrecta(Usuario jugador);
+    public abstract int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
+    public abstract int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
 
     public int cantidadOpcionesCorrectas(){
         return (cantidadOpcionesValidas);
