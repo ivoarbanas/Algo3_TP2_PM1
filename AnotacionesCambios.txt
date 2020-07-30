@@ -1,5 +1,24 @@
+-Hacer interfaz para respuestaEsCorrecta (para verificar)
+
+-Cambiar numeros que retornean verificar (1, -1, etc) por objeto Puntos
+
+-Pruebas similares a las de la entrega 1, con el resto de los tipos de preguntas
+
+-Agregado de multiplicadores a cada tipo de pregunta, verificando que cumplan con el efecto indicado (x2 o x3)  
+
+-Planteo inicial de interfaz gráfica, pantalla donde se muestra una pregunta con sus opciones
+
+------------------------------------------------------------------------------------
+
 -Ver si es mejor que le hable sistemaPuntaje a Verificador y no k! directamente
 
 -Crear objeto rondas
 
--Cambiar UML (agregar metodos, atributos y exclusividad de puntaje)
+-Test unitarios para todas las clases
+
+-Cambiar Puntos por Puntaje?
+
+-Cambiar nombre de metodos acorde a lo que hacen
+
+-Sacar parametro de respuesta verificada
+

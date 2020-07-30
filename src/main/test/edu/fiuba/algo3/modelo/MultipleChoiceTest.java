@@ -42,7 +42,7 @@ public class MultipleChoiceTest {
 
 
     @Test
-     public void recibeUnaListaDeRespuestasEnMultipleChoiceClasicoYAsignaPuntosCorrectamente() {
+    public void recibeUnaListaDeRespuestasEnMultipleChoiceClasicoYAsignaPuntosCorrectamente() {
         Usuario jugador1 = new Usuario("Manuel");
         Usuario jugador2 = new Usuario("Luciano");
         OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
@@ -54,13 +54,13 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(opcionCorrecta2);
         pregunta.agregarOpcion(opcionCorrecta3);
         pregunta.agregarOpcion(opcionIncorrecta1);
-        jugador1.elegirRespuestaParaPrueba(pregunta,0);// 0
-        jugador1.elegirRespuestaParaPrueba(pregunta,1);// 1
-        jugador1.elegirRespuestaParaPrueba(pregunta,2);// 2
-        jugador1.elegirRespuestaParaPrueba(pregunta,3);// 3
-        jugador2.elegirRespuestaParaPrueba(pregunta,0);// 0
-        jugador2.elegirRespuestaParaPrueba(pregunta,1);// 1
-        jugador2.elegirRespuestaParaPrueba(pregunta,2);// 2
+        jugador1.elegirRespuestaParaPrueba(pregunta,0);
+        jugador1.elegirRespuestaParaPrueba(pregunta,1);
+        jugador1.elegirRespuestaParaPrueba(pregunta,2);
+        jugador1.elegirRespuestaParaPrueba(pregunta,3);
+        jugador2.elegirRespuestaParaPrueba(pregunta,0);
+        jugador2.elegirRespuestaParaPrueba(pregunta,1);
+        jugador2.elegirRespuestaParaPrueba(pregunta,2);
         Verificador verificador = new Verificador();
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
@@ -74,6 +74,53 @@ public class MultipleChoiceTest {
         assertEquals(1, jugador2.puntos().valor());
         assertEquals(3, jugador2.respuestasDelUsuario.size());
     }
+
+    @Test
+    public void recibeUnaListaDeDosRespuestasCorrectasEnMultipleChoiceClasicoYAsignaPuntosCorrectamente() {
+        Usuario jugador1 = new Usuario("Manuel");
+        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
+        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Dieciseis");
+
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Que numero es mayor a cinco");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        jugador1.elegirRespuestaParaPrueba(pregunta,0);
+        jugador1.elegirRespuestaParaPrueba(pregunta,1);
+
+        Verificador verificador = new Verificador();
+        SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
+        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+
+
+        assertEquals(1, jugador1.puntos().valor());
+        assertEquals(2, jugador1.respuestasDelUsuario.size());
+    }
+
+    @Test
+    public void recibeUnaListaDeDosRespuestasInCorrectasEnMultipleChoiceClasicoYAsignaPuntosCorrectamente() {
+        Usuario jugador1 = new Usuario("Manuel");
+        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
+        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Dieciseis");
+        OpcionCorrecta opcionCorrecta3 = new OpcionCorrecta("Seis");
+        OpcionIncorrecta opcionIncorrecta1 = new OpcionIncorrecta("Uno");
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Que numero es mayor a cinco");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        pregunta.agregarOpcion(opcionCorrecta3);
+        pregunta.agregarOpcion(opcionIncorrecta1);
+        jugador1.elegirRespuestaParaPrueba(pregunta,2);
+        jugador1.elegirRespuestaParaPrueba(pregunta,3);
+        Verificador verificador = new Verificador();
+        SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
+        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+
+
+        assertEquals(0, jugador1.puntos().valor());
+        assertEquals(2, jugador1.respuestasDelUsuario.size());
+    }
+
 
 
     @Test
@@ -109,4 +156,49 @@ public class MultipleChoiceTest {
         assertEquals(3,jugador2.puntos().valor());
         assertEquals(3, jugador2.respuestasDelUsuario.size());
     }
+
+    @Test
+    public void recibeUnaListaDeDosRespuestasCorrectasEnMultipleChoiceParcialYAsignaPuntosCorrectamente() {
+        Usuario jugador1 = new Usuario("Manuel");
+        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
+        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Dieciseis");
+        MultipleChoiceParcial pregunta = new MultipleChoiceParcial("Que numero es mayor a cinco");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        jugador1.elegirRespuestaParaPrueba(pregunta,0);
+        jugador1.elegirRespuestaParaPrueba(pregunta,1);
+        Verificador verificador = new Verificador();
+        SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
+        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+
+
+        assertEquals(2,jugador1.puntos().valor());
+        assertEquals(2,jugador1.respuestasDelUsuario.size());
+    }
+
+    @Test
+    public void recibeUnaListaDeDosRespuestasIncorrectasEnMultipleChoiceParcialYAsignaPuntosCorrectamente() {
+        Usuario jugador1 = new Usuario("Manuel");
+        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("Ocho");
+        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("Dieciseis");
+        OpcionCorrecta opcionCorrecta3 = new OpcionCorrecta("Seis");
+        OpcionIncorrecta opcionIncorrecta1 = new OpcionIncorrecta("Uno");
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Que numero es mayor a cinco");
+        pregunta.agregarOpcion(opcionCorrecta1);
+        pregunta.agregarOpcion(opcionCorrecta2);
+        pregunta.agregarOpcion(opcionCorrecta3);
+        pregunta.agregarOpcion(opcionIncorrecta1);
+        jugador1.elegirRespuestaParaPrueba(pregunta,2);
+        jugador1.elegirRespuestaParaPrueba(pregunta,3);
+        Verificador verificador = new Verificador();
+        SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
+        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+
+
+        assertEquals(0, jugador1.puntos().valor());
+        assertEquals(2, jugador1.respuestasDelUsuario.size());
+    }
+
 }
