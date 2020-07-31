@@ -8,12 +8,16 @@ public class MultipleChoicePenalidad extends MultipleChoice {
         super(enunciado);
     }
 
-    public int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
-        return 1;
+    public Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
+        Puntaje puntaje = new Puntaje();
+        puntaje.cantidad(1);
+        return puntaje;
     }
 
-    public int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas){
-        return -1;
+    public Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas){
+        Puntaje puntaje = new Puntaje();
+        puntaje.cantidad(-1);
+        return puntaje;
     }
 
 }

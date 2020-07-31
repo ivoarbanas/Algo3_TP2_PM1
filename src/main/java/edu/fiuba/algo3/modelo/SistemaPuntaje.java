@@ -2,9 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class SistemaPuntaje {
     public SistemaPuntaje(){}
-    public void cambiarPuntaje(Usuario jugador, int puntaje){
-        Puntos puntos = new Puntos();
-        puntos.cantidad(jugador.puntos().valor() + puntaje);
-        jugador.cambiarPuntos(puntos);
+    public void cambiarPuntaje(Usuario jugador, Puntaje puntaje){
+        puntaje.cantidad(puntaje.valor()+jugador.puntaje().valor());
+        jugador.cambiarPuntaje(puntaje);
     }
 }

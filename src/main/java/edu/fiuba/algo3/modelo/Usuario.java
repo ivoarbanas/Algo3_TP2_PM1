@@ -5,14 +5,14 @@ import java.util.Scanner;
 
 public class Usuario {
     private String nombre;
-    private Puntos puntos;
+    private Puntaje Puntaje;
     ArrayList<RespuestaUsuario> respuestasDelUsuario;
     ArrayList<Opcion> opcionesDeLaPregunta;
     private boolean todasCorrectas; //cuando cambia de ronda esto de reinicia
 
     public Usuario (String nombre){
         this.nombre = nombre;
-        puntos = new Puntos();
+        Puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
         todasCorrectas = true;
     }
@@ -40,16 +40,16 @@ public class Usuario {
         return respuestasDelUsuario;
     }
 
-    public void cambiarPuntos(Puntos puntos){
-        this.puntos = puntos;
+    public void cambiarPuntaje(Puntaje Puntaje){
+        this.Puntaje = Puntaje;
     }
 
-    public Puntos puntos(){
-        return puntos;
+    public Puntaje puntaje(){
+        return Puntaje;
     }
 
     public void elegirRespuesta(Pregunta pregunta) {
-        System.out.println("Elija una opcion, numeros");
+        //System.out.println("Elija una opcion, numeros"); aca va javafx
         Scanner scanner = new Scanner(System.in);
         int eleccion = scanner.nextInt();
         nuevaRespuesta(pregunta.opciones().get(eleccion));

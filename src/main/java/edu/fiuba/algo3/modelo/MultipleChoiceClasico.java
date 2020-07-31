@@ -9,14 +9,19 @@ public class MultipleChoiceClasico extends MultipleChoice {
         super(enunciado);
     }
 
-    public int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
+    public Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
+        Puntaje puntaje = new Puntaje();
         if(cantidadOpcionesValidas == jugador.respuestasDelUsuario.size() && cantidadOpcionesValidas == respuestasVerificadas){
-            return 1;
+            puntaje.cantidad(1);
+            return puntaje;
         }
-        return 0;
+        puntaje.cantidad(0);
+        return puntaje;
     }
-    public int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas){
-        return 0;
+    public Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas){
+        Puntaje puntaje = new Puntaje();
+        puntaje.cantidad(0);
+        return puntaje;
     }
 
 }

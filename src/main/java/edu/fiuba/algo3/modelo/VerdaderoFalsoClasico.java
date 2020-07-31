@@ -6,12 +6,16 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso{
         super(enunciado, esVerdadera);
     }
     @Override
-    public int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
-        return 1;
+    public Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
+        Puntaje puntaje = new Puntaje();
+        puntaje.cantidad(1);
+        return puntaje;
     }
 
     @Override
-    public int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas) {
-        return 0;
+    public Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas) {
+        Puntaje puntaje = new Puntaje();
+        puntaje.cantidad(0);
+        return puntaje;
     }
 }

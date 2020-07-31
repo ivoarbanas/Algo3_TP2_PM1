@@ -14,22 +14,26 @@ public class Kahoot {
         verificador = new Verificador();
         sistemaPuntaje = new SistemaPuntaje();
         ronda = 0;
+        jugadores = new ArrayList<Usuario>();
+        preguntas = new ArrayList<Pregunta>();
     }
-
+    public ArrayList<Usuario> jugadores(){
+        return jugadores;
+    }
     //main
     public void comenzarJuego(){
         //cargarJugadores();
         while(ronda < 10 ){
             presentarPreguntaALosUsuarios();
-            verficarRonda();
+            verificarRonda();
             ronda++;
         }
         //finalizar juego
     }
 
-    public void verficarRonda(){
-        int puntajeJugador1 = verificador.verificar(preguntas.get(ronda),jugadores.get(0));
-        int puntajeJugador2 = verificador.verificar(preguntas.get(ronda),jugadores.get(1));
+    public void verificarRonda(){
+        Puntaje puntajeJugador1 = verificador.verificar(preguntas.get(ronda),jugadores.get(0));
+        Puntaje puntajeJugador2 = verificador.verificar(preguntas.get(ronda),jugadores.get(1));
         sistemaPuntaje.cambiarPuntaje(jugadores.get(0),puntajeJugador1);
         sistemaPuntaje.cambiarPuntaje(jugadores.get(1),puntajeJugador2);
     }
@@ -38,7 +42,9 @@ public class Kahoot {
         Usuario jugador = new Usuario(nombre);
         jugadores.add(jugador);
     }
-
+    public void cargarPregunta(Pregunta pregunta){
+        preguntas.add(pregunta);
+    }
     public void crearPreguntas(){
         //lee el archivo y envia mensaje a las clases dependiendo lo que va leyendo
     }

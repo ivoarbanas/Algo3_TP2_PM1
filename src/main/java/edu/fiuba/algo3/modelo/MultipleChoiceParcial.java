@@ -9,18 +9,24 @@ public class MultipleChoiceParcial extends MultipleChoice {
         super(enunciado);
     }
 
-    public int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas) {
+    public Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas) {
+        Puntaje puntaje = new Puntaje();
         if (jugador.sonTodasCorrectas()) {
-            return 1;
+            puntaje.cantidad(1);
+            return puntaje;
         }
-        return 0;
+        puntaje.cantidad(0);
+        return puntaje;
     }
 
-    public int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas) {
+    public Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas) {
+        Puntaje puntaje = new Puntaje();
         if (jugador.sonTodasCorrectas()) {
             jugador.respuestaIncorrecta();
-            return -respuestasVerificadas + 1;
+            puntaje.cantidad(-respuestasVerificadas + 1);
+            return puntaje;
         }
-        return 0;
+        puntaje.cantidad(0);
+        return puntaje;
     }
 }

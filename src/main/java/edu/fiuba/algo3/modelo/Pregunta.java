@@ -15,10 +15,10 @@ abstract class Pregunta {
     public ArrayList<Opcion> opciones() {
         return opciones;
     }
-    public abstract int respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
-    public abstract int respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
+    public abstract Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
+    public abstract Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
 
-    public int verificar(Usuario jugador, int cantidadVerificadas, int opcion) {
+    public Puntaje verificar(Usuario jugador, int cantidadVerificadas, int opcion) {
         return opciones().get(opcion).verificar(jugador.respuestas().get(cantidadVerificadas-1), this, jugador, cantidadVerificadas);
     }
 

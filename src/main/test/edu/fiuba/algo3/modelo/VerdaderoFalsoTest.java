@@ -18,7 +18,7 @@ public class VerdaderoFalsoTest {
     }
 
     @Test
-    public void recibeUnaListaDeRespuestasYAsignaCorrectamentePuntosALosJugadoresQueRespondieronCorrectamente(){
+    public void recibeUnaListaDeRespuestasYAsignaCorrectamentePuntajeALosJugadoresQueRespondieronCorrectamente(){
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Jorge");
         Usuario jugador2 = new Usuario("Ramiro");
@@ -26,18 +26,18 @@ public class VerdaderoFalsoTest {
         jugador1.elegirRespuestaParaPrueba(pregunta,0);//elijo 0
         jugador2.elegirRespuestaParaPrueba(pregunta,1);//elijo 1
         Verificador verificador = new Verificador();
-        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
-        int puntajeParcialJugador2 = verificador.verificar(pregunta, jugador2);
+        Puntaje puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        Puntaje puntajeParcialJugador2 = verificador.verificar(pregunta, jugador2);
         sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
         sistemaPuntaje.cambiarPuntaje(jugador2,puntajeParcialJugador2);
 
 
-        assertEquals(1, jugador1.puntos().valor());
-        assertEquals(0, jugador2.puntos().valor());
+        assertEquals(1, jugador1.puntaje().valor());
+        assertEquals(0, jugador2.puntaje().valor());
     }
 
     @Test
-    public void recibeUnaListaDeRespuestasEnVerdaderoFalsoPenalidadYAsignaPuntosCorrectamente(){
+    public void recibeUnaListaDeRespuestasEnVerdaderoFalsoPenalidadYAsignaPuntajeCorrectamente(){
 
         Usuario jugador1 = new Usuario("Manuel");
         Usuario jugador2 = new Usuario("Luciano");
@@ -46,14 +46,14 @@ public class VerdaderoFalsoTest {
         jugador2.elegirRespuestaParaPrueba(pregunta,1);//elijo 1
         Verificador verificador = new Verificador();
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
-        int puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
-        int puntajeParcialJugador2 = verificador.verificar(pregunta, jugador2);
+        Puntaje puntajeParcialJugador1 = verificador.verificar(pregunta, jugador1);
+        Puntaje puntajeParcialJugador2 = verificador.verificar(pregunta, jugador2);
         sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
         sistemaPuntaje.cambiarPuntaje(jugador2,puntajeParcialJugador2);
 
 
-        assertEquals(1, jugador1.puntos().valor());
-        assertEquals(-1, jugador2.puntos().valor());
+        assertEquals(1, jugador1.puntaje().valor());
+        assertEquals(-1, jugador2.puntaje().valor());
     }
 
     @Test
