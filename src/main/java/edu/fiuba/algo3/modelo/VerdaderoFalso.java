@@ -1,35 +1,26 @@
 package edu.fiuba.algo3.modelo;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 abstract class VerdaderoFalso extends Pregunta {
 
+    boolean es_verdadera;
+    Opcion opcionCorrecta;
 
     public VerdaderoFalso(String enunciado, boolean esVerdadera){
         super(enunciado);
         if (esVerdadera){
-            crearPreguntaVerdadera();
+            es_verdadera = true;
+            opcionCorrecta = new Opcion("Verdadero");
         }
         else {
-            crearPreguntaFalsa();
+            es_verdadera = false;
+            opcionCorrecta = new Opcion("Falso");
         }
-
-
     }
 
-    private void crearPreguntaVerdadera(){
-        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Verdadero");
-        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Falso");
-        opciones.add(opcionCorrecta);
-        opciones.add(opcionIncorrecta);
-    }
-    private void crearPreguntaFalsa(){
-        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Falso");
-        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Verdadero");
-        opciones.add(opcionCorrecta);
-        opciones.add(opcionIncorrecta);
-    }
-    public abstract Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
-    public abstract Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
+    public Opcion getOpcionCorrecta(){ return opcionCorrecta;}
+
+    public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
 
 }

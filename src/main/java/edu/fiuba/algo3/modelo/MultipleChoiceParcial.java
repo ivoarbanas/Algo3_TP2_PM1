@@ -1,32 +1,25 @@
 package edu.fiuba.algo3.modelo;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MultipleChoiceParcial extends MultipleChoice {
 
 
-    public MultipleChoiceParcial(String enunciado){
-        super(enunciado);
+    public MultipleChoiceParcial(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
+        super(enunciado,opcionesCorrectas,opcionesIncorrectas);
     }
 
-    public Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas) {
-        Puntaje puntaje = new Puntaje();
-        if (jugador.sonTodasCorrectas()) {
-            puntaje.cantidad(1);
-            return puntaje;
-        }
-        puntaje.cantidad(0);
-        return puntaje;
-    }
+    public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
+        int cantidadCorrectas = 0;
 
-    public Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas) {
-        Puntaje puntaje = new Puntaje();
-        if (jugador.sonTodasCorrectas()) {
-            jugador.respuestaIncorrecta();
-            puntaje.cantidad(-respuestasVerificadas + 1);
-            return puntaje;
+        for(int i=0;i<listaDeRespuestas.size();i++){
+            if(es_incorrecta(listaDeRespuestas.get(i))){
+                Puntaje puntajeNulo = new PuntajeNulo();
+                return puntajeNulo;
+            }
+            else { cantidadCorrectas++; }
         }
-        puntaje.cantidad(0);
-        return puntaje;
+        Puntaje puntajePositivo = new PuntajePositivo(cantidadCorrectas);
+        return puntajePositivo;
     }
 }

@@ -5,27 +5,11 @@ import java.util.ArrayList;
 abstract class Pregunta {
 
     protected String enunciado;
-    protected ArrayList <Opcion> opciones;
 
     public Pregunta(String enunciado){
         this.enunciado = enunciado;
-        opciones = new ArrayList<>();
     }
 
-    public ArrayList<Opcion> opciones() {
-        return opciones;
-    }
-    public abstract Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
-    public abstract Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
+    public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
 
-    public Puntaje verificar(Usuario jugador, int cantidadVerificadas, int opcion) {
-        return opciones().get(opcion).verificar(jugador.respuestas().get(cantidadVerificadas-1), this, jugador, cantidadVerificadas);
-    }
-
-    public void agregarOpcion(Opcion opcion) {
-        opciones.add(opcion);
-    }
-
-
-    // CAPAZ SOLO ES NECESARIO PARA MULTIPLE CHOICE
 }

@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-abstract class Opcion {
+public class Opcion {
 
-    protected String valor;
+    private String valor;
 
     public Opcion(String valor) {
         this.valor = valor;
@@ -12,7 +12,4 @@ abstract class Opcion {
         return valor;
     }
 
-    public abstract Puntaje verificar(RespuestaUsuario respuestaUsuario, Pregunta pregunta, Usuario jugador, int cantidadVerificadas);
-
-    public abstract int esCorrecta();
 }

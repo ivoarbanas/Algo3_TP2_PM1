@@ -32,8 +32,8 @@ public class Kahoot {
     }
 
     public void verificarRonda(){
-        Puntaje puntajeJugador1 = verificador.verificar(preguntas.get(ronda),jugadores.get(0));
-        Puntaje puntajeJugador2 = verificador.verificar(preguntas.get(ronda),jugadores.get(1));
+        Puntaje puntajeJugador1 = preguntas.get(ronda).calcularPuntajeParaRespuesta(jugadores.get(0).respuestas());
+        Puntaje puntajeJugador2 = preguntas.get(ronda).calcularPuntajeParaRespuesta(jugadores.get(1).respuestas());
         sistemaPuntaje.cambiarPuntaje(jugadores.get(0),puntajeJugador1);
         sistemaPuntaje.cambiarPuntaje(jugadores.get(1),puntajeJugador2);
     }
@@ -62,7 +62,7 @@ public class Kahoot {
 
     public void cambiarRonda(){
         for (Usuario jugador : jugadores){
-            jugador.nuevaRonda();
+            jugador.vaciarRespuestas();
         }
     }
 

@@ -6,7 +6,8 @@ public class Verificador {
 
     public Verificador(){}
 
-    public Puntaje verificar(Pregunta pregunta, Usuario jugador){
+    /*public Puntaje verificar(Pregunta pregunta, Usuario jugador){
+
         Puntaje puntajeParcial = new Puntaje();
         puntajeParcial.cantidad(0);
         for(int i=0; i<jugador.respuestas().size(); i++){
@@ -15,6 +16,6 @@ public class Verificador {
             }
         }
         return puntajeParcial;
-    }
+    }*/
 
 }

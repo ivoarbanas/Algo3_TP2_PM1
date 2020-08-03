@@ -2,52 +2,43 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UsuarioTest {
-    @Test
-    public void elige2VecesLaMismaOpcionYNoLaAgregaALasRespuestasDelUsuario(){
-        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("0");
-        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("-1");
-        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Mas que vos");
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cuantas copas tenes?");
-        pregunta.agregarOpcion(opcionCorrecta1);
-        pregunta.agregarOpcion(opcionCorrecta2);
-        pregunta.agregarOpcion(opcionIncorrecta);
-        Usuario jugador = new Usuario("July");
-        jugador.nuevaRespuesta(opcionCorrecta1);
-        jugador.nuevaRespuesta(opcionCorrecta1);
 
-        assertEquals(1, jugador.respuestas().size());
-    }
     @Test
-    public void elige2OpcionesYLasAgregaALasRespuestasDelUsuario(){
-        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("0");
-        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("-1");
-        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Mas que vos");
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cuantas copas tenes?");
-        pregunta.agregarOpcion(opcionCorrecta1);
-        pregunta.agregarOpcion(opcionCorrecta2);
-        pregunta.agregarOpcion(opcionIncorrecta);
+    public void eligeRespuestasDelUsuarioYCargaCorrectamente(){
+        Opcion opcionCorrecta1 = new Opcion("0");
+        Opcion opcionCorrecta2 = new Opcion("-1");
+        Opcion opcionIncorrecta = new Opcion("Mas que vos");
+        ArrayList<Opcion> respuestaUsuario = new ArrayList<Opcion>();
         Usuario jugador = new Usuario("July");
-        jugador.nuevaRespuesta(opcionCorrecta1);
-        jugador.nuevaRespuesta(opcionCorrecta2);
+        respuestaUsuario.add(opcionCorrecta1);
+        respuestaUsuario.add(opcionCorrecta2);
+        respuestaUsuario.add(opcionIncorrecta);
+        jugador.cargarRespuestas(respuestaUsuario);
 
-        assertEquals(2, jugador.respuestas().size());
+        assertEquals(opcionCorrecta1.valor(), jugador.respuestas().get(0).valor());
+        assertEquals(opcionCorrecta2.valor(), jugador.respuestas().get(1).valor());
+        assertEquals(opcionIncorrecta.valor(), jugador.respuestas().get(2).valor());
+        assertEquals(3, jugador.respuestas().size());
     }
     @Test
     public void seCreaUnaNuevaRondaYSeBorranLasRespuestasAnterioresDelUsuario(){
-        OpcionCorrecta opcionCorrecta1 = new OpcionCorrecta("0");
-        OpcionCorrecta opcionCorrecta2 = new OpcionCorrecta("-1");
-        OpcionIncorrecta opcionIncorrecta = new OpcionIncorrecta("Mas que vos");
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cuantas copas tenes?");
-        pregunta.agregarOpcion(opcionCorrecta1);
-        pregunta.agregarOpcion(opcionCorrecta2);
-        pregunta.agregarOpcion(opcionIncorrecta);
+        Opcion opcionCorrecta1 = new Opcion("0");
+        Opcion opcionCorrecta2 = new Opcion("-1");
+        Opcion opcionIncorrecta = new Opcion("Mas que vos");
+        ArrayList<Opcion> respuestaUsuario = new ArrayList<Opcion>();
         Usuario jugador = new Usuario("July");
-        jugador.nuevaRespuesta(opcionCorrecta1);
-        jugador.nuevaRespuesta(opcionCorrecta2);
-        jugador.nuevaRonda();
+        respuestaUsuario.add(opcionCorrecta1);
+        respuestaUsuario.add(opcionCorrecta2);
+        respuestaUsuario.add(opcionIncorrecta);
+        jugador.cargarRespuestas(respuestaUsuario);
+
+        jugador.vaciarRespuestas();
 
         assertEquals(0, jugador.respuestas().size());
     }

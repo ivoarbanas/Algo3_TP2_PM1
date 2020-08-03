@@ -1,22 +1,25 @@
 package edu.fiuba.algo3.modelo;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MultipleChoicePenalidad extends MultipleChoice {
 
-    public MultipleChoicePenalidad(String enunciado){
-        super(enunciado);
+    public MultipleChoicePenalidad(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
+        super(enunciado,opcionesCorrectas,opcionesIncorrectas);
     }
 
-    public Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas){
-        Puntaje puntaje = new Puntaje();
-        puntaje.cantidad(1);
-        return puntaje;
-    }
+    public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
 
-    public Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas){
+        int balanceCorrectas = 0;
+        for(int i=0;i<listaDeRespuestas.size();i++){
+            if(es_incorrecta(listaDeRespuestas.get(i))){
+                balanceCorrectas--;
+            }
+            else balanceCorrectas++;
+        }
         Puntaje puntaje = new Puntaje();
-        puntaje.cantidad(-1);
+        puntaje.cantidad(balanceCorrectas);
         return puntaje;
     }
 

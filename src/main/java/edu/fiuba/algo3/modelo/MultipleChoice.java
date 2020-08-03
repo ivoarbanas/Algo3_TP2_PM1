@@ -1,28 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 abstract class MultipleChoice extends Pregunta {
 
-    protected int cantidadDeOpciones;
-    protected int cantidadOpcionesValidas;
+    protected ArrayList<Opcion> listaOpcionesCorrectas;
+    protected ArrayList<Opcion> listaOpcionesIncorrectas;
 
-
-    public MultipleChoice(String enunciado){
+    public MultipleChoice(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
         super(enunciado);
-        cantidadDeOpciones = 0;
-        cantidadOpcionesValidas = 0;
+        listaOpcionesCorrectas = opcionesCorrectas;
+        listaOpcionesIncorrectas = opcionesIncorrectas;
     }
 
-    public abstract Puntaje respuestaEsCorrecta(Usuario jugador, int respuestasVerificadas);
-    public abstract Puntaje respuestaEsIncorrecta(Usuario jugador, int respuestasVerificadas);
+    public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
 
-    public void agregarOpcion(Opcion opcion){
-        if( cantidadDeOpciones < 6) {
-            opciones.add(opcion);
-            cantidadOpcionesValidas += opcion.esCorrecta();
-            cantidadDeOpciones++;
+    public boolean es_incorrecta(Opcion opcion){
+        for (int i = 0; i<listaOpcionesIncorrectas.size(); i++){
+            if(listaOpcionesIncorrectas.get(i).valor().equals(opcion.valor())) return true;
         }
+        return false;
     }
-
 }

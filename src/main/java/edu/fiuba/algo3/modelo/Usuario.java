@@ -6,18 +6,16 @@ import java.util.Scanner;
 public class Usuario {
     private String nombre;
     private Puntaje Puntaje;
-    ArrayList<RespuestaUsuario> respuestasDelUsuario;
-    ArrayList<Opcion> opcionesDeLaPregunta;
-    private boolean todasCorrectas; //cuando cambia de ronda esto de reinicia
+    ArrayList<Opcion> respuestasDelUsuario;
 
     public Usuario (String nombre){
         this.nombre = nombre;
         Puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
-        todasCorrectas = true;
     }
 
-    private boolean respuestaYaCreada(Opcion respuestaNueva){
+    // NO USO
+    /*private boolean respuestaYaCreada(Opcion respuestaNueva){
         for(int i=0; i<cantidadRespuestasDelUsuario() ;i++){
             if(respuestaNueva == respuestasDelUsuario.get(i).valor()){
                 return true;
@@ -31,12 +29,18 @@ public class Usuario {
             RespuestaUsuario nuevaRespuesta = new RespuestaUsuario(respuestaNueva);
             respuestasDelUsuario.add(nuevaRespuesta);
         }
-    }
-    private void vaciarRespuestas(){
+    }*/
+
+    public void vaciarRespuestas(){
         respuestasDelUsuario.clear();
     }
 
-    public ArrayList<RespuestaUsuario> respuestas(){
+    public void cargarRespuestas(ArrayList<Opcion> listaDeRespuestas){
+        vaciarRespuestas();
+        respuestasDelUsuario = listaDeRespuestas;
+    }
+
+    public ArrayList<Opcion> respuestas(){
         return respuestasDelUsuario;
     }
 
@@ -48,32 +52,27 @@ public class Usuario {
         return Puntaje;
     }
 
+    // TODAVIA NO IMPLEMENTAMOS >> REEMPLAZO POR CARGAR_RESPUESTA
+
     public void elegirRespuesta(Pregunta pregunta) {
+
         //System.out.println("Elija una opcion, numeros"); aca va javafx
+
+        // EL SCANNER DEBERIA IR AÑADIENDO OPCION A OPCION EN LA LISTADERESPUESTAS Y LUEGO CARGARLA AL USUARIO
         Scanner scanner = new Scanner(System.in);
         int eleccion = scanner.nextInt();
-        nuevaRespuesta(pregunta.opciones().get(eleccion));
-    }
 
+        ArrayList <Opcion> listaDeRespuestas = new ArrayList<Opcion>();
+        cargarRespuestas(listaDeRespuestas);
+    }
+    /*
     public void elegirRespuestaParaPrueba(Pregunta pregunta,int eleccion) {
         nuevaRespuesta(pregunta.opciones().get(eleccion));
-    }
+    }*/
 
     public int cantidadRespuestasDelUsuario(){
         return respuestasDelUsuario.size();
     }
 
-    public boolean sonTodasCorrectas(){
-        return todasCorrectas;
-    }
-
-    public void nuevaRonda() {
-        todasCorrectas = true;
-        vaciarRespuestas();
-    }
-
-    public void respuestaIncorrecta() {
-        todasCorrectas = false;
-    }
 }
 
