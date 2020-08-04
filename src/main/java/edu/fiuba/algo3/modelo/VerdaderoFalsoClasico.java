@@ -6,6 +6,7 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso{
 
     public VerdaderoFalsoClasico(String enunciado, boolean esVerdadera){
         super(enunciado, esVerdadera);
+        bonificable = false;
     }
 
     public  Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {

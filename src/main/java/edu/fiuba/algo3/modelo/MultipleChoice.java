@@ -21,4 +21,5 @@ abstract class MultipleChoice extends Pregunta {
         }
         return false;
     }
+
 }

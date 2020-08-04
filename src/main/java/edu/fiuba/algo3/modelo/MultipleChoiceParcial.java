@@ -7,6 +7,7 @@ public class MultipleChoiceParcial extends MultipleChoice {
 
     public MultipleChoiceParcial(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
         super(enunciado,opcionesCorrectas,opcionesIncorrectas);
+        bonificable = false;
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
@@ -22,4 +23,5 @@ public class MultipleChoiceParcial extends MultipleChoice {
         Puntaje puntajePositivo = new PuntajePositivo(cantidadCorrectas);
         return puntajePositivo;
     }
+
 }

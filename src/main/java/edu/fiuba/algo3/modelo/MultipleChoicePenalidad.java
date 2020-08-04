@@ -7,6 +7,7 @@ public class MultipleChoicePenalidad extends MultipleChoice {
 
     public MultipleChoicePenalidad(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
         super(enunciado,opcionesCorrectas,opcionesIncorrectas);
+        bonificable = true;
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
@@ -20,6 +21,7 @@ public class MultipleChoicePenalidad extends MultipleChoice {
         }
         Puntaje puntaje = new Puntaje();
         puntaje.cantidad(balanceCorrectas);
+
         return puntaje;
     }
 

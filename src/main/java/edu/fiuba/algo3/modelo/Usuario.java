@@ -6,10 +6,13 @@ import java.util.Scanner;
 public class Usuario {
     private String nombre;
     private Puntaje Puntaje;
+    private boolean utilizaMultiplicador;
+    public Multiplicador multiplicador;
     ArrayList<Opcion> respuestasDelUsuario;
 
     public Usuario (String nombre){
         this.nombre = nombre;
+        utilizaMultiplicador = false;
         Puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
     }
@@ -65,6 +68,7 @@ public class Usuario {
         ArrayList <Opcion> listaDeRespuestas = new ArrayList<Opcion>();
         cargarRespuestas(listaDeRespuestas);
     }
+
     /*
     public void elegirRespuestaParaPrueba(Pregunta pregunta,int eleccion) {
         nuevaRespuesta(pregunta.opciones().get(eleccion));
@@ -74,5 +78,21 @@ public class Usuario {
         return respuestasDelUsuario.size();
     }
 
+    public void utilizarMultiplicador(Multiplicador multiplicadorAsignado){
+        utilizaMultiplicador = true;
+        multiplicador = multiplicadorAsignado;
+    }
+
+    public void limpiarMultiplicador(){
+        utilizaMultiplicador = false;
+    }
+
+    public Multiplicador getMultiplicador(){
+        return multiplicador;
+    }
+
+    public boolean utilizaMultiplicador(){
+        return utilizaMultiplicador;
+    }
 }
 

@@ -31,13 +31,19 @@ public class Kahoot {
         //finalizar juego
     }
 
-    public void verificarRonda(){
+    public void verificarRonda() {
+
         Puntaje puntajeJugador1 = preguntas.get(ronda).calcularPuntajeParaRespuesta(jugadores.get(0).respuestas());
         Puntaje puntajeJugador2 = preguntas.get(ronda).calcularPuntajeParaRespuesta(jugadores.get(1).respuestas());
-        sistemaPuntaje.cambiarPuntaje(jugadores.get(0),puntajeJugador1);
-        sistemaPuntaje.cambiarPuntaje(jugadores.get(1),puntajeJugador2);
-    }
 
+        if(preguntas.get(ronda).esBonificable()) {
+            puntajeJugador1 = this.aplicarMultiplicador(jugadores().get(0), puntajeJugador1);
+            puntajeJugador2 = this.aplicarMultiplicador(jugadores().get(1),puntajeJugador2);
+        }
+
+        sistemaPuntaje.cambiarPuntaje(jugadores.get(0), puntajeJugador1);
+        sistemaPuntaje.cambiarPuntaje(jugadores.get(1), puntajeJugador2);
+    }
     public void crearJugador(String nombre){
         Usuario jugador = new Usuario(nombre);
         jugadores.add(jugador);
@@ -63,7 +69,15 @@ public class Kahoot {
     public void cambiarRonda(){
         for (Usuario jugador : jugadores){
             jugador.vaciarRespuestas();
+            jugador.limpiarMultiplicador();
         }
+    }
+
+    private Puntaje aplicarMultiplicador(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
+        if(jugadorAfectado.utilizaMultiplicador()){
+            return jugadorAfectado.getMultiplicador().calcularPuntajeConMultiplicador(puntajeAMultiplicar);
+        }
+        return puntajeAMultiplicar;
     }
 
 }

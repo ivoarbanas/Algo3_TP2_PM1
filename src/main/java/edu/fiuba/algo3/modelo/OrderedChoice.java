@@ -9,6 +9,7 @@ public class OrderedChoice extends Pregunta {
     public OrderedChoice(String enunciado, ArrayList<Opcion> opcionesOrdenadas){
         super(enunciado);
         listaOrdenada = opcionesOrdenadas;
+        bonificable = false;
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas){
@@ -21,4 +22,5 @@ public class OrderedChoice extends Pregunta {
         Puntaje puntajePositivo = new PuntajePositivo();
         return puntajePositivo;
     }
+
 }
