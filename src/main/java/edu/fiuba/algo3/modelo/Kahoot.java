@@ -74,7 +74,7 @@ public class Kahoot {
     }
 
     private Puntaje aplicarMultiplicador(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        if(jugadorAfectado.utilizaMultiplicador()){
+        if((jugadorAfectado.getMultiplicador().fueUsado)) {
             return jugadorAfectado.getMultiplicador().calcularPuntajeConMultiplicador(puntajeAMultiplicar);
         }
         return puntajeAMultiplicar;

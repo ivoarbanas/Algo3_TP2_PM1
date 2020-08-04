@@ -6,13 +6,15 @@ import java.util.Scanner;
 public class Usuario {
     private String nombre;
     private Puntaje Puntaje;
-    private boolean utilizaMultiplicador;
-    public Multiplicador multiplicador;
-    ArrayList<Opcion> respuestasDelUsuario;
+    private Multiplicador multiplicadorActivo;
+    private Multiplicador x2;
+    private Multiplicador x3;
+    private ArrayList<Opcion> respuestasDelUsuario;
 
     public Usuario (String nombre){
         this.nombre = nombre;
-        utilizaMultiplicador = false;
+        x2 = new X2();
+        x3 = new X3();
         Puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
     }
@@ -78,21 +80,26 @@ public class Usuario {
         return respuestasDelUsuario.size();
     }
 
-    public void utilizarMultiplicador(Multiplicador multiplicadorAsignado){
-        utilizaMultiplicador = true;
-        multiplicador = multiplicadorAsignado;
+
+    public void utilizarMultiplicadorX2(){
+        x2.usar();
+        multiplicadorActivo = x2;
+        x2 = null;
+    }
+
+    public void utilizarMultiplicadorX3(){
+        x3.usar();
+        multiplicadorActivo = x3;
+        x3 = null;
     }
 
     public void limpiarMultiplicador(){
-        utilizaMultiplicador = false;
+        multiplicadorActivo = null;
     }
 
     public Multiplicador getMultiplicador(){
-        return multiplicador;
+        return multiplicadorActivo;
     }
 
-    public boolean utilizaMultiplicador(){
-        return utilizaMultiplicador;
-    }
 }
 

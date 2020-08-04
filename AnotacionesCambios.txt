@@ -1,16 +1,7 @@
--Pruebas similares a las de la entrega 1, con el resto de los tipos de preguntas
-
--Agregado de multiplicadores a cada tipo de pregunta, verificando que cumplan con el efecto indicado (x2 o x3)  
-
--Planteo inicial de interfaz gráfica, pantalla donde se muestra una pregunta con sus opciones
-
-------------------------------------------------------------------------------------
-
--Ver si es mejor que le hable sistemaPuntaje a Verificador y no k! directamente
 
 -Crear objeto rondas
 
 -Cambiar nombre de metodos acorde a lo que hacen
 
--Sacar parametro de respuesta verificada
+-Cambiar en todas menos VyF como se cargan las opciones correctas e incorrectas (no pasarle la lista en el contructor)
 
