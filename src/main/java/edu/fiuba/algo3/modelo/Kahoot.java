@@ -6,12 +6,10 @@ public class Kahoot {
 
     ArrayList<Usuario> jugadores;
     ArrayList<Pregunta> preguntas;
-    Verificador verificador;
     SistemaPuntaje sistemaPuntaje;
     int ronda;
 
     public Kahoot(){
-        verificador = new Verificador();
         sistemaPuntaje = new SistemaPuntaje();
         ronda = 0;
         jugadores = new ArrayList<Usuario>();

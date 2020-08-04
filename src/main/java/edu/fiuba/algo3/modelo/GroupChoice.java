@@ -18,9 +18,9 @@ public class GroupChoice extends Pregunta {
         bonificable = false;
     }
 
-    public boolean opcionEstaEnListaGrupo(ArrayList<Opcion> listaGrupo, Opcion opcion) {
-        for (int i = 0; i < listaGrupo.size(); i++) {
-            if (listaGrupo.get(i).valor().equals(opcion.valor())) return true;
+    private boolean opcionEstaEnListaGrupo(ArrayList<Opcion> listaGrupo, Opcion opcion) {
+        for (Opcion unaOpcion : listaGrupo) {
+            if (unaOpcion.valor().equals(opcion.valor())) return true;
         }
         return false;
     }
@@ -31,8 +31,8 @@ public class GroupChoice extends Pregunta {
             Puntaje puntajeNulo = new PuntajeNulo();
             return puntajeNulo;
         }
-        for (int i = 0; i < listaDeRespuestasGrupo1.size(); i++) {
-            if (!opcionEstaEnListaGrupo(listaOpcionesGrupo1, listaDeRespuestasGrupo1.get(i))) {
+        for (Opcion unaOpcion : listaDeRespuestasGrupo1) {
+            if (!opcionEstaEnListaGrupo(listaOpcionesGrupo1, unaOpcion)) {
                 Puntaje puntajeNulo = new PuntajeNulo();
                 return puntajeNulo;
             }

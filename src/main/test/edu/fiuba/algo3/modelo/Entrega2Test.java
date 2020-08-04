@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Entrega2Test {
 
     @Test
-    public void recibeUnaListaDeRespuestasTresCorrectasEnMultipleChoiceClasicoYAsignaPuntajeCorrectamenteAplicandoMultiplicadorX2() {
+    public void recibeUnaListaDeRespuestasTresCorrectasEnMultipleChoicePenalidadYAsignaPuntajeCorrectamenteAplicandoMultiplicadorX2() {
         Kahoot kahoot = new Kahoot();
 
         kahoot.crearJugador("Jorgito");

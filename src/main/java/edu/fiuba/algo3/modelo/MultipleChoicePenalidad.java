@@ -13,8 +13,8 @@ public class MultipleChoicePenalidad extends MultipleChoice {
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
 
         int balanceCorrectas = 0;
-        for(int i=0;i<listaDeRespuestas.size();i++){
-            if(es_incorrecta(listaDeRespuestas.get(i))){
+        for(Opcion unaOpcion : listaDeRespuestas){
+            if(esIncorrecta(unaOpcion)){
                 balanceCorrectas--;
             }
             else balanceCorrectas++;

@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 abstract class VerdaderoFalso extends Pregunta {
 
-    boolean es_verdadera;
+    boolean esVerdadera;
     Opcion opcionCorrecta;
 
     public VerdaderoFalso(String enunciado, boolean esVerdadera){
         super(enunciado);
         if (esVerdadera){
-            es_verdadera = true;
+            esVerdadera = true;
             opcionCorrecta = new Opcion("Verdadero");
         }
         else {
-            es_verdadera = false;
+            esVerdadera = false;
             opcionCorrecta = new Opcion("Falso");
         }
     }
 
-    public Opcion getOpcionCorrecta(){ return opcionCorrecta;}
+    protected Opcion getOpcionCorrecta(){ return opcionCorrecta;}
 
     public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
 

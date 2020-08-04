@@ -13,8 +13,8 @@ public class MultipleChoiceParcial extends MultipleChoice {
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
         int cantidadCorrectas = 0;
 
-        for(int i=0;i<listaDeRespuestas.size();i++){
-            if(es_incorrecta(listaDeRespuestas.get(i))){
+        for(Opcion unaOpcion : listaDeRespuestas){
+            if(esIncorrecta(unaOpcion)){
                 Puntaje puntajeNulo = new PuntajeNulo();
                 return puntajeNulo;
             }

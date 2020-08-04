@@ -15,8 +15,8 @@ public class MultipleChoiceClasico extends MultipleChoice {
             Puntaje puntajeNulo = new PuntajeNulo();
             return puntajeNulo;
         }
-        for (int i=0;i<listaDeRespuestas.size();i++){
-            if(es_incorrecta(listaDeRespuestas.get(i))) {
+        for (Opcion opcion: listaDeRespuestas){
+            if(esIncorrecta(opcion)) {
                 Puntaje puntajeNulo = new PuntajeNulo();
                 return puntajeNulo;
             }

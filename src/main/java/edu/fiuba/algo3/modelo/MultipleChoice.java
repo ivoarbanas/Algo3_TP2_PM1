@@ -15,9 +15,9 @@ abstract class MultipleChoice extends Pregunta {
 
     public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
 
-    public boolean es_incorrecta(Opcion opcion){
-        for (int i = 0; i<listaOpcionesIncorrectas.size(); i++){
-            if(listaOpcionesIncorrectas.get(i).valor().equals(opcion.valor())) return true;
+    public boolean esIncorrecta(Opcion opcion){
+        for (Opcion unaOpcion : listaOpcionesIncorrectas){
+            if(unaOpcion.valor().equals(opcion.valor())) return true;
         }
         return false;
     }
