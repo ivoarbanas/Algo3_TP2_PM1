@@ -6,7 +6,6 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso{
 
     public VerdaderoFalsoPenalidad(String enunciado, boolean esVerdadera){
         super(enunciado, esVerdadera);
-        bonificable = true;
     }
 
     public  Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
@@ -16,6 +15,10 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso{
         }
         Puntaje puntajeNegativo = new PuntajeNegativo();
         return puntajeNegativo;
+    }
+
+    public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
+        return puntaje.aplicarMultiplicador(multiplicador);
     }
 
 }

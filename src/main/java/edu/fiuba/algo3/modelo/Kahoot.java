@@ -34,10 +34,8 @@ public class Kahoot {
         Puntaje puntajeJugador1 = preguntas.get(ronda).calcularPuntajeParaRespuesta(jugadores.get(0).respuestas());
         Puntaje puntajeJugador2 = preguntas.get(ronda).calcularPuntajeParaRespuesta(jugadores.get(1).respuestas());
 
-        if(preguntas.get(ronda).esBonificable()) {
-            puntajeJugador1 = this.aplicarMultiplicador(jugadores().get(0), puntajeJugador1);
-            puntajeJugador2 = this.aplicarMultiplicador(jugadores().get(1),puntajeJugador2);
-        }
+        puntajeJugador1 = this.aplicarMultiplicador(jugadores().get(0), puntajeJugador1);
+        puntajeJugador2 = this.aplicarMultiplicador(jugadores().get(1),puntajeJugador2);
 
         sistemaPuntaje.cambiarPuntaje(jugadores.get(0), puntajeJugador1);
         sistemaPuntaje.cambiarPuntaje(jugadores.get(1), puntajeJugador2);
@@ -72,10 +70,7 @@ public class Kahoot {
     }
 
     private Puntaje aplicarMultiplicador(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        if((jugadorAfectado.getMultiplicador().fueUsado)) {
-            return jugadorAfectado.getMultiplicador().calcularPuntajeConMultiplicador(puntajeAMultiplicar);
-        }
-        return puntajeAMultiplicar;
+        return jugadorAfectado.getMultiplicador().calcularPuntajeConMultiplicador(puntajeAMultiplicar);
     }
 
 }

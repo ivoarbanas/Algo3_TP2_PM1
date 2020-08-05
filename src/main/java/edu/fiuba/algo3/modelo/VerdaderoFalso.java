@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 abstract class VerdaderoFalso extends Pregunta {
 
-    boolean esVerdadera;
     Opcion opcionCorrecta;
+    Opcion opcionIncorrecta;
 
     public VerdaderoFalso(String enunciado, boolean esVerdadera){
         super(enunciado);
         if (esVerdadera){
-            esVerdadera = true;
             opcionCorrecta = new Opcion("Verdadero");
+            opcionIncorrecta = new Opcion("Falso");
         }
         else {
-            esVerdadera = false;
             opcionCorrecta = new Opcion("Falso");
+            opcionIncorrecta = new Opcion("Verdadero");
         }
     }
 

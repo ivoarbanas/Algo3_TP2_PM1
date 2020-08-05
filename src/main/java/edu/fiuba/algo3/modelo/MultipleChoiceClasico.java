@@ -7,7 +7,6 @@ public class MultipleChoiceClasico extends MultipleChoice {
 
     public MultipleChoiceClasico(String enunciado,ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
         super(enunciado,opcionesCorrectas,opcionesIncorrectas);
-        bonificable = false;
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
@@ -23,6 +22,9 @@ public class MultipleChoiceClasico extends MultipleChoice {
         }
         Puntaje puntajePositivo = new PuntajePositivo();
         return puntajePositivo;
+    }
+    public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
+        return puntaje.aplicarMultiplicador(multiplicador);
     }
 
 }

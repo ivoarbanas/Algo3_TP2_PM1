@@ -15,7 +15,6 @@ public class GroupChoice extends Pregunta {
         grupo2 = nombreGrupo2;
         listaOpcionesGrupo1 = opcionesGrupo1;
         listaOpcionesGrupo2 = opcionesGrupo2;
-        bonificable = false;
     }
 
     private boolean opcionEstaEnListaGrupo(ArrayList<Opcion> listaGrupo, Opcion opcion) {
@@ -39,6 +38,10 @@ public class GroupChoice extends Pregunta {
         }
         Puntaje puntajePositivo = new PuntajePositivo();
         return puntajePositivo;
+    }
+
+    public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
+        return puntaje;
     }
 
 }

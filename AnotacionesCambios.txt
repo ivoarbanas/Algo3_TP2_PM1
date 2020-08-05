@@ -2,12 +2,10 @@
 
 -Crear objeto rondas
 
--Cambiar nombre de metodos acorde a lo que hacen
+-Exclusividad puntaje
+
+-JavaFX
 
 -Cambiar en todas menos VyF como se cargan las opciones correctas e incorrectas (no pasarle la lista en el contructor)
 
--Encapsulamiento metodo cantiadad (cambiarPuntaje en SistemaPuntaje)
-
--Repensar el bonificable boolean
-
--Sacar getters y setters (doble dispatch)
+-Cambiar nombre de metodos acorde a lo que hacen

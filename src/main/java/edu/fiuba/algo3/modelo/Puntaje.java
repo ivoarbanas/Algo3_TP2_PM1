@@ -12,4 +12,9 @@ public class Puntaje {
     public int valor(){
         return valor;
     }
+
+    public Puntaje aplicarMultiplicador(Multiplicador multiplicador) {
+        valor = valor * multiplicador.valorDelMultiplicador();
+        return this;
+    }
 }

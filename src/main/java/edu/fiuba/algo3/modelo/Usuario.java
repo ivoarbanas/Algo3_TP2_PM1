@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Usuario {
     private String nombre;
-    private Puntaje Puntaje;
+    private Puntaje puntaje;
     private Multiplicador multiplicadorActivo;
     private Multiplicador x2;
     private Multiplicador x3;
@@ -15,26 +15,11 @@ public class Usuario {
         this.nombre = nombre;
         x2 = new X2();
         x3 = new X3();
-        Puntaje = new Puntaje();
+        multiplicadorActivo = new MultiplicadorInactivo();
+        puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
     }
 
-    // NO USO
-    /*private boolean respuestaYaCreada(Opcion respuestaNueva){
-        for(int i=0; i<cantidadRespuestasDelUsuario() ;i++){
-            if(respuestaNueva == respuestasDelUsuario.get(i).valor()){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void nuevaRespuesta(Opcion respuestaNueva) {
-        if(!respuestaYaCreada(respuestaNueva)){
-            RespuestaUsuario nuevaRespuesta = new RespuestaUsuario(respuestaNueva);
-            respuestasDelUsuario.add(nuevaRespuesta);
-        }
-    }*/
 
     public void vaciarRespuestas(){
         respuestasDelUsuario.clear();
@@ -49,12 +34,12 @@ public class Usuario {
         return respuestasDelUsuario;
     }
 
-    public void cambiarPuntaje(Puntaje Puntaje){
-        this.Puntaje = Puntaje;
+    public void cambiarPuntaje(Puntaje puntaje){
+        this.puntaje.cantidad(puntaje.valor() + this.puntaje().valor());
     }
 
     public Puntaje puntaje(){
-        return Puntaje;
+        return puntaje;
     }
 
     // TODAVIA NO IMPLEMENTAMOS >> REEMPLAZO POR CARGAR_RESPUESTA
@@ -82,15 +67,13 @@ public class Usuario {
 
 
     public void utilizarMultiplicadorX2(){
-        x2.usar();
         multiplicadorActivo = x2;
-        x2 = null;
+        x2 = new MultiplicadorInactivo();
     }
 
     public void utilizarMultiplicadorX3(){
-        x3.usar();
         multiplicadorActivo = x3;
-        x3 = null;
+        x3 = new MultiplicadorInactivo();;
     }
 
     public void limpiarMultiplicador(){

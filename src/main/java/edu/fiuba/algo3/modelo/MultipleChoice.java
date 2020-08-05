@@ -21,5 +21,6 @@ abstract class MultipleChoice extends Pregunta {
         }
         return false;
     }
+    public abstract Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador);
 
 }
