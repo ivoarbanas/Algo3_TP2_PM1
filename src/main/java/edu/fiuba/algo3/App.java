@@ -137,7 +137,7 @@ public class App extends Application  {
                 if(jugadorActivo == kahoot.jugadores().get(1)){
                     jugadorActivo = kahoot.jugadores().get(0);
                     kahoot.verificarRonda();
-                    mostrarResultado(pregunta.getOpcionCorrecta());
+                    mostrarResultado(pregunta.opcionCorrecta());
                 }
                 else{
                     jugadorActivo = kahoot.jugadores().get(1);
