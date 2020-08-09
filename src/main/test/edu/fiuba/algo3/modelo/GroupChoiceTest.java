@@ -22,10 +22,10 @@ public class GroupChoiceTest {
         listaOpcionesGrupo2.add(opcion4);
         GroupChoice pregunta = new GroupChoice("Numeros", "Colores", listaOpcionesGrupo1, listaOpcionesGrupo2);
 
-        assertEquals(opcion1.valor(),pregunta.listaOpcionesGrupo1.get(0).valor());
-        assertEquals(opcion3.valor(),pregunta.listaOpcionesGrupo1.get(1).valor());
-        assertEquals(opcion2.valor(),pregunta.listaOpcionesGrupo2.get(0).valor());
-        assertEquals(opcion4.valor(),pregunta.listaOpcionesGrupo2.get(1).valor());
+        assertEquals(opcion1.valor(),pregunta.listaOpcionesGrupo1().get(0).valor());
+        assertEquals(opcion3.valor(),pregunta.listaOpcionesGrupo1().get(1).valor());
+        assertEquals(opcion2.valor(),pregunta.listaOpcionesGrupo2().get(0).valor());
+        assertEquals(opcion4.valor(),pregunta.listaOpcionesGrupo2().get(1).valor());
     }
 
     @Test

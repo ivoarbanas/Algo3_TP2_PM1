@@ -18,14 +18,20 @@ public class MultipleChoicePenalidad extends MultipleChoice {
             }
             else balanceCorrectas++;
         }
-        Puntaje puntaje = new Puntaje();
-        puntaje.cantidad(balanceCorrectas);
-
+        Puntaje puntaje = new Puntaje(balanceCorrectas);
         return puntaje;
     }
 
     public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
         return puntaje.aplicarMultiplicador(multiplicador);
+    }
+
+    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje;
+    }
+
+    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje;
     }
 
 }

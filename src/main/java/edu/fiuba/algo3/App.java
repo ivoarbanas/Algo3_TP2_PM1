@@ -21,11 +21,10 @@ import java.util.ArrayList;
 /**
  * JavaFX App
  */
-public class App extends Application implements EventHandler<ActionEvent> {
+public class App extends Application  {
 
     private Stage stage;
-    private Scene menuPrincipal, reglas, comenzar;
-    private Button botonReglas, botonComenzar, botonSalir, botonVolver;
+    private Scene menuPrincipal;
     private Kahoot kahoot;
     private Usuario jugadorActivo;
 
@@ -42,13 +41,12 @@ public class App extends Application implements EventHandler<ActionEvent> {
         HBox cajaX = new HBox();
         VBox cajaY = new VBox();
         var label = new Label("Bienvenidos a Kahoot 2");
-        botonReglas = new Button("Reglas");
-        botonComenzar = new Button("Comenzar");
-        botonSalir = new Button("Salir");
-        botonVolver = new Button("Volver");
-        botonReglas.setOnAction(this);
-        botonComenzar.setOnAction(this);
-        botonSalir.setOnAction(this);
+        Button botonReglas = new Button("Reglas");
+        Button botonComenzar = new Button("Comenzar");
+        Button botonSalir = new Button("Salir");
+        botonReglas.setOnAction(e ->mostrarReglas());
+        botonComenzar.setOnAction(e ->ingresarNombres());
+        botonSalir.setOnAction(e -> stage.close());
         cajaX.getChildren().addAll(botonComenzar,botonReglas,botonSalir);
         cajaY.getChildren().addAll(label,cajaX);
         layout.getChildren().add(cajaY);
@@ -181,7 +179,8 @@ public class App extends Application implements EventHandler<ActionEvent> {
                 "Cras a mi nunc. Nulla facilisi. Cras pellentesque id augue vel gravida. Cras ultricies gravida purus a semper. Nam eu convallis nibh. Phasellus non est vitae urna iaculis mattis. In eget lobortis ipsum. Nunc maximus non felis et lobortis.\n" +
                 "\n" +
                 "Quisque tincidunt nibh tellus, quis feugiat magna placerat vel. Donec et felis vel magna aliquam elementum id volutpat justo. Vestibulum ac pretium tortor. Curabitur quis felis lectus. Aenean gravida elit imperdiet, luctus lectus maximus, sodales augue. Duis a risus aliquet leo tempus pellentesque at non lorem. In quis auctor lectus. Curabitur placerat luctus libero eu viverra. Etiam sollicitudin lectus leo, ac lacinia justo ullamcorper sed. Duis tempor blandit turpis et lobortis. Proin feugiat, tellus in ullamcorper accumsan, sapien sapien rhoncus urna, at viverra turpis purus et urna. Aliquam feugiat blandit elit sit amet porta.");
-        botonVolver.setOnAction(this);
+        Button botonVolver = new Button("Volver");
+        botonVolver.setOnAction(e -> stage.setScene(menuPrincipal));
         VBox cajaY = new VBox();
         cajaY.getChildren().add(label);
         cajaY.getChildren().add(botonVolver);
@@ -206,10 +205,11 @@ public class App extends Application implements EventHandler<ActionEvent> {
                 nombreBoton = "Cargar Jugador";
             }
             Button cargarNombre = new Button(nombreBoton);
+            Button botonVolver = new Button("Volver");
             cajaX.getChildren().addAll(label,cajaNombre,cargarNombre);
             cajaY.getChildren().addAll(cajaX,botonVolver);
             cargarNombre.setOnAction(e -> cargarUsuario(cajaNombre));
-            botonVolver.setOnAction(this);
+            botonVolver.setOnAction(e -> stage.setScene(menuPrincipal));
 
             StackPane layout = new StackPane();
             layout.getChildren().add(cajaY);
@@ -228,20 +228,6 @@ public class App extends Application implements EventHandler<ActionEvent> {
         ingresarNombres();
     }
 
-    @Override
-    public void handle(ActionEvent event){
-        if(event.getSource() == botonReglas){
-            mostrarReglas();
-        }
-        if(event.getSource() == botonSalir){
-            stage.close();
-        }
-        if(event.getSource() == botonVolver){
-            stage.setScene(menuPrincipal);
-        }
-        if(event.getSource() == botonComenzar){
-            ingresarNombres();
-        }
-    }
+
 
 }

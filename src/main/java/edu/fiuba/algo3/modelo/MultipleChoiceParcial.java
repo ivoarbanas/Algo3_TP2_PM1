@@ -14,12 +14,12 @@ public class MultipleChoiceParcial extends MultipleChoice {
 
         for(Opcion unaOpcion : listaDeRespuestas){
             if(esIncorrecta(unaOpcion)){
-                Puntaje puntajeNulo = new PuntajeNulo();
+                Puntaje puntajeNulo = new Puntaje(0);
                 return puntajeNulo;
             }
             else { cantidadCorrectas++; }
         }
-        Puntaje puntajePositivo = new PuntajePositivo(cantidadCorrectas);
+        Puntaje puntajePositivo = new Puntaje(cantidadCorrectas);
         return puntajePositivo;
     }
 
@@ -27,4 +27,11 @@ public class MultipleChoiceParcial extends MultipleChoice {
         return puntaje;
     }
 
+    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
+    }
+
+    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
+    }
 }

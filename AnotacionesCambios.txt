@@ -13,3 +13,9 @@
 -Cambiar nombre de metodos acorde a lo que hacen
 
 -Hacer excepciones
+
+-Cambiar todos los numeros por su equivalente en palabras
+
+-Ver si se pueden unificar los metodos duplicar y cuadriplicar
+
+-Ver si en vez de almacenar dos exclusividades de puntaje (exclusividades de puntaje1 y exclusividades de puntaje2) se puede poner un array y unificar los metodos utilizarExclusividadPuntaje

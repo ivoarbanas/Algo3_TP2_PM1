@@ -78,4 +78,5 @@ public class KahootTest {
         assertEquals(6, kahoot.jugadores().get(0).puntaje().valor());
         assertEquals(-3, kahoot.jugadores().get(1).puntaje().valor());
     }
+
 }

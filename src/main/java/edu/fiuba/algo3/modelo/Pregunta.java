@@ -13,10 +13,16 @@ abstract class Pregunta {
 
     public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
     public abstract Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador);
-    public String enunciado(){
-        return enunciado;
-    }
+    public abstract Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
+    public abstract Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
     public ArrayList<Opcion> obtenerOpciones(){
         return opciones;
     }
+    public String enunciado(){
+        return enunciado;
+    }
+    public ArrayList<Opcion> opciones(){
+        return opciones;
+    }
+
 }

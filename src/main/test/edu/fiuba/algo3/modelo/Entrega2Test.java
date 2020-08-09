@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Entrega2Test {
 
+
     @Test
     public void recibeUnaListaDeRespuestasTresCorrectasEnMultipleChoicePenalidadYAsignaPuntajeCorrectamenteAplicandoMultiplicadorX2() {
         Kahoot kahoot = new Kahoot();
@@ -45,9 +46,12 @@ public class Entrega2Test {
         kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
         kahoot.verificarRonda();
 
+        assertEquals(2, kahoot.jugadores().get(0).getMultiplicador().valorDelMultiplicador());
         assertEquals(6, kahoot.jugadores().get(0).puntaje().valor());
         assertEquals(-3, kahoot.jugadores().get(1).puntaje().valor());
     }
+
+
 
     @Test
     public void seCreaPreguntaOrderedChoiceConUnaListaDeOpcionesOrdenadas() {
@@ -62,10 +66,10 @@ public class Entrega2Test {
         listaOpcionesOrdenadas.add(opcion4);
         OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
 
-        assertEquals(opcion1.valor(),pregunta.listaOrdenada.get(0).valor());
-        assertEquals(opcion2.valor(),pregunta.listaOrdenada.get(1).valor());
-        assertEquals(opcion3.valor(),pregunta.listaOrdenada.get(2).valor());
-        assertEquals(opcion4.valor(),pregunta.listaOrdenada.get(3).valor());
+        assertEquals(opcion1.valor(),pregunta.opciones().get(0).valor());
+        assertEquals(opcion2.valor(),pregunta.opciones().get(1).valor());
+        assertEquals(opcion3.valor(),pregunta.opciones().get(2).valor());
+        assertEquals(opcion4.valor(),pregunta.opciones().get(3).valor());
     }
 
     @Test
@@ -139,10 +143,10 @@ public class Entrega2Test {
         listaOpcionesGrupo2.add(opcion4);
         GroupChoice pregunta = new GroupChoice("Numeros", "Colores", listaOpcionesGrupo1, listaOpcionesGrupo2);
 
-        assertEquals(opcion1.valor(),pregunta.listaOpcionesGrupo1.get(0).valor());
-        assertEquals(opcion3.valor(),pregunta.listaOpcionesGrupo1.get(1).valor());
-        assertEquals(opcion2.valor(),pregunta.listaOpcionesGrupo2.get(0).valor());
-        assertEquals(opcion4.valor(),pregunta.listaOpcionesGrupo2.get(1).valor());
+        assertEquals(opcion1.valor(),pregunta.listaOpcionesGrupo1().get(0).valor());
+        assertEquals(opcion3.valor(),pregunta.listaOpcionesGrupo1().get(1).valor());
+        assertEquals(opcion2.valor(),pregunta.listaOpcionesGrupo2().get(0).valor());
+        assertEquals(opcion4.valor(),pregunta.listaOpcionesGrupo2().get(1).valor());
     }
 
     @Test

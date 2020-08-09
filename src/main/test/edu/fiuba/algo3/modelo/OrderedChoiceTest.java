@@ -21,10 +21,10 @@ public class OrderedChoiceTest {
         listaOpcionesOrdenadas.add(opcion4);
         OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
 
-        assertEquals(opcion1.valor(),pregunta.listaOrdenada.get(0).valor());
-        assertEquals(opcion2.valor(),pregunta.listaOrdenada.get(1).valor());
-        assertEquals(opcion3.valor(),pregunta.listaOrdenada.get(2).valor());
-        assertEquals(opcion4.valor(),pregunta.listaOrdenada.get(3).valor());
+        assertEquals(opcion1.valor(),pregunta.opciones.get(0).valor());
+        assertEquals(opcion2.valor(),pregunta.opciones.get(1).valor());
+        assertEquals(opcion3.valor(),pregunta.opciones.get(2).valor());
+        assertEquals(opcion4.valor(),pregunta.opciones.get(3).valor());
     }
 
     @Test

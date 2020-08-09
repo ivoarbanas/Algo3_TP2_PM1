@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class GroupChoice extends Pregunta {
 
-    String grupo1;
-    String grupo2;
-    ArrayList<Opcion> listaOpcionesGrupo1;
-    ArrayList<Opcion> listaOpcionesGrupo2;
+    private String grupo1;
+    private String grupo2;
+    private ArrayList<Opcion> listaOpcionesGrupo1;
+    private ArrayList<Opcion> listaOpcionesGrupo2;
 
     public GroupChoice(String nombreGrupo1, String nombreGrupo2, ArrayList<Opcion> opcionesGrupo1, ArrayList<Opcion> opcionesGrupo2) {
         super("Coloque las opciones en el grupo adecuado");
@@ -27,16 +27,16 @@ public class GroupChoice extends Pregunta {
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestasGrupo1) {
 
         if (!(listaOpcionesGrupo1.size() == listaDeRespuestasGrupo1.size())) {
-            Puntaje puntajeNulo = new PuntajeNulo();
+            Puntaje puntajeNulo = new Puntaje(0);
             return puntajeNulo;
         }
         for (Opcion unaOpcion : listaDeRespuestasGrupo1) {
             if (!opcionEstaEnListaGrupo(listaOpcionesGrupo1, unaOpcion)) {
-                Puntaje puntajeNulo = new PuntajeNulo();
+                Puntaje puntajeNulo = new Puntaje(0);
                 return puntajeNulo;
             }
         }
-        Puntaje puntajePositivo = new PuntajePositivo();
+        Puntaje puntajePositivo = new Puntaje(1);
         return puntajePositivo;
     }
 
@@ -44,4 +44,19 @@ public class GroupChoice extends Pregunta {
         return puntaje;
     }
 
+    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
+    }
+
+    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
+    }
+
+    public ArrayList<Opcion> listaOpcionesGrupo1(){
+        return listaOpcionesGrupo1;
+    }
+
+    public ArrayList<Opcion> listaOpcionesGrupo2(){
+        return listaOpcionesGrupo2;
+    }
 }

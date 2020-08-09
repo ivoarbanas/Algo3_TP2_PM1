@@ -4,26 +4,33 @@ import java.util.ArrayList;
 
 public class OrderedChoice extends Pregunta {
 
-    public ArrayList<Opcion> listaOrdenada;
 
     public OrderedChoice(String enunciado, ArrayList<Opcion> opcionesOrdenadas){
         super(enunciado);
-        listaOrdenada = opcionesOrdenadas;
+        opciones = opcionesOrdenadas;
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas){
         for (int i=0; i < listaDeRespuestas.size();i++){
-            if(!listaOrdenada.get(i).valor().equals(listaDeRespuestas.get(i).valor())){
-                Puntaje puntajeNulo = new PuntajeNulo();
+            if(!opciones.get(i).valor().equals(listaDeRespuestas.get(i).valor())){
+                Puntaje puntajeNulo = new Puntaje(0);
                 return puntajeNulo;
             }
         }
-        Puntaje puntajePositivo = new PuntajePositivo();
+        Puntaje puntajePositivo = new Puntaje(1);
         return puntajePositivo;
     }
 
     public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
         return puntaje;
+    }
+
+    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
+    }
+
+    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
     }
 
 }

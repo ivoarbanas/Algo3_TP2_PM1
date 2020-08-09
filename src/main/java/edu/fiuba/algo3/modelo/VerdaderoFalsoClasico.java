@@ -9,15 +9,23 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso{
     }
 
     public  Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
-        if (listaDeRespuestas.get(0).valor().equals(opcionCorrecta.valor())){
-            Puntaje puntajePositivo = new PuntajePositivo();
+        if (listaDeRespuestas.get(0).valor().equals(opcionCorrecta().valor())){
+            Puntaje puntajePositivo = new Puntaje(1);
             return puntajePositivo;
         }
-        Puntaje puntajeNulo = new PuntajeNulo();
+        Puntaje puntajeNulo = new Puntaje(0);
         return puntajeNulo;
     }
 
     public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
         return puntaje;
+    }
+
+    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
+    }
+
+    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return puntaje.duplicarPuntaje(exclusividad);
     }
 }

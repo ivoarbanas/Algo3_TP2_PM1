@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 abstract class VerdaderoFalso extends Pregunta {
 
-    Opcion opcionCorrecta;
-    Opcion opcionIncorrecta;
+    private Opcion opcionCorrecta;
+    private Opcion opcionIncorrecta;
 
     public VerdaderoFalso(String enunciado, boolean esVerdadera){
         super(enunciado);
@@ -24,8 +24,11 @@ abstract class VerdaderoFalso extends Pregunta {
         opciones.add(opcionFalso);
     }
 
-    public Opcion getOpcionCorrecta(){ return opcionCorrecta;}
+    public Opcion opcionCorrecta(){ return opcionCorrecta;}
 
     public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
+    public abstract Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador);
+    public abstract Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
+    public abstract Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
 
 }

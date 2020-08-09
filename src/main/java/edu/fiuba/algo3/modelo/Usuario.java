@@ -10,6 +10,9 @@ public class Usuario {
     private Multiplicador x2;
     private Multiplicador x3;
     private ArrayList<Opcion> respuestasDelUsuario;
+    private ExclusividadDePuntaje exclusividadDePuntaje1;
+    private ExclusividadDePuntaje exclusividadDePuntaje2;
+    private ExclusividadDePuntaje exclusividadPuntajeActivo;
 
     public Usuario (String nombre){
         this.nombre = nombre;
@@ -18,6 +21,7 @@ public class Usuario {
         multiplicadorActivo = new MultiplicadorInactivo();
         puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
+        exclusividadPuntajeActivo = new ExclusividadDePuntajeDesactivado();
     }
 
 
@@ -61,11 +65,6 @@ public class Usuario {
         nuevaRespuesta(pregunta.opciones().get(eleccion));
     }*/
 
-    public int cantidadRespuestasDelUsuario(){
-        return respuestasDelUsuario.size();
-    }
-
-
     public void utilizarMultiplicadorX2(){
         multiplicadorActivo = x2;
         x2 = new MultiplicadorInactivo();
@@ -77,16 +76,37 @@ public class Usuario {
     }
 
     public void limpiarMultiplicador(){
-        multiplicadorActivo = null;
+        multiplicadorActivo = new MultiplicadorInactivo();
     }
 
     public Multiplicador getMultiplicador(){
         return multiplicadorActivo;
     }
 
+    public void utilizarExclusividadPuntaje1(){
+       exclusividadPuntajeActivo = exclusividadDePuntaje1;
+       exclusividadDePuntaje1 = new ExclusividadDePuntajeDesactivado();
+    }
+
+    public void utilizarExclusividadPuntaje2(){
+        exclusividadPuntajeActivo = exclusividadDePuntaje2;
+        exclusividadDePuntaje2 = new ExclusividadDePuntajeDesactivado();
+    }
+
+    public ExclusividadDePuntaje getExclusividad(){
+        return exclusividadPuntajeActivo;
+    }
+
+    public void setExclusividadDePuntaje1(ExclusividadDePuntaje exclusividadDePuntaje){
+        exclusividadDePuntaje1 = exclusividadDePuntaje;
+    }
+
+    public void setExclusividadDePuntaje2(ExclusividadDePuntaje exclusividadDePuntaje){
+        exclusividadDePuntaje2 = exclusividadDePuntaje;
+    }
+
     public String nombre(){
         return nombre;
     }
-
 }
 
