@@ -84,5 +84,9 @@ public class Usuario {
         return multiplicadorActivo;
     }
 
+    public String nombre(){
+        return nombre;
+    }
+
 }
 

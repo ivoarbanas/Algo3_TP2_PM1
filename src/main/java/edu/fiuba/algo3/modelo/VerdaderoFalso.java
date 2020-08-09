@@ -9,17 +9,22 @@ abstract class VerdaderoFalso extends Pregunta {
 
     public VerdaderoFalso(String enunciado, boolean esVerdadera){
         super(enunciado);
+        Opcion opcionVerdadero = new Opcion("Verdadero");
+        Opcion opcionFalso = new Opcion("Falso");
         if (esVerdadera){
-            opcionCorrecta = new Opcion("Verdadero");
-            opcionIncorrecta = new Opcion("Falso");
+            opcionCorrecta = opcionVerdadero;
+            opcionIncorrecta = opcionFalso;
         }
         else {
-            opcionCorrecta = new Opcion("Falso");
-            opcionIncorrecta = new Opcion("Verdadero");
+            opcionCorrecta = opcionFalso;
+            opcionIncorrecta = opcionVerdadero;
         }
+        opciones = new ArrayList<Opcion>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
     }
 
-    protected Opcion getOpcionCorrecta(){ return opcionCorrecta;}
+    public Opcion getOpcionCorrecta(){ return opcionCorrecta;}
 
     public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
 

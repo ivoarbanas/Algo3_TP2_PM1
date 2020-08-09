@@ -1,11 +1,15 @@
--Cambiar UML
+-Crear objeto rondas (Kahoot tiene array de rondas y en cada ronda se almacena la pregunta correspondiente (en vez de que Kahoot tenga un array de preguntas))
 
--Crear objeto rondas
-
--Exclusividad puntaje
+-Exclusividad puntaje 
 
 -JavaFX
+
+-Cambiar UML
+
+-Buscar forma de presentar las opciones en un orden aleatorio
 
 -Cambiar en todas menos VyF como se cargan las opciones correctas e incorrectas (no pasarle la lista en el contructor)
 
 -Cambiar nombre de metodos acorde a lo que hacen
+
+-Hacer excepciones

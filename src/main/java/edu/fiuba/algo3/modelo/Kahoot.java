@@ -20,7 +20,6 @@ public class Kahoot {
     }
     //main
     public void comenzarJuego(){
-        //cargarJugadores();
         while(ronda < 10 ){
             presentarPreguntaALosUsuarios();
             verificarRonda();
@@ -67,10 +66,15 @@ public class Kahoot {
             jugador.vaciarRespuestas();
             jugador.limpiarMultiplicador();
         }
+        ronda++;
     }
 
     private Puntaje aplicarMultiplicador(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
         return jugadorAfectado.getMultiplicador().calcularPuntajeConMultiplicador(puntajeAMultiplicar);
+    }
+
+    public int obtenerRonda(){
+        return ronda;
     }
 
 }
