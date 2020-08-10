@@ -65,8 +65,8 @@ public class App extends Application  {
         VBox puntos = new VBox();
         VBox multiplicadores = new VBox();
         HBox general = new HBox();
-        VBox opciones1 = new VBox();
-        VBox opciones2 = new VBox();
+        VBox opcionesUno = new VBox();
+        VBox opcionesDos = new VBox();
         HBox todasLasOpciones = new HBox();
         ToggleGroup grupoOpciones = new ToggleGroup();
         ToggleGroup grupoMultiplicadores = new ToggleGroup();
@@ -75,7 +75,7 @@ public class App extends Application  {
         ToggleButton exclusividad = new ToggleButton("Exclusividad");
         Button aceptar = new Button("Aceptar");
         var puntosJugador1 = new Label(kahoot.jugadores().get(0).nombre() + ": " + kahoot.jugadores().get(0).puntaje().valor());
-        var puntosJugador2 = new Label(kahoot.jugadores().get(1).nombre() + ": " + kahoot.jugadores().get(1).puntaje().valor());
+        var puntosJugadorDos = new Label(kahoot.jugadores().get(1).nombre() + ": " + kahoot.jugadores().get(1).puntaje().valor());
         var enunciado = new Label(pregunta.enunciado());
         ArrayList<Opcion> opciones = pregunta.obtenerOpciones();
         ArrayList<ToggleButton> botonesOpciones = new ArrayList<>();
@@ -87,17 +87,17 @@ public class App extends Application  {
         }
         for (int opcion = 0; opcion < botonesOpciones.size(); opcion++) {
             if (opcion % 2 != 1) {
-                opciones1.getChildren().add(botonesOpciones.get(opcion));
+                opcionesUno.getChildren().add(botonesOpciones.get(opcion));
             } else {
-                opciones2.getChildren().add(botonesOpciones.get(opcion));
+                opcionesDos.getChildren().add(botonesOpciones.get(opcion));
             }
 
         }
         x2.setToggleGroup(grupoMultiplicadores);
         x3.setToggleGroup(grupoMultiplicadores);
         exclusividad.setToggleGroup(grupoMultiplicadores);
-        puntos.getChildren().addAll(puntosJugador1, puntosJugador2);
-        todasLasOpciones.getChildren().addAll(opciones1, opciones2);
+        puntos.getChildren().addAll(puntosJugador1, puntosJugadorDos);
+        todasLasOpciones.getChildren().addAll(opcionesUno, opcionesDos);
         preguntaYOpciones.getChildren().addAll(enunciado, todasLasOpciones, aceptar);
         multiplicadores.getChildren().addAll(x2, x3, exclusividad);
         general.getChildren().addAll(puntos, preguntaYOpciones, multiplicadores);
@@ -156,10 +156,10 @@ public class App extends Application  {
         VBox puntosJugadores = new VBox();
         var label = new Label("La respuesta correcta es: "+opcionCorrecta.valor());
         var puntosJugador1 = new Label(kahoot.jugadores().get(0).nombre() + ": " + kahoot.jugadores().get(0).puntaje().valor());
-        var puntosJugador2 = new Label(kahoot.jugadores().get(1).nombre() + ": " + kahoot.jugadores().get(1).puntaje().valor());
+        var puntosJugadorDos = new Label(kahoot.jugadores().get(1).nombre() + ": " + kahoot.jugadores().get(1).puntaje().valor());
         Button siguiente = new Button("Siguiente Pregunta");
         siguiente.setOnAction(e -> mostrarPregunta());
-        puntosJugadores.getChildren().addAll(puntosJugador1,puntosJugador2);
+        puntosJugadores.getChildren().addAll(puntosJugador1,puntosJugadorDos);
         cajaY.getChildren().addAll(label,siguiente);
         cajaX.getChildren().addAll(puntosJugadores,cajaY);
         layout.getChildren().add(cajaX);

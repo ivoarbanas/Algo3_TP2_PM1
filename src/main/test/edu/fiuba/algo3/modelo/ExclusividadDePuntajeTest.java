@@ -16,38 +16,38 @@ public class ExclusividadDePuntajeTest {
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
 
-        ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
-        ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDeUsuarioUno = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDeUsuarioDos = new ArrayList<Opcion>();
         ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
         ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
-        Opcion opcion1 = new Opcion("Marge");
-        Opcion opcion2 = new Opcion("Homero");
+        Opcion opcionUno = new Opcion("Marge");
+        Opcion opcionDos = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
+        listaOpcionesCorrectas.add(opcionUno);
+        listaOpcionesCorrectas.add(opcionDos);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
-        respuestasDeUsuario1.add(opcion1);
-        respuestasDeUsuario1.add(opcion2);
-        respuestasDeUsuario1.add(opcion3);
-        respuestasDeUsuario2.add(opcion4);
+        respuestasDeUsuarioUno.add(opcionUno);
+        respuestasDeUsuarioUno.add(opcionDos);
+        respuestasDeUsuarioUno.add(opcion3);
+        respuestasDeUsuarioDos.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta);
-        kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
-        kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
+        kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuarioUno);
+        kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuarioDos);
         kahoot.verificarRonda();
 
         assertEquals(2, kahoot.jugadores().get(0).puntaje().valor());
@@ -62,56 +62,56 @@ public class ExclusividadDePuntajeTest {
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
 
-        ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
-        ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDeUsuarioUno = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDeUsuarioDos = new ArrayList<Opcion>();
         ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
         ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
-        Opcion opcion1 = new Opcion("Marge");
-        Opcion opcion2 = new Opcion("Homero");
+        Opcion opcionUno = new Opcion("Marge");
+        Opcion opcionDos = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
+        listaOpcionesCorrectas.add(opcionUno);
+        listaOpcionesCorrectas.add(opcionDos);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
-        respuestasDeUsuario1.add(opcion1);
-        respuestasDeUsuario1.add(opcion2);
-        respuestasDeUsuario1.add(opcion3);
-        respuestasDeUsuario2.add(opcion4);
+        respuestasDeUsuarioUno.add(opcionUno);
+        respuestasDeUsuarioUno.add(opcionDos);
+        respuestasDeUsuarioUno.add(opcion3);
+        respuestasDeUsuarioDos.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta);
-        kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
-        kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
+        kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuarioUno);
+        kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuarioDos);
         kahoot.verificarRonda();
         kahoot.cambiarRonda();
 
-        ArrayList<Opcion> listaRespuestaJugador1 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaRespuestaJugador2 = new ArrayList<Opcion>();
+        ArrayList<Opcion> listaRespuestaJugadorUno = new ArrayList<Opcion>();
+        ArrayList<Opcion> listaRespuestaJugadorDos = new ArrayList<Opcion>();
 
-        VerdaderoFalsoClasico pregunta2 = new VerdaderoFalsoClasico("Aprobé el parcial",true);
+        VerdaderoFalsoClasico preguntaDos = new VerdaderoFalsoClasico("Aprobé el parcial",true);
 
-        Opcion opcion1PreguntaDos = new Opcion("Verdadero");
-        Opcion opcion2PreguntaDos = new Opcion("Falso");
-        listaRespuestaJugador1.add(opcion1PreguntaDos);
-        listaRespuestaJugador2.add(opcion2PreguntaDos);
+        Opcion opcionUnoPreguntaDos = new Opcion("Verdadero");
+        Opcion opcionDosPreguntaDos = new Opcion("Falso");
+        listaRespuestaJugadorUno.add(opcionUnoPreguntaDos);
+        listaRespuestaJugadorDos.add(opcionDosPreguntaDos);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje2();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeDos();
 
-        kahoot.cargarPregunta(pregunta2);
-        kahoot.jugadores().get(0).cargarRespuestas(listaRespuestaJugador1);
-        kahoot.jugadores().get(1).cargarRespuestas(listaRespuestaJugador2);
+        kahoot.cargarPregunta(preguntaDos);
+        kahoot.jugadores().get(0).cargarRespuestas(listaRespuestaJugadorUno);
+        kahoot.jugadores().get(1).cargarRespuestas(listaRespuestaJugadorDos);
         kahoot.verificarRonda();
 
         assertEquals(4, kahoot.jugadores().get(0).puntaje().valor());
@@ -129,90 +129,90 @@ public class ExclusividadDePuntajeTest {
         kahoot.crearJugador("Joaquin");
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
-        ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDeUsuarioDos = new ArrayList<Opcion>();
         ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
         ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
-        Opcion opcion2 = new Opcion("Homero");
+        Opcion opcionDos = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
         listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
+        listaOpcionesCorrectas.add(opcionDos);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
         respuestasDeUsuario1.add(opcion1);
-        respuestasDeUsuario1.add(opcion2);
+        respuestasDeUsuario1.add(opcionDos);
         respuestasDeUsuario1.add(opcion3);
-        respuestasDeUsuario2.add(opcion4);
+        respuestasDeUsuarioDos.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
-        kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
+        kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuarioDos);
         kahoot.verificarRonda();
         kahoot.cambiarRonda();
 
 
         ArrayList<Opcion> listaRespuestaJugador1 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaRespuestaJugador2 = new ArrayList<Opcion>();
+        ArrayList<Opcion> listaRespuestaJugadorDos = new ArrayList<Opcion>();
 
-        VerdaderoFalsoClasico pregunta2 = new VerdaderoFalsoClasico("Aprobé el parcial",true);
+        VerdaderoFalsoClasico preguntaDos = new VerdaderoFalsoClasico("Aprobé el parcial",true);
 
         Opcion opcion1PreguntaDos = new Opcion("Verdadero");
-        Opcion opcion2PreguntaDos = new Opcion("Falso");
+        Opcion opcionDosPreguntaDos = new Opcion("Falso");
         listaRespuestaJugador1.add(opcion1PreguntaDos);
-        listaRespuestaJugador2.add(opcion2PreguntaDos);
+        listaRespuestaJugadorDos.add(opcionDosPreguntaDos);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje2();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeDos();
 
-        kahoot.cargarPregunta(pregunta2);
+        kahoot.cargarPregunta(preguntaDos);
         kahoot.jugadores().get(0).cargarRespuestas(listaRespuestaJugador1);
-        kahoot.jugadores().get(1).cargarRespuestas(listaRespuestaJugador2);
+        kahoot.jugadores().get(1).cargarRespuestas(listaRespuestaJugadorDos);
         kahoot.verificarRonda();
         kahoot.cambiarRonda();
 
 
         ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
-        ArrayList<Opcion> respuestasDelUsuario1Pregunta3 = new ArrayList<Opcion>();
-        ArrayList<Opcion> respuestasDelUsuario2Pregunta3 = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDelUsuarioUnoPreguntaTres = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDelUsuarioDosPreguntaTres = new ArrayList<Opcion>();
 
-        Opcion opcion1Pregunta3 = new Opcion("Uno");
-        Opcion opcion2Pregunta3 = new Opcion("Cuatro");
-        Opcion opcion3Pregunta3 = new Opcion("Seis");
-        Opcion opcion4Pregunta3 = new Opcion("Diez");
+        Opcion opcionUnoPreguntaTres = new Opcion("Uno");
+        Opcion opcionDosPreguntaTres = new Opcion("Cuatro");
+        Opcion opcionTresPreguntaTres = new Opcion("Seis");
+        Opcion opcionCuatroPreguntaTres = new Opcion("Diez");
 
-        listaOpcionesOrdenadas.add(opcion1Pregunta3);
-        listaOpcionesOrdenadas.add(opcion2Pregunta3);
-        listaOpcionesOrdenadas.add(opcion3Pregunta3);
-        listaOpcionesOrdenadas.add(opcion4Pregunta3);
+        listaOpcionesOrdenadas.add(opcionUnoPreguntaTres);
+        listaOpcionesOrdenadas.add(opcionDosPreguntaTres);
+        listaOpcionesOrdenadas.add(opcionTresPreguntaTres);
+        listaOpcionesOrdenadas.add(opcionCuatroPreguntaTres);
 
         OrderedChoice pregunta3 = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
 
-        respuestasDelUsuario1Pregunta3.add(opcion1Pregunta3);
-        respuestasDelUsuario1Pregunta3.add(opcion2Pregunta3);
-        respuestasDelUsuario1Pregunta3.add(opcion3Pregunta3);
-        respuestasDelUsuario1Pregunta3.add(opcion4Pregunta3);
-        respuestasDelUsuario2Pregunta3.add(opcion1Pregunta3);
-        respuestasDelUsuario2Pregunta3.add(opcion2Pregunta3);
-        respuestasDelUsuario2Pregunta3.add(opcion4Pregunta3);
-        respuestasDelUsuario2Pregunta3.add(opcion3Pregunta3);
+        respuestasDelUsuarioUnoPreguntaTres.add(opcionUnoPreguntaTres);
+        respuestasDelUsuarioUnoPreguntaTres.add(opcionDosPreguntaTres);
+        respuestasDelUsuarioUnoPreguntaTres.add(opcionTresPreguntaTres);
+        respuestasDelUsuarioUnoPreguntaTres.add(opcionCuatroPreguntaTres);
+        respuestasDelUsuarioDosPreguntaTres.add(opcionUnoPreguntaTres);
+        respuestasDelUsuarioDosPreguntaTres.add(opcionDosPreguntaTres);
+        respuestasDelUsuarioDosPreguntaTres.add(opcionCuatroPreguntaTres);
+        respuestasDelUsuarioDosPreguntaTres.add(opcionTresPreguntaTres);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta3);
-        kahoot.jugadores().get(0).cargarRespuestas(respuestasDelUsuario1Pregunta3);
-        kahoot.jugadores().get(1).cargarRespuestas(respuestasDelUsuario2Pregunta3);
+        kahoot.jugadores().get(0).cargarRespuestas(respuestasDelUsuarioUnoPreguntaTres);
+        kahoot.jugadores().get(1).cargarRespuestas(respuestasDelUsuarioDosPreguntaTres);
         kahoot.verificarRonda();
 
         assertEquals(5, kahoot.jugadores().get(0).puntaje().valor());
@@ -236,27 +236,27 @@ public class ExclusividadDePuntajeTest {
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
         listaOpcionesCorrectas.add(opcion1);
         listaOpcionesCorrectas.add(opcion2);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
         respuestasDeUsuario1.add(opcion3);
-        respuestasDeUsuario2.add(opcion4);
+        respuestasDeUsuario2.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
-        kahoot.jugadores().get(1).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(1).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -283,12 +283,12 @@ public class ExclusividadDePuntajeTest {
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
         listaOpcionesCorrectas.add(opcion1);
         listaOpcionesCorrectas.add(opcion2);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
@@ -299,13 +299,13 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario2.add(opcion2);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
-        kahoot.jugadores().get(1).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(1).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -332,12 +332,12 @@ public class ExclusividadDePuntajeTest {
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
         listaOpcionesCorrectas.add(opcion1);
         listaOpcionesCorrectas.add(opcion2);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
@@ -346,13 +346,13 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario2.add(opcion2);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
-        kahoot.jugadores().get(1).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(1).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -379,12 +379,12 @@ public class ExclusividadDePuntajeTest {
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
         listaOpcionesCorrectas.add(opcion1);
         listaOpcionesCorrectas.add(opcion2);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
@@ -394,12 +394,12 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario2.add(opcion2);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -426,12 +426,12 @@ public class ExclusividadDePuntajeTest {
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
-        Opcion opcion4 = new Opcion("Juan Manuel Serrat");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
         listaOpcionesCorrectas.add(opcion1);
         listaOpcionesCorrectas.add(opcion2);
         listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        listaOpcionesIncorrectas.add(opcionCuatro);
 
         MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
 
@@ -440,12 +440,12 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario1.add(opcion3);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntaje2(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje1(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntaje2(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
+        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntaje1();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
         kahoot.jugadores().get(0).utilizarMultiplicadorX3();
 
 

@@ -34,24 +34,24 @@ public class Kahoot {
 
     public void verificarRonda() {
 
-        Puntaje puntajeJugador1 = rondaActiva.obtenerPuntajeJugador(jugadores.get(0));
-        Puntaje puntajeJugador2 = rondaActiva.obtenerPuntajeJugador(jugadores.get(1));
+        Puntaje puntajeJugadorUno = rondaActiva.obtenerPuntajeJugador(jugadores.get(0));
+        Puntaje puntajeJugadorDos = rondaActiva.obtenerPuntajeJugador(jugadores.get(1));
 
-        if( (puntajeJugador1.valor() != puntajeJugador2.valor() ) ) {
+        if( (puntajeJugadorUno.valor() != puntajeJugadorDos.valor() ) ) {
             if ((jugadores.get(0).getExclusividad() == jugadores.get(1).getExclusividad())) {
-                this.aplicarExclusividadCuadruplicada(jugadores().get(0), puntajeJugador1);
-                this.aplicarExclusividadCuadruplicada(jugadores().get(1), puntajeJugador2);
+                this.aplicarExclusividadCuadruplicada(jugadores().get(0), puntajeJugadorUno);
+                this.aplicarExclusividadCuadruplicada(jugadores().get(1), puntajeJugadorDos);
             } else {
-                this.aplicarExclusividadDuplicada(jugadores().get(0), puntajeJugador1);
-                this.aplicarExclusividadDuplicada(jugadores().get(1), puntajeJugador2);
+                this.aplicarExclusividadDuplicada(jugadores().get(0), puntajeJugadorUno);
+                this.aplicarExclusividadDuplicada(jugadores().get(1), puntajeJugadorDos);
             }
         }
 
-        puntajeJugador1 = this.aplicarMultiplicador(jugadores().get(0),puntajeJugador1);
-        puntajeJugador2 = this.aplicarMultiplicador(jugadores().get(1),puntajeJugador2);
+        puntajeJugadorUno = this.aplicarMultiplicador(jugadores().get(0),puntajeJugadorUno);
+        puntajeJugadorDos = this.aplicarMultiplicador(jugadores().get(1),puntajeJugadorDos);
 
-        sistemaPuntaje.cambiarPuntaje(jugadores.get(0), puntajeJugador1);
-        sistemaPuntaje.cambiarPuntaje(jugadores.get(1), puntajeJugador2);
+        sistemaPuntaje.cambiarPuntaje(jugadores.get(0), puntajeJugadorUno);
+        sistemaPuntaje.cambiarPuntaje(jugadores.get(1), puntajeJugadorDos);
     }
 
     public void crearJugador(String nombre){

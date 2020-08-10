@@ -10,8 +10,8 @@ public class Usuario {
     private Multiplicador x2;
     private Multiplicador x3;
     private ArrayList<Opcion> respuestasDelUsuario;
-    private ExclusividadDePuntaje exclusividadDePuntaje1;
-    private ExclusividadDePuntaje exclusividadDePuntaje2;
+    private ExclusividadDePuntaje exclusividadDePuntajeUno;
+    private ExclusividadDePuntaje exclusividadDePuntajeDos;
     private ExclusividadDePuntaje exclusividadPuntajeActivo;
 
     public Usuario (String nombre){
@@ -83,26 +83,26 @@ public class Usuario {
         return multiplicadorActivo;
     }
 
-    public void utilizarExclusividadPuntaje1(){
-       exclusividadPuntajeActivo = exclusividadDePuntaje1;
-       exclusividadDePuntaje1 = new ExclusividadDePuntajeDesactivado();
+    public void utilizarExclusividadPuntajeUno(){
+       exclusividadPuntajeActivo = exclusividadDePuntajeUno;
+       exclusividadDePuntajeUno = new ExclusividadDePuntajeDesactivado();
     }
 
-    public void utilizarExclusividadPuntaje2(){
-        exclusividadPuntajeActivo = exclusividadDePuntaje2;
-        exclusividadDePuntaje2 = new ExclusividadDePuntajeDesactivado();
+    public void utilizarExclusividadPuntajeDos(){
+        exclusividadPuntajeActivo = exclusividadDePuntajeDos;
+        exclusividadDePuntajeDos = new ExclusividadDePuntajeDesactivado();
     }
 
     public ExclusividadDePuntaje getExclusividad(){
         return exclusividadPuntajeActivo;
     }
 
-    public void setExclusividadDePuntaje1(ExclusividadDePuntaje exclusividadDePuntaje){
-        exclusividadDePuntaje1 = exclusividadDePuntaje;
+    public void setExclusividadDePuntajeUno(ExclusividadDePuntaje exclusividadDePuntaje){
+        exclusividadDePuntajeUno = exclusividadDePuntaje;
     }
 
-    public void setExclusividadDePuntaje2(ExclusividadDePuntaje exclusividadDePuntaje){
-        exclusividadDePuntaje2 = exclusividadDePuntaje;
+    public void setExclusividadDePuntajeDos(ExclusividadDePuntaje exclusividadDePuntaje){
+        exclusividadDePuntajeDos = exclusividadDePuntaje;
     }
 
     public String nombre(){

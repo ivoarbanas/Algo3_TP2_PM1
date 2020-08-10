@@ -11,20 +11,20 @@ public class OrderedChoiceTest {
     @Test
     public void seCreaPreguntaOrderedChoiceConUnaListaDeOpcionesOrdenadas() {
         ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
-        Opcion opcion1 = new Opcion("Uno");
-        Opcion opcion2 = new Opcion("Cuatro");
-        Opcion opcion3 = new Opcion("Seis");
-        Opcion opcion4 = new Opcion("Diez");
-        listaOpcionesOrdenadas.add(opcion1);
-        listaOpcionesOrdenadas.add(opcion2);
-        listaOpcionesOrdenadas.add(opcion3);
-        listaOpcionesOrdenadas.add(opcion4);
+        Opcion opcionUno = new Opcion("Uno");
+        Opcion opcionDos = new Opcion("Cuatro");
+        Opcion opcionTres = new Opcion("Seis");
+        Opcion opcionCuatro = new Opcion("Diez");
+        listaOpcionesOrdenadas.add(opcionUno);
+        listaOpcionesOrdenadas.add(opcionDos);
+        listaOpcionesOrdenadas.add(opcionTres);
+        listaOpcionesOrdenadas.add(opcionCuatro);
         OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
 
-        assertEquals(opcion1.valor(),pregunta.opciones.get(0).valor());
-        assertEquals(opcion2.valor(),pregunta.opciones.get(1).valor());
-        assertEquals(opcion3.valor(),pregunta.opciones.get(2).valor());
-        assertEquals(opcion4.valor(),pregunta.opciones.get(3).valor());
+        assertEquals(opcionUno.valor(),pregunta.opciones.get(0).valor());
+        assertEquals(opcionDos.valor(),pregunta.opciones.get(1).valor());
+        assertEquals(opcionTres.valor(),pregunta.opciones.get(2).valor());
+        assertEquals(opcionCuatro.valor(),pregunta.opciones.get(3).valor());
     }
 
     @Test
@@ -34,19 +34,19 @@ public class OrderedChoiceTest {
         ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
-        Opcion opcion2 = new Opcion("Cuatro");
-        Opcion opcion3 = new Opcion("Seis");
-        Opcion opcion4 = new Opcion("Diez");
+        Opcion opcionDos = new Opcion("Cuatro");
+        Opcion opcionTres = new Opcion("Seis");
+        Opcion opcionCuatro = new Opcion("Diez");
         listaOpcionesOrdenadas.add(opcion1);
-        listaOpcionesOrdenadas.add(opcion2);
-        listaOpcionesOrdenadas.add(opcion3);
-        listaOpcionesOrdenadas.add(opcion4);
+        listaOpcionesOrdenadas.add(opcionDos);
+        listaOpcionesOrdenadas.add(opcionTres);
+        listaOpcionesOrdenadas.add(opcionCuatro);
         OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
 
         respuestasDelUsuario.add(opcion1);
-        respuestasDelUsuario.add(opcion2);
-        respuestasDelUsuario.add(opcion3);
-        respuestasDelUsuario.add(opcion4);
+        respuestasDelUsuario.add(opcionDos);
+        respuestasDelUsuario.add(opcionTres);
+        respuestasDelUsuario.add(opcionCuatro);
         jugador1.cargarRespuestas(respuestasDelUsuario);
         Puntaje puntajeJugador1 = pregunta.calcularPuntajeParaRespuesta(jugador1.respuestas());
         sistemaPuntaje.cambiarPuntaje(jugador1, puntajeJugador1);
@@ -63,19 +63,19 @@ public class OrderedChoiceTest {
         ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
-        Opcion opcion2 = new Opcion("Cuatro");
-        Opcion opcion3 = new Opcion("Seis");
-        Opcion opcion4 = new Opcion("Diez");
+        Opcion opcionDos = new Opcion("Cuatro");
+        Opcion opcionTres = new Opcion("Seis");
+        Opcion opcionCuatro = new Opcion("Diez");
         listaOpcionesOrdenadas.add(opcion1);
-        listaOpcionesOrdenadas.add(opcion2);
-        listaOpcionesOrdenadas.add(opcion3);
-        listaOpcionesOrdenadas.add(opcion4);
+        listaOpcionesOrdenadas.add(opcionDos);
+        listaOpcionesOrdenadas.add(opcionTres);
+        listaOpcionesOrdenadas.add(opcionCuatro);
         OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
 
         respuestasDelUsuario.add(opcion1);
-        respuestasDelUsuario.add(opcion2);
-        respuestasDelUsuario.add(opcion4);
-        respuestasDelUsuario.add(opcion3);
+        respuestasDelUsuario.add(opcionDos);
+        respuestasDelUsuario.add(opcionCuatro);
+        respuestasDelUsuario.add(opcionTres);
         jugador1.cargarRespuestas(respuestasDelUsuario);
         Puntaje puntajeJugador1 = pregunta.calcularPuntajeParaRespuesta(jugador1.respuestas());
         sistemaPuntaje.cambiarPuntaje(jugador1, puntajeJugador1);

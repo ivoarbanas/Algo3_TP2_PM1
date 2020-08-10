@@ -21,24 +21,24 @@ public class VerdaderoFalsoTest {
     @Test
     public void recibeUnaListaDeRespuestasYAsignaCorrectamentePuntajeALosJugadoresQueRespondieronCorrectamente(){
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
-        Usuario jugador1 = new Usuario("Jorge");
+        Usuario jugadorUno = new Usuario("Jorge");
         Usuario jugador2 = new Usuario("Ramiro");
-        ArrayList<Opcion> listaRespuestaJugador1 = new ArrayList<Opcion>();
+        ArrayList<Opcion> listaRespuestaJugadorUno = new ArrayList<Opcion>();
         ArrayList<Opcion> listaRespuestaJugador2 = new ArrayList<Opcion>();
         VerdaderoFalsoClasico pregunta = new VerdaderoFalsoClasico("Aprobé el parcial",true);
 
-        Opcion opcion1 = new Opcion("Verdadero");
+        Opcion opcionUno = new Opcion("Verdadero");
         Opcion opcion2 = new Opcion("Falso");
-        listaRespuestaJugador1.add(opcion1);
+        listaRespuestaJugadorUno.add(opcionUno);
         listaRespuestaJugador2.add(opcion2);
-        jugador1.cargarRespuestas(listaRespuestaJugador1);
+        jugadorUno.cargarRespuestas(listaRespuestaJugadorUno);
         jugador2.cargarRespuestas(listaRespuestaJugador2);
-        Puntaje puntajeParcialJugador1 = pregunta.calcularPuntajeParaRespuesta(jugador1.respuestas());
+        Puntaje puntajeParcialJugadorUno = pregunta.calcularPuntajeParaRespuesta(jugadorUno.respuestas());
         Puntaje puntajeParcialJugador2 = pregunta.calcularPuntajeParaRespuesta(jugador2.respuestas());
-        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+        sistemaPuntaje.cambiarPuntaje(jugadorUno,puntajeParcialJugadorUno);
         sistemaPuntaje.cambiarPuntaje(jugador2,puntajeParcialJugador2);
 
-        assertEquals(1, jugador1.puntaje().valor());
+        assertEquals(1, jugadorUno.puntaje().valor());
         assertEquals(0, jugador2.puntaje().valor());
     }
 
@@ -46,25 +46,25 @@ public class VerdaderoFalsoTest {
     public void recibeUnaListaDeRespuestasEnVerdaderoFalsoPenalidadYAsignaPuntajeCorrectamente(){
 
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
-        Usuario jugador1 = new Usuario("Manuel");
+        Usuario jugadorUno = new Usuario("Manuel");
         Usuario jugador2 = new Usuario("Luciano");
-        ArrayList<Opcion> listaRespuestaJugador1 = new ArrayList<Opcion>();
+        ArrayList<Opcion> listaRespuestaJugadorUno = new ArrayList<Opcion>();
         ArrayList<Opcion> listaRespuestaJugador2 = new ArrayList<Opcion>();
         VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobé el parcial",true);
 
-        Opcion opcion1 = new Opcion("Verdadero");
+        Opcion opcionUno = new Opcion("Verdadero");
         Opcion opcion2 = new Opcion("Falso");
-        listaRespuestaJugador1.add(opcion1);
+        listaRespuestaJugadorUno.add(opcionUno);
         listaRespuestaJugador2.add(opcion2);
-        jugador1.cargarRespuestas(listaRespuestaJugador1);
+        jugadorUno.cargarRespuestas(listaRespuestaJugadorUno);
         jugador2.cargarRespuestas(listaRespuestaJugador2);
-        Puntaje puntajeParcialJugador1 = pregunta.calcularPuntajeParaRespuesta(jugador1.respuestas());
+        Puntaje puntajeParcialJugadorUno = pregunta.calcularPuntajeParaRespuesta(jugadorUno.respuestas());
         Puntaje puntajeParcialJugador2 = pregunta.calcularPuntajeParaRespuesta(jugador2.respuestas());
-        sistemaPuntaje.cambiarPuntaje(jugador1,puntajeParcialJugador1);
+        sistemaPuntaje.cambiarPuntaje(jugadorUno,puntajeParcialJugadorUno);
         sistemaPuntaje.cambiarPuntaje(jugador2,puntajeParcialJugador2);
 
 
-        assertEquals(1, jugador1.puntaje().valor());
+        assertEquals(1, jugadorUno.puntaje().valor());
         assertEquals(-1, jugador2.puntaje().valor());
     }
 
