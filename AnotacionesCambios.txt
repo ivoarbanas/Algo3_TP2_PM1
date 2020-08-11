@@ -1,3 +1,5 @@
+-Cambiar diseño de la clase Application, que no tenga todos los botones, scenes sueltos. Cada elemento del juego es su propia clase independiente (public class BotonVolver extends Button; public class ContenedorBienvenidos extends VBox; por ej) Todos los EventHandlers tambien van aparte
+
 -Buscar forma de presentar las opciones en un orden aleatorio
 
 -Cambiar en todas menos VyF como se cargan las opciones correctas e incorrectas (no pasarle la lista en el contructor)
