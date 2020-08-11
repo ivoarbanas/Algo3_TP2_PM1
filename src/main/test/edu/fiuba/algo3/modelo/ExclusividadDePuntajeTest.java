@@ -11,7 +11,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void UnJugadorSoloAplicaExclusividadAciertaYLosPuntosSeAsignanCorrectamente(){
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
@@ -38,12 +37,7 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuarioUno.add(opcion3);
         respuestasDeUsuarioDos.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
-
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuarioUno);
@@ -57,7 +51,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void HayDosRondasYUnJugadorUsaSusDosExclusividadesYLosPuntosSeAsignanCorrectamente() {
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
@@ -84,12 +77,7 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuarioUno.add(opcion3);
         respuestasDeUsuarioDos.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
-
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuarioUno);
@@ -107,7 +95,7 @@ public class ExclusividadDePuntajeTest {
         listaRespuestaJugadorUno.add(opcionUnoPreguntaDos);
         listaRespuestaJugadorDos.add(opcionDosPreguntaDos);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeDos();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(preguntaDos);
         kahoot.jugadores().get(0).cargarRespuestas(listaRespuestaJugadorUno);
@@ -123,7 +111,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void HayTresondasYUnJugadorIntentaUsarTresExclusividadesYLosPuntosSeAsignanCorrectamente() {
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
@@ -150,12 +137,7 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario1.add(opcion3);
         respuestasDeUsuarioDos.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
-
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -174,7 +156,7 @@ public class ExclusividadDePuntajeTest {
         listaRespuestaJugador1.add(opcion1PreguntaDos);
         listaRespuestaJugadorDos.add(opcionDosPreguntaDos);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeDos();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(preguntaDos);
         kahoot.jugadores().get(0).cargarRespuestas(listaRespuestaJugador1);
@@ -208,7 +190,7 @@ public class ExclusividadDePuntajeTest {
         respuestasDelUsuarioDosPreguntaTres.add(opcionCuatroPreguntaTres);
         respuestasDelUsuarioDosPreguntaTres.add(opcionTresPreguntaTres);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta3);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDelUsuarioUnoPreguntaTres);
@@ -223,7 +205,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void DosJugadoresUtilizanExclusividadDePuntajePeroUnoFallaYLosPuntosSeAsignanCorrectamente(){
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
@@ -250,13 +231,8 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario1.add(opcion3);
         respuestasDeUsuario2.add(opcionCuatro);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
-
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
-        kahoot.jugadores().get(1).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
+        kahoot.jugadores().get(1).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -270,7 +246,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void DosJugadoresUtilizanExclusividadDePuntajeYNingunoFallaYLosPuntosSeAsignanCorrectamente(){
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
@@ -299,13 +274,8 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario2.add(opcion2);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
-
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
-        kahoot.jugadores().get(1).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
+        kahoot.jugadores().get(1).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -319,7 +289,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void DosJugadoresUtilizanExclusividadDePuntajeYAmbosFallanYLosPuntosSeAsignanCorrectamente(){
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
@@ -346,13 +315,8 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario2.add(opcion2);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
-
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
-        kahoot.jugadores().get(1).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
+        kahoot.jugadores().get(1).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -366,7 +330,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void UnJugadorActivaExclusividadDePuntajeYEsteFallaPeroElOtroAciertaYLosPuntosSeAsignanCorrectamente(){
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Joaquin");
@@ -394,12 +357,8 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario2.add(opcion2);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
 
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
 
         kahoot.cargarPregunta(pregunta);
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
@@ -413,7 +372,6 @@ public class ExclusividadDePuntajeTest {
     @Test
     public void UnJugadorActivaExclusividadDePuntajeYMultiplicadorX3YAciertaYLosPuntosSeAsignanCorrectamente(){
         Kahoot kahoot = new Kahoot();
-        ExclusividadDePuntajeActivado exclusividad = new ExclusividadDePuntajeActivado();
 
         kahoot.crearJugador("Jorgito");
         kahoot.crearJugador("Luchito");
@@ -440,12 +398,7 @@ public class ExclusividadDePuntajeTest {
         respuestasDeUsuario1.add(opcion3);
         respuestasDeUsuario2.add(opcion3);
 
-        kahoot.jugadores().get(0).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(0).setExclusividadDePuntajeDos(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeUno(exclusividad);
-        kahoot.jugadores().get(1).setExclusividadDePuntajeDos(exclusividad);
-
-        kahoot.jugadores().get(0).utilizarExclusividadPuntajeUno();
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
         kahoot.jugadores().get(0).utilizarMultiplicadorX3();
 
 
@@ -456,6 +409,47 @@ public class ExclusividadDePuntajeTest {
         kahoot.verificarRonda();
 
         assertEquals(2, kahoot.jugadores().get(0).puntaje().valor());
+
+    }
+
+    @Test
+    public void UnJugadorActivaExclusividadDePuntajePeroEnPreguntaQueNoDebeYAciertaYLosPuntosSeAsignanCorrectamente(){
+        Kahoot kahoot = new Kahoot();
+
+        kahoot.crearJugador("Jorgito");
+        kahoot.crearJugador("Luchito");
+
+        ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
+        ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
+        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
+        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
+
+        Opcion opcion1 = new Opcion("Marge");
+        Opcion opcion2 = new Opcion("Homero");
+        Opcion opcion3 = new Opcion("Rafa");
+        Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
+
+        listaOpcionesCorrectas.add(opcion1);
+        listaOpcionesCorrectas.add(opcion2);
+        listaOpcionesCorrectas.add(opcion3);
+        listaOpcionesIncorrectas.add(opcionCuatro);
+
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+
+        respuestasDeUsuario1.add(opcion1);
+        respuestasDeUsuario1.add(opcion2);
+        respuestasDeUsuario1.add(opcion3);
+        respuestasDeUsuario2.add(opcion3);
+
+        kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
+
+        kahoot.cargarPregunta(pregunta);
+        kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
+        kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
+
+        kahoot.verificarRonda();
+
+        assertEquals(3, kahoot.jugadores().get(0).puntaje().valor());
 
     }
 }

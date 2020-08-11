@@ -38,7 +38,7 @@ public class Kahoot {
         Puntaje puntajeJugadorDos = rondaActiva.obtenerPuntajeJugador(jugadores.get(1));
 
         if( (puntajeJugadorUno.valor() != puntajeJugadorDos.valor() ) ) {
-            if ((jugadores.get(0).getExclusividad() == jugadores.get(1).getExclusividad())) {
+            if ((jugadores.get(0).getExclusividad().valorDeLaExclusividad() == jugadores.get(1).getExclusividad().valorDeLaExclusividad())) {
                 this.aplicarExclusividadCuadruplicada(jugadores().get(0), puntajeJugadorUno);
                 this.aplicarExclusividadCuadruplicada(jugadores().get(1), puntajeJugadorDos);
             } else {

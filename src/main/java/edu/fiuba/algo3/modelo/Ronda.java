@@ -15,15 +15,15 @@ public class Ronda {
     }
 
     public Puntaje aplicarMultiplicador(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        return puntajeAMultiplicar.aplicarMultiplicador( jugadorAfectado.getMultiplicador());
+        return pregunta.calcularPuntajeConMultiplicador(puntajeAMultiplicar, jugadorAfectado.getMultiplicador());
     }
 
     public Puntaje aplicarExclusividadDuplicada(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        return puntajeAMultiplicar.duplicarPuntaje( jugadorAfectado.getExclusividad() );
+        return pregunta.duplicarPuntajeConExclusividad(puntajeAMultiplicar, jugadorAfectado.getExclusividad());
     }
 
     public Puntaje aplicarExclusividadCuadruplicado(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        return puntajeAMultiplicar.cuadriplicarPuntaje( jugadorAfectado.getExclusividad() );
+        return pregunta.cuadruplicarPuntajeConExclusividad(puntajeAMultiplicar, jugadorAfectado.getExclusividad());
     }
 
     public Pregunta pregunta() {

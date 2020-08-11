@@ -32,7 +32,7 @@ public class MultipleChoiceClasico extends MultipleChoice {
     }
 
     public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.duplicarPuntaje(exclusividad);
+        return puntaje.cuadriplicarPuntaje(exclusividad);
     }
 
 }

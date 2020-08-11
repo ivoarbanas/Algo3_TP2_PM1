@@ -10,8 +10,7 @@ public class Usuario {
     private Multiplicador x2;
     private Multiplicador x3;
     private ArrayList<Opcion> respuestasDelUsuario;
-    private ExclusividadDePuntaje exclusividadDePuntajeUno;
-    private ExclusividadDePuntaje exclusividadDePuntajeDos;
+    private ArrayList<ExclusividadDePuntaje> exclusividadDePuntajes;
     private ExclusividadDePuntaje exclusividadPuntajeActivo;
 
     public Usuario (String nombre){
@@ -21,6 +20,9 @@ public class Usuario {
         multiplicadorActivo = new MultiplicadorInactivo();
         puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
+        exclusividadDePuntajes = new ArrayList<ExclusividadDePuntaje>();
+        exclusividadDePuntajes.add(new ExclusividadDePuntajeActivado());
+        exclusividadDePuntajes.add(new ExclusividadDePuntajeActivado());
         exclusividadPuntajeActivo = new ExclusividadDePuntajeDesactivado();
     }
 
@@ -83,27 +85,21 @@ public class Usuario {
         return multiplicadorActivo;
     }
 
-    public void utilizarExclusividadPuntajeUno(){
-       exclusividadPuntajeActivo = exclusividadDePuntajeUno;
-       exclusividadDePuntajeUno = new ExclusividadDePuntajeDesactivado();
+    public void utilizarExclusividadPuntaje(){
+        ExclusividadDePuntaje auxiliar = this.exclusividadDePuntajes.get(0);
+        this.exclusividadDePuntajes.remove(0);
+        this.exclusividadDePuntajes.add(new ExclusividadDePuntajeDesactivado());
+        exclusividadPuntajeActivo = auxiliar;
     }
 
-    public void utilizarExclusividadPuntajeDos(){
-        exclusividadPuntajeActivo = exclusividadDePuntajeDos;
-        exclusividadDePuntajeDos = new ExclusividadDePuntajeDesactivado();
+    public void limpiarExclusividad(){
+        exclusividadPuntajeActivo = new ExclusividadDePuntajeDesactivado();
     }
 
     public ExclusividadDePuntaje getExclusividad(){
         return exclusividadPuntajeActivo;
     }
 
-    public void setExclusividadDePuntajeUno(ExclusividadDePuntaje exclusividadDePuntaje){
-        exclusividadDePuntajeUno = exclusividadDePuntaje;
-    }
-
-    public void setExclusividadDePuntajeDos(ExclusividadDePuntaje exclusividadDePuntaje){
-        exclusividadDePuntajeDos = exclusividadDePuntaje;
-    }
 
     public String nombre(){
         return nombre;

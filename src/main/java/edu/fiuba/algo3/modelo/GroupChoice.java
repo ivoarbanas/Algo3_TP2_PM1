@@ -49,7 +49,7 @@ public class GroupChoice extends Pregunta {
     }
 
     public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.duplicarPuntaje(exclusividad);
+        return puntaje.cuadriplicarPuntaje(exclusividad);
     }
 
     public ArrayList<Opcion> listaOpcionesGrupoUno(){
