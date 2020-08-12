@@ -16,6 +16,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Toggle;
 
+
 import java.util.ArrayList;
 
 /**
@@ -25,7 +26,6 @@ public class App extends Application  {
 
     private Stage stage;
     private Scene menuPrincipal;
-    private Kahoot kahoot;
     private Usuario jugadorActivo;
 
     public static void main(String[] args) {
@@ -34,10 +34,19 @@ public class App extends Application  {
 
     @Override
     public void start(Stage stage) {
-        kahoot = new Kahoot();
-        this.stage = stage;
+        Kahoot kahoot = new Kahoot();
         stage.setTitle("Kahoot 2");
-        StackPane layout = new StackPane();
+        Scene vacia = new Scene(new VBox());
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage,vacia, kahoot);
+        Scene escenaJuego = new Scene(contenedorPrincipal, 512, 250);
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego,kahoot);
+        Scene escenaInicial = new Scene(contenedorBienvenidos, 512, 250);
+        stage.setScene(escenaInicial);
+        stage.show();
+    }
+
+
+        /*StackPane layout = new StackPane();
         HBox cajaX = new HBox();
         VBox cajaY = new VBox();
         var label = new Label("Bienvenidos a Kahoot 2");
@@ -226,7 +235,7 @@ public class App extends Application  {
         String nombre = cajaNombre.getText();
         kahoot.crearJugador(nombre);
         ingresarNombres();
-    }
+    }*/
 
 
 
