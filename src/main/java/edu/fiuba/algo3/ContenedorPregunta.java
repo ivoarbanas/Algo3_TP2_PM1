@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class ContenedorPregunta extends BorderPane {
@@ -76,7 +75,7 @@ public class ContenedorPregunta extends BorderPane {
         preguntaYOpciones.getChildren().addAll(enunciado, todasLasOpciones, aceptar);
         multiplicadores.getChildren().addAll(x2, x3, exclusividad);
         general.getChildren().addAll(puntos, preguntaYOpciones, multiplicadores);
-        EnviarRespuestaHandler enviarRespuestaHandler = new EnviarRespuestaHandler(kahoot,grupoOpciones,grupoMultiplicadores,botonesOpciones,botonesMultiplicadores,jugadorActivo,pregunta,this);
+        EnviarRespuestaHandler enviarRespuestaHandler = new EnviarRespuestaHandler(kahoot,stage,grupoOpciones,grupoMultiplicadores,botonesOpciones,botonesMultiplicadores,jugadorActivo,pregunta,this);
         aceptar.setOnAction(enviarRespuestaHandler);
         this.setCenter(general);
     }

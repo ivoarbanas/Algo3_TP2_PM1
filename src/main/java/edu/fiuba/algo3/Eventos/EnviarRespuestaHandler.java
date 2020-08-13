@@ -4,9 +4,11 @@ import edu.fiuba.algo3.ContenedorPregunta;
 import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -18,8 +20,9 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
     Usuario jugadorActivo;
     VerdaderoFalsoPenalidad pregunta;
     ContenedorPregunta contenedor;
+    Stage stage;
 
-    public EnviarRespuestaHandler(Kahoot kahoot, ToggleGroup grupoOpciones, ToggleGroup grupoMultiplicadores, ArrayList<ToggleButton> botonesOpciones, ArrayList<ToggleButton> botonesMultiplicadores, Usuario jugadorActivo, VerdaderoFalsoPenalidad pregunta, ContenedorPregunta contenedor){
+    public EnviarRespuestaHandler(Kahoot kahoot, Stage stage,ToggleGroup grupoOpciones, ToggleGroup grupoMultiplicadores, ArrayList<ToggleButton> botonesOpciones, ArrayList<ToggleButton> botonesMultiplicadores, Usuario jugadorActivo, VerdaderoFalsoPenalidad pregunta, ContenedorPregunta contenedor){
         this.kahoot = kahoot;
         this.grupoOpciones = grupoOpciones;
         this.grupoMultiplicadores = grupoMultiplicadores;
@@ -28,6 +31,7 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
         this.jugadorActivo = jugadorActivo;
         this.pregunta = pregunta;
         this.contenedor = contenedor;
+        this.stage = stage;
     }
 
     @Override
@@ -48,31 +52,37 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
             botonesOpciones.get(1).setSelected(false);
 
         } else {
-            //no selecciona nada (ventana emergente)
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Seleccione una opción:");
+            String mensaje = "Presione OK para continuar";
+            alert.setContentText(mensaje);
+            alert.show();
         }
 
+        if(opcionTogger == botonesOpciones.get(0) || opcionTogger == botonesOpciones.get(1)){
 
-
-        Toggle multiplicadoresTogger = grupoMultiplicadores.getSelectedToggle();
-        if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
-            jugadorActivo.utilizarMultiplicadorX2();
-            botonesMultiplicadores.get(0).setSelected(false);
-        }
-        else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
-            jugadorActivo.utilizarMultiplicadorX3();
-            botonesMultiplicadores.get(1).setSelected(false);
-        }
-        else if(multiplicadoresTogger == botonesMultiplicadores.get(2)){
-            //jugadorActivo.utilizarExclusividad();
-        }
-        if(jugadorActivo == kahoot.jugadores().get(1)){
-            jugadorActivo = kahoot.jugadores().get(0);
-            kahoot.verificarRonda();
-            MostrarResultadoHandler mostrarResultadoHandler = new MostrarResultadoHandler(pregunta.opcionCorrecta(),contenedor,kahoot);
-            mostrarResultadoHandler.handle(event);
-        }
-        else{
-            jugadorActivo = kahoot.jugadores().get(1);
+            Toggle multiplicadoresTogger = grupoMultiplicadores.getSelectedToggle();
+            if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
+                jugadorActivo.utilizarMultiplicadorX2();
+                botonesMultiplicadores.get(0).setSelected(false);
+            }
+            else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
+                jugadorActivo.utilizarMultiplicadorX3();
+                botonesMultiplicadores.get(1).setSelected(false);
+            }
+            else if(multiplicadoresTogger == botonesMultiplicadores.get(2)){
+                jugadorActivo.utilizarExclusividadPuntaje();
+            }
+            if(jugadorActivo == kahoot.jugadores().get(1)){
+                jugadorActivo = kahoot.jugadores().get(0);
+                kahoot.verificarRonda();
+                MostrarResultadoHandler mostrarResultadoHandler = new MostrarResultadoHandler(pregunta.opcionCorrecta(),contenedor,kahoot,stage);
+                mostrarResultadoHandler.handle(event);
+            }
+            else{
+                jugadorActivo = kahoot.jugadores().get(1);
+            }
         }
     }
 }

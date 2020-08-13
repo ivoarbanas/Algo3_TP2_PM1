@@ -19,3 +19,11 @@
 -Agregar un temaiken
 
 -Acerca de llenar integrantes
+
+-Que X2 y X3 se aplique al puntaje
+
+-Ver parametros de EnviarRespuestaHandler
+
+-Cambiar nombre de exclusividad desactivado por Null Object Pattern
+
+-Cambiar utilizar exclusividad de puntaje para poder avisar cuando el usuario se quedo sin exclusividad (lo mismo para x2 y x3)
