@@ -12,10 +12,6 @@ import javafx.stage.Stage;
  */
 public class App extends Application  {
 
-    private Stage stage;
-    private Scene menuPrincipal;
-    private Usuario jugadorActivo;
-
     public static void main(String[] args) {
         launch(); //llama a start
     }
@@ -25,15 +21,11 @@ public class App extends Application  {
         Kahoot kahoot = new Kahoot();
         stage.setTitle("Kahoot 2");
 
-        ContenedorPregunta contenedorPregunta = new ContenedorPregunta(stage, kahoot);
-        Scene escenaPregunta = new Scene(contenedorPregunta, 512, 250);
-
-
-        ContenedorNombres contenedorPrincipal = new ContenedorNombres(stage,escenaPregunta, kahoot);
+        ContenedorNombres contenedorPrincipal = new ContenedorNombres(stage, kahoot);
         Scene escenaNombres = new Scene(contenedorPrincipal, 512, 250);
 
-        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerPrincipal = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
-        escenaNombres.setOnKeyPressed(aplicacionOnKeyPressEventHandlerPrincipal);
+        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerNombres = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
+        escenaNombres.setOnKeyPressed(aplicacionOnKeyPressEventHandlerNombres);
 
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaNombres,kahoot);
         Scene escenaInicial = new Scene(contenedorBienvenidos, 512, 250);

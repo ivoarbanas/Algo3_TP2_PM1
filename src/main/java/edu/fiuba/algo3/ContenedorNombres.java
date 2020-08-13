@@ -13,13 +13,11 @@ public class ContenedorNombres extends BorderPane {
     BarraDeMenu menuBar;
     Kahoot kahoot;
     Stage stage;
-    Scene proximaEscena;
 
 
-    public ContenedorNombres(Stage stage,Scene proximaEscena, Kahoot kahoot){
+    public ContenedorNombres(Stage stage, Kahoot kahoot){
         this.kahoot = kahoot;
         this.stage = stage;
-        this.proximaEscena = proximaEscena;
         this.setMenu(stage);
         this.setContenido();
     }
@@ -38,15 +36,15 @@ public class ContenedorNombres extends BorderPane {
         cajaJugadorDos.getChildren().addAll(labelJugadorDos,cajaNombreJugadorDos);
         Button cargarJugadores = new Button("Empezar");
         cajaY.getChildren().addAll(cajaJugadorUno,cajaJugadorDos,cargarJugadores);
-        CargarUsuarioHandler cargarUsuarioHandler = new CargarUsuarioHandler(kahoot,cajaNombreJugadorUno,cajaNombreJugadorDos,stage,proximaEscena);
+        CargarUsuarioHandler cargarUsuarioHandler = new CargarUsuarioHandler(kahoot,cajaNombreJugadorUno,cajaNombreJugadorDos,stage);
         cargarJugadores.setOnAction(cargarUsuarioHandler);
         this.setCenter(cajaY);
 
     }
 
     private void setMenu(Stage stage) {
-
-        this.menuBar = new BarraDeMenu(proximaEscena,stage);
+        Scene vacia = new Scene(new VBox());
+        this.menuBar = new BarraDeMenu(vacia,stage);
         this.setTop(menuBar);
 
     }
