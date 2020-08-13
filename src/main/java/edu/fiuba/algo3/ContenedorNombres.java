@@ -9,14 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class ContenedorPrincipal extends BorderPane {
+public class ContenedorNombres extends BorderPane {
     BarraDeMenu menuBar;
     Kahoot kahoot;
     Stage stage;
     Scene proximaEscena;
 
 
-    public ContenedorPrincipal(Stage stage,Scene proximaEscena, Kahoot kahoot){
+    public ContenedorNombres(Stage stage,Scene proximaEscena, Kahoot kahoot){
         this.kahoot = kahoot;
         this.stage = stage;
         this.proximaEscena = proximaEscena;
@@ -38,7 +38,7 @@ public class ContenedorPrincipal extends BorderPane {
         cajaJugadorDos.getChildren().addAll(labelJugadorDos,cajaNombreJugadorDos);
         Button cargarJugadores = new Button("Empezar");
         cajaY.getChildren().addAll(cajaJugadorUno,cajaJugadorDos,cargarJugadores);
-        CargarUsuarioHandler cargarUsuarioHandler = new CargarUsuarioHandler(kahoot,cajaNombreJugadorUno,cajaNombreJugadorDos);
+        CargarUsuarioHandler cargarUsuarioHandler = new CargarUsuarioHandler(kahoot,cajaNombreJugadorUno,cajaNombreJugadorDos,stage,proximaEscena);
         cargarJugadores.setOnAction(cargarUsuarioHandler);
         this.setCenter(cajaY);
 
@@ -49,6 +49,10 @@ public class ContenedorPrincipal extends BorderPane {
         this.menuBar = new BarraDeMenu(proximaEscena,stage);
         this.setTop(menuBar);
 
+    }
+
+    public BarraDeMenu getBarraDeMenu() {
+        return menuBar;
     }
 
 }

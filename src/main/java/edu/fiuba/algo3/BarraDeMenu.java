@@ -35,10 +35,10 @@ public class BarraDeMenu extends MenuBar{
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
 
-        //OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
-        //opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
+        OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
+        opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
-        opcionPantallaCompleta.setDisable(true);
+        //opcionPantallaCompleta.setDisable(true);
 
         menuArchivo.getItems().addAll(opcionNuevo, new SeparatorMenuItem(), opcionSalir);
         menuAyuda.getItems().addAll(opcionReglas,opcionAcercaDe);

@@ -37,4 +37,8 @@ public class ContenedorBienvenidos extends BorderPane {
 
     }
 
+    public BarraDeMenu getBarraDeMenu() {
+        return menuBar;
+    }
+
 }

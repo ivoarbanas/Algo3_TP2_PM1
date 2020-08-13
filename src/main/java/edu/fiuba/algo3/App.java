@@ -1,23 +1,11 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.Eventos.AplicacionOnKeyPressEventHandler;
 import edu.fiuba.algo3.modelo.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Toggle;
-
-
-import java.util.ArrayList;
 
 /**
  * JavaFX App
@@ -36,35 +24,29 @@ public class App extends Application  {
     public void start(Stage stage) {
         Kahoot kahoot = new Kahoot();
         stage.setTitle("Kahoot 2");
-        Scene vacia = new Scene(new VBox());
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage,vacia, kahoot);
-        Scene escenaJuego = new Scene(contenedorPrincipal, 512, 250);
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego,kahoot);
+
+        ContenedorPregunta contenedorPregunta = new ContenedorPregunta(stage, kahoot);
+        Scene escenaPregunta = new Scene(contenedorPregunta, 512, 250);
+
+
+        ContenedorNombres contenedorPrincipal = new ContenedorNombres(stage,escenaPregunta, kahoot);
+        Scene escenaNombres = new Scene(contenedorPrincipal, 512, 250);
+
+        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerPrincipal = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
+        escenaNombres.setOnKeyPressed(aplicacionOnKeyPressEventHandlerPrincipal);
+
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaNombres,kahoot);
         Scene escenaInicial = new Scene(contenedorBienvenidos, 512, 250);
+
+        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerInicial = new AplicacionOnKeyPressEventHandler(stage, contenedorBienvenidos.getBarraDeMenu());
+        escenaInicial.setOnKeyPressed(aplicacionOnKeyPressEventHandlerInicial);
+
         stage.setScene(escenaInicial);
         stage.show();
     }
 
 
-        /*StackPane layout = new StackPane();
-        HBox cajaX = new HBox();
-        VBox cajaY = new VBox();
-        var label = new Label("Bienvenidos a Kahoot 2");
-        Button botonReglas = new Button("Reglas");
-        Button botonComenzar = new Button("Comenzar");
-        Button botonSalir = new Button("Salir");
-        botonReglas.setOnAction(e ->mostrarReglas());
-        botonComenzar.setOnAction(e ->ingresarNombres());
-        botonSalir.setOnAction(e -> stage.close());
-        cajaX.getChildren().addAll(botonComenzar,botonReglas,botonSalir);
-        cajaY.getChildren().addAll(label,cajaX);
-        layout.getChildren().add(cajaY);
-        menuPrincipal = new Scene(layout, 640, 480);
-        stage.setScene(menuPrincipal);
-        stage.show();
-    }
-
-    public void mostrarPregunta() {
+    /*public void mostrarPregunta() {
         //aca hay que usar un metodo para obtener pregunta
         jugadorActivo = kahoot.jugadores().get(0);
         VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobe el parcial", false);
@@ -176,67 +158,6 @@ public class App extends Application  {
         stage.setScene(respuestaCorrecta);
         stage.show();
 
-    }
-
-    public void mostrarReglas(){
-        var label = new Label("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at nunc eu enim mollis laoreet nec id ipsum. Aenean accumsan odio sed vehicula ullamcorper. Nullam sit amet tellus vel justo ultricies interdum. Curabitur porttitor risus luctus nisi aliquet ultrices. Vestibulum scelerisque finibus nisi sed iaculis. Maecenas at consequat dui, sit amet ultricies nulla. Etiam posuere tempor metus ac hendrerit.\n" +
-                "\n" +
-                "Maecenas egestas ultrices nunc non pretium. Suspendisse nunc sapien, faucibus ac tortor eget, porta consectetur enim. Integer non tempor mauris, non tincidunt ex. Donec et sem tincidunt, faucibus elit ut, volutpat neque. Nam non fermentum augue, eget egestas nibh. Duis pulvinar lacus eu magna ullamcorper dignissim. Praesent eleifend lectus purus, ut lobortis ipsum commodo id. Integer vehicula augue in dolor mattis rhoncus. Vestibulum tempor maximus mi vitae congue. Duis condimentum ipsum eu urna gravida, ac convallis orci eleifend.\n" +
-                "\n" +
-                "Aliquam erat volutpat. Nulla facilisi. Aenean a erat sed massa porta posuere sed eu enim. Integer consequat euismod dolor sed rutrum. In a eros a mauris porta rhoncus sit amet eget felis. Nam fringilla tempus dictum. Maecenas non ullamcorper nunc. Proin euismod odio quis rutrum egestas. Vivamus ex ligula, congue dictum velit vitae, congue efficitur leo.\n" +
-                "\n" +
-                "Cras a mi nunc. Nulla facilisi. Cras pellentesque id augue vel gravida. Cras ultricies gravida purus a semper. Nam eu convallis nibh. Phasellus non est vitae urna iaculis mattis. In eget lobortis ipsum. Nunc maximus non felis et lobortis.\n" +
-                "\n" +
-                "Quisque tincidunt nibh tellus, quis feugiat magna placerat vel. Donec et felis vel magna aliquam elementum id volutpat justo. Vestibulum ac pretium tortor. Curabitur quis felis lectus. Aenean gravida elit imperdiet, luctus lectus maximus, sodales augue. Duis a risus aliquet leo tempus pellentesque at non lorem. In quis auctor lectus. Curabitur placerat luctus libero eu viverra. Etiam sollicitudin lectus leo, ac lacinia justo ullamcorper sed. Duis tempor blandit turpis et lobortis. Proin feugiat, tellus in ullamcorper accumsan, sapien sapien rhoncus urna, at viverra turpis purus et urna. Aliquam feugiat blandit elit sit amet porta.");
-        Button botonVolver = new Button("Volver");
-        botonVolver.setOnAction(e -> stage.setScene(menuPrincipal));
-        VBox cajaY = new VBox();
-        cajaY.getChildren().add(label);
-        cajaY.getChildren().add(botonVolver);
-        StackPane layout = new StackPane();
-        layout.getChildren().add(cajaY);
-        var scene = new Scene(layout, 640, 480);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void ingresarNombres(){
-        if(kahoot.jugadores().size() < 2){
-            HBox cajaX = new HBox();
-            VBox cajaY = new VBox();
-            var label = new Label("Ingrese su nombre: ");
-            TextField cajaNombre = new TextField();
-            String nombreBoton;
-            if(kahoot.jugadores().size() == 1){
-                nombreBoton = "Empezar Juego";
-            }
-            else{
-                nombreBoton = "Cargar Jugador";
-            }
-            Button cargarNombre = new Button(nombreBoton);
-            Button botonVolver = new Button("Volver");
-            cajaX.getChildren().addAll(label,cajaNombre,cargarNombre);
-            cajaY.getChildren().addAll(cajaX,botonVolver);
-            cargarNombre.setOnAction(e -> cargarUsuario(cajaNombre));
-            botonVolver.setOnAction(e -> stage.setScene(menuPrincipal));
-
-            StackPane layout = new StackPane();
-            layout.getChildren().add(cajaY);
-            var scene = new Scene(layout, 640, 480);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else {
-            mostrarPregunta();
-        }
-    }
-
-    public void cargarUsuario(TextField cajaNombre){
-        String nombre = cajaNombre.getText();
-        kahoot.crearJugador(nombre);
-        ingresarNombres();
     }*/
-
-
 
 }
