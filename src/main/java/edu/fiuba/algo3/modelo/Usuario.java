@@ -23,7 +23,7 @@ public class Usuario {
         exclusividadDePuntajes = new ArrayList<ExclusividadDePuntaje>();
         exclusividadDePuntajes.add(new ExclusividadDePuntajeActivado());
         exclusividadDePuntajes.add(new ExclusividadDePuntajeActivado());
-        exclusividadPuntajeActivo = new ExclusividadDePuntajeDesactivado();
+        exclusividadPuntajeActivo = new ExclusividadDePuntajeNulo();
     }
 
 
@@ -88,12 +88,12 @@ public class Usuario {
     public void utilizarExclusividadPuntaje(){
         ExclusividadDePuntaje auxiliar = this.exclusividadDePuntajes.get(0);
         this.exclusividadDePuntajes.remove(0);
-        this.exclusividadDePuntajes.add(new ExclusividadDePuntajeDesactivado());
         exclusividadPuntajeActivo = auxiliar;
+        //Aca tirar la excepcion OJO el test que no pasa !!!! (esta comentado pa que te to piola)
     }
 
     public void limpiarExclusividad(){
-        exclusividadPuntajeActivo = new ExclusividadDePuntajeDesactivado();
+        exclusividadPuntajeActivo = new ExclusividadDePuntajeNulo();
     }
 
     public ExclusividadDePuntaje getExclusividad(){

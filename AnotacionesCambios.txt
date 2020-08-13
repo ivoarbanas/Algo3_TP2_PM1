@@ -10,8 +10,6 @@
 
 -Ver si se pueden unificar los metodos duplicar y cuadriplicar
 
--Ver si en vez de almacenar dos exclusividades de puntaje (exclusividades de puntaje1 y exclusividades de puntaje2) se puede poner un array y unificar los metodos utilizarExclusividadPuntaje
-
 -Leer preguntas de txt (JSON)
 
 -Ver pantalla completa
@@ -24,6 +22,4 @@
 
 -Ver parametros de EnviarRespuestaHandler
 
--Cambiar nombre de exclusividad desactivado por Null Object Pattern
-
--Cambiar utilizar exclusividad de puntaje para poder avisar cuando el usuario se quedo sin exclusividad (lo mismo para x2 y x3)
+-Cambiar utilizar x2 y x3 para poder avisar cuando el usuario se quedo sin multiplicador

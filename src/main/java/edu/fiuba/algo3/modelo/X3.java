@@ -2,7 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class X3 extends Multiplicador {
 
-    public int valorDelMultiplicador(){
-        return 3;
+    public Puntaje aplicarValorDelMultiplicador(Puntaje puntajeAModificar){
+        puntajeAModificar.cantidad( (puntajeAModificar.valor()) * 3 );
+        return puntajeAModificar;
     }
 }

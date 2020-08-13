@@ -46,7 +46,6 @@ public class Entrega2Test {
         kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuarioDos);
         kahoot.verificarRonda();
 
-        assertEquals(2, kahoot.jugadores().get(0).getMultiplicador().valorDelMultiplicador());
         assertEquals(6, kahoot.jugadores().get(0).puntaje().valor());
         assertEquals(-3, kahoot.jugadores().get(1).puntaje().valor());
     }

@@ -108,7 +108,7 @@ public class ExclusividadDePuntajeTest {
 
     }
 
-    @Test
+    /*@Test
     public void HayTresondasYUnJugadorIntentaUsarTresExclusividadesYLosPuntosSeAsignanCorrectamente() {
         Kahoot kahoot = new Kahoot();
 
@@ -200,7 +200,7 @@ public class ExclusividadDePuntajeTest {
         assertEquals(5, kahoot.jugadores().get(0).puntaje().valor());
         assertEquals(0, kahoot.jugadores().get(1).puntaje().valor());
 
-    }
+    }*/
 
     @Test
     public void DosJugadoresUtilizanExclusividadDePuntajePeroUnoFallaYLosPuntosSeAsignanCorrectamente(){

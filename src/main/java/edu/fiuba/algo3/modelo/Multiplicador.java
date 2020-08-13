@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 abstract public class Multiplicador {
 
-    public abstract int valorDelMultiplicador();
+     public abstract Puntaje aplicarValorDelMultiplicador(Puntaje puntajeAModificar);
 
 }

@@ -16,10 +16,6 @@ public class Puntaje {
         return valor;
     }
 
-    public Puntaje aplicarMultiplicador(Multiplicador multiplicador) {
-        this.cantidad( (this.valor()) *  multiplicador.valorDelMultiplicador() );
-        return this;
-    }
 
     public Puntaje duplicarPuntaje(ExclusividadDePuntaje exclusividad) {
         valor = valor * exclusividad.valorDeLaExclusividad();

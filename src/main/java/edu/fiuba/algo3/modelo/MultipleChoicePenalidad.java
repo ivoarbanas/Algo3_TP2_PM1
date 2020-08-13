@@ -23,7 +23,7 @@ public class MultipleChoicePenalidad extends MultipleChoice {
     }
 
     public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
-        return puntaje.aplicarMultiplicador(multiplicador);
+        return multiplicador.aplicarValorDelMultiplicador(puntaje);
     }
 
     public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
