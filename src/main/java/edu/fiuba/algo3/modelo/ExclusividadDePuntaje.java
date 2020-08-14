@@ -2,6 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class ExclusividadDePuntaje {
 
-    public abstract int valorDeLaExclusividad();
+    public abstract Puntaje aplicarExclusividad(Puntaje puntaje);
 
 }

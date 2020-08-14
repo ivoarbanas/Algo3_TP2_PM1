@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class MultipleChoiceClasico extends MultipleChoice {
 
 
-    public MultipleChoiceClasico(String enunciado,ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
-        super(enunciado,opcionesCorrectas,opcionesIncorrectas);
+    public MultipleChoiceClasico(String enunciado){
+        super(enunciado);
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
@@ -27,12 +27,9 @@ public class MultipleChoiceClasico extends MultipleChoice {
         return puntaje;
     }
 
-    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.duplicarPuntaje(exclusividad);
+    public Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return exclusividad.aplicarExclusividad(puntaje);
     }
 
-    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.cuadriplicarPuntaje(exclusividad);
-    }
 
 }

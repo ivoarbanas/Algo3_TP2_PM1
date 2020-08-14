@@ -77,6 +77,7 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
             if(jugadorActivo == kahoot.jugadores().get(1)){
                 jugadorActivo = kahoot.jugadores().get(0);
                 kahoot.verificarRonda();
+                kahoot.cambiarRonda();
                 MostrarResultadoHandler mostrarResultadoHandler = new MostrarResultadoHandler(pregunta.opcionCorrecta(),contenedor,kahoot,stage);
                 mostrarResultadoHandler.handle(event);
             }

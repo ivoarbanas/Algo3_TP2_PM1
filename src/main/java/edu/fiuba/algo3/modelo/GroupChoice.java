@@ -9,12 +9,12 @@ public class GroupChoice extends Pregunta {
     private ArrayList<Opcion> listaOpcionesGrupoUno;
     private ArrayList<Opcion> listaOpcionesGrupoDos;
 
-    public GroupChoice(String nombreGrupoUno, String nombreGrupoDos, ArrayList<Opcion> opcionesGrupoUno, ArrayList<Opcion> opcionesGrupoDos) {
+    public GroupChoice(String nombreGrupoUno, String nombreGrupoDos) {
         super("Coloque las opciones en el grupo adecuado");
         grupoUno = nombreGrupoUno;
         grupoDos = nombreGrupoDos;
-        listaOpcionesGrupoUno = opcionesGrupoUno;
-        listaOpcionesGrupoDos = opcionesGrupoDos;
+        listaOpcionesGrupoUno = new ArrayList<>();
+        listaOpcionesGrupoDos = new ArrayList<>();
     }
 
     private boolean opcionEstaEnListaGrupo(ArrayList<Opcion> listaGrupo, Opcion opcion) {
@@ -44,12 +44,18 @@ public class GroupChoice extends Pregunta {
         return puntaje;
     }
 
-    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.duplicarPuntaje(exclusividad);
+    public Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return exclusividad.aplicarExclusividad(puntaje);
     }
 
-    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.cuadriplicarPuntaje(exclusividad);
+    public void cargarOpcionesGrupoUno(Opcion opcion){
+        listaOpcionesGrupoUno.add(opcion);
+        opciones.add(opcion);
+    }
+
+    public void cargarOpcionesGrupoDos(Opcion opcion){
+        listaOpcionesGrupoDos.add(opcion);
+        opciones.add(opcion);
     }
 
     public ArrayList<Opcion> listaOpcionesGrupoUno(){

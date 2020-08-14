@@ -16,14 +16,4 @@ public class Puntaje {
         return valor;
     }
 
-
-    public Puntaje duplicarPuntaje(ExclusividadDePuntaje exclusividad) {
-        valor = valor * exclusividad.valorDeLaExclusividad();
-        return this;
-    }
-
-    public Puntaje cuadriplicarPuntaje(ExclusividadDePuntaje exclusividad) {
-        valor = valor * (exclusividad.valorDeLaExclusividad() * exclusividad.valorDeLaExclusividad()) ;
-        return this;
-    }
 }

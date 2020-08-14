@@ -7,10 +7,10 @@ abstract class MultipleChoice extends Pregunta {
     protected ArrayList<Opcion> listaOpcionesCorrectas;
     protected ArrayList<Opcion> listaOpcionesIncorrectas;
 
-    public MultipleChoice(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
+    public MultipleChoice(String enunciado){
         super(enunciado);
-        listaOpcionesCorrectas = opcionesCorrectas;
-        listaOpcionesIncorrectas = opcionesIncorrectas;
+        listaOpcionesCorrectas = new ArrayList<>();
+        listaOpcionesIncorrectas = new ArrayList<>();
     }
 
     public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
@@ -21,7 +21,17 @@ abstract class MultipleChoice extends Pregunta {
         }
         return false;
     }
+
+    public void cargarOpcionCorrecta(Opcion opcion){
+        listaOpcionesCorrectas.add(opcion);
+        opciones.add(opcion);
+    }
+
+    public void cargarOpcionIncorrecta(Opcion opcion){
+        listaOpcionesIncorrectas.add(opcion);
+        opciones.add(opcion);
+    }
+
     public abstract Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador);
-    public abstract Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
-    public abstract Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
+    public abstract Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
 }

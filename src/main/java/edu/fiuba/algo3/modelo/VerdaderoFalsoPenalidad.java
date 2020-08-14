@@ -21,13 +21,10 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso{
         return multiplicador.aplicarValorDelMultiplicador(puntaje);
     }
 
-    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje;
-    }
-
-    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+    public Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
         return puntaje;
     }
 
 }
+
 

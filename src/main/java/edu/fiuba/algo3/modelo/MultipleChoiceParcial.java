@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class MultipleChoiceParcial extends MultipleChoice {
 
 
-    public MultipleChoiceParcial(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
-        super(enunciado,opcionesCorrectas,opcionesIncorrectas);
+    public MultipleChoiceParcial(String enunciado){
+        super(enunciado);
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
@@ -27,11 +27,13 @@ public class MultipleChoiceParcial extends MultipleChoice {
         return puntaje;
     }
 
-    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.duplicarPuntaje(exclusividad);
+    public Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        if(puntaje.valor() == listaOpcionesCorrectas.size()){
+            return exclusividad.aplicarExclusividad(puntaje);
+        }
+            return puntaje;
+
+
     }
 
-    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.cuadriplicarPuntaje(exclusividad);
-    }
 }

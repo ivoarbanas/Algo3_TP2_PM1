@@ -17,20 +17,19 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuarioUno = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuarioDos = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcionUno = new Opcion("Marge");
         Opcion opcionDos = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcionUno);
-        listaOpcionesCorrectas.add(opcionDos);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
 
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons");
+
+        pregunta.cargarOpcionCorrecta(opcionUno);
+        pregunta.cargarOpcionCorrecta(opcionDos);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuarioUno.add(opcionUno);
         respuestasDeUsuarioUno.add(opcionDos);
@@ -57,20 +56,19 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuarioUno = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuarioDos = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcionUno = new Opcion("Marge");
         Opcion opcionDos = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcionUno);
-        listaOpcionesCorrectas.add(opcionDos);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
 
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons");
+
+        pregunta.cargarOpcionCorrecta(opcionUno);
+        pregunta.cargarOpcionCorrecta(opcionDos);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuarioUno.add(opcionUno);
         respuestasDeUsuarioUno.add(opcionDos);
@@ -211,25 +209,25 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
 
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        MultipleChoiceParcial pregunta = new MultipleChoiceParcial("Cual de estos es un personaje de los simpsons");
+
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
         respuestasDeUsuario1.add(opcion3);
-        respuestasDeUsuario2.add(opcionCuatro);
+        respuestasDeUsuario2.add(opcion1);
+        respuestasDeUsuario2.add(opcion2);
 
         kahoot.jugadores().get(0).utilizarExclusividadPuntaje();
         kahoot.jugadores().get(1).utilizarExclusividadPuntaje();
@@ -239,8 +237,8 @@ public class ExclusividadDePuntajeTest {
         kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
         kahoot.verificarRonda();
 
-        assertEquals(4, kahoot.jugadores().get(0).puntaje().valor());
-        assertEquals(0, kahoot.jugadores().get(1).puntaje().valor());
+        assertEquals(12, kahoot.jugadores().get(0).puntaje().valor());
+        assertEquals(2, kahoot.jugadores().get(1).puntaje().valor());
     }
 
     @Test
@@ -252,20 +250,19 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
 
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons");
+
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -282,8 +279,8 @@ public class ExclusividadDePuntajeTest {
         kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
         kahoot.verificarRonda();
 
-        assertEquals(1, kahoot.jugadores().get(0).puntaje().valor());
-        assertEquals(1, kahoot.jugadores().get(1).puntaje().valor());
+        assertEquals(0, kahoot.jugadores().get(0).puntaje().valor());
+        assertEquals(0, kahoot.jugadores().get(1).puntaje().valor());
     }
 
     @Test
@@ -295,20 +292,18 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -336,20 +331,19 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
 
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons");
+
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -378,20 +372,18 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
+        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoiceClasico pregunta = new MultipleChoiceClasico("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -421,20 +413,19 @@ public class ExclusividadDePuntajeTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcionCuatro);
 
-        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons");
+
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);

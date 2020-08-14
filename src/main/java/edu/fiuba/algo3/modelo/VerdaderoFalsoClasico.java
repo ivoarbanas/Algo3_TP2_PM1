@@ -21,11 +21,8 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso{
         return puntaje;
     }
 
-    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.duplicarPuntaje(exclusividad);
+    public Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return exclusividad.aplicarExclusividad(puntaje);
     }
 
-    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.cuadriplicarPuntaje(exclusividad);
-    }
 }

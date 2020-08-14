@@ -10,16 +10,17 @@ public class OrderedChoiceTest {
 
     @Test
     public void seCreaPreguntaOrderedChoiceConUnaListaDeOpcionesOrdenadas() {
-        ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
         Opcion opcionUno = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Cuatro");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcionCuatro = new Opcion("Diez");
-        listaOpcionesOrdenadas.add(opcionUno);
-        listaOpcionesOrdenadas.add(opcionDos);
-        listaOpcionesOrdenadas.add(opcionTres);
-        listaOpcionesOrdenadas.add(opcionCuatro);
-        OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
+
+        OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor");
+
+        pregunta.cargarOpcionOrdenada(opcionUno);
+        pregunta.cargarOpcionOrdenada(opcionDos);
+        pregunta.cargarOpcionOrdenada(opcionTres);
+        pregunta.cargarOpcionOrdenada(opcionCuatro);
 
         assertEquals(opcionUno.valor(),pregunta.opciones.get(0).valor());
         assertEquals(opcionDos.valor(),pregunta.opciones.get(1).valor());
@@ -31,17 +32,18 @@ public class OrderedChoiceTest {
     public void recibeUnaListaDeRespuestaOrdenadaYAsignaPuntajeCorrectamente() {
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Manuel");
-        ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Cuatro");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcionCuatro = new Opcion("Diez");
-        listaOpcionesOrdenadas.add(opcion1);
-        listaOpcionesOrdenadas.add(opcionDos);
-        listaOpcionesOrdenadas.add(opcionTres);
-        listaOpcionesOrdenadas.add(opcionCuatro);
-        OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
+
+        OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor");
+
+        pregunta.cargarOpcionOrdenada(opcion1);
+        pregunta.cargarOpcionOrdenada(opcionDos);
+        pregunta.cargarOpcionOrdenada(opcionTres);
+        pregunta.cargarOpcionOrdenada(opcionCuatro);
 
         respuestasDelUsuario.add(opcion1);
         respuestasDelUsuario.add(opcionDos);
@@ -60,17 +62,18 @@ public class OrderedChoiceTest {
     public void recibeUnaListaDeRespuestaDesordenadaYAsignaPuntajeCorrectamente() {
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Manuel");
-        ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Cuatro");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcionCuatro = new Opcion("Diez");
-        listaOpcionesOrdenadas.add(opcion1);
-        listaOpcionesOrdenadas.add(opcionDos);
-        listaOpcionesOrdenadas.add(opcionTres);
-        listaOpcionesOrdenadas.add(opcionCuatro);
-        OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
+
+        OrderedChoice pregunta = new OrderedChoice("Ordenar numeros de menor a mayor");
+
+        pregunta.cargarOpcionOrdenada(opcion1);
+        pregunta.cargarOpcionOrdenada(opcionDos);
+        pregunta.cargarOpcionOrdenada(opcionTres);
+        pregunta.cargarOpcionOrdenada(opcionCuatro);
 
         respuestasDelUsuario.add(opcion1);
         respuestasDelUsuario.add(opcionDos);

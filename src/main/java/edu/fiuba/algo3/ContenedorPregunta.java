@@ -29,6 +29,7 @@ public class ContenedorPregunta extends BorderPane {
 
     private void setContenido() {
         jugadorActivo = kahoot.jugadores().get(0);
+        //usar pregunta = kahoot.getRondaActiva().getPregunta()
         VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobe el parcial", false);
         kahoot.cargarPregunta(pregunta);
         VBox preguntaYOpciones = new VBox();

@@ -9,12 +9,12 @@ abstract class Pregunta {
 
     public Pregunta(String enunciado){
         this.enunciado = enunciado;
+        opciones = new ArrayList<>();
     }
 
     public abstract Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas);
     public abstract Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador);
-    public abstract Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
-    public abstract Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
+    public abstract Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
     public ArrayList<Opcion> obtenerOpciones(){
         return opciones;
     }

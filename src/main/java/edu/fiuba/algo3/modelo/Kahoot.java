@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Kahoot {
 
@@ -37,21 +40,31 @@ public class Kahoot {
         Puntaje puntajeJugadorUno = rondaActiva.obtenerPuntajeJugador(jugadores.get(0));
         Puntaje puntajeJugadorDos = rondaActiva.obtenerPuntajeJugador(jugadores.get(1));
 
+
+
         if( (puntajeJugadorUno.valor() != puntajeJugadorDos.valor() ) ) {
-            if ((jugadores.get(0).getExclusividad().valorDeLaExclusividad() == jugadores.get(1).getExclusividad().valorDeLaExclusividad())) {
-                this.aplicarExclusividadCuadruplicada(jugadores().get(0), puntajeJugadorUno);
-                this.aplicarExclusividadCuadruplicada(jugadores().get(1), puntajeJugadorDos);
+            if ((jugadores.get(0).usoExclusividadEnRonda() && jugadores.get(1).usoExclusividadEnRonda())) {
+                ExclusividadDePuntajeCuadruple exclusividadDePuntajeCuadruple = new ExclusividadDePuntajeCuadruple();
+                puntajeJugadorUno = this.aplicarExclusividad(puntajeJugadorUno, exclusividadDePuntajeCuadruple);
+                puntajeJugadorDos = this.aplicarExclusividad(puntajeJugadorDos, exclusividadDePuntajeCuadruple);
             } else {
-                this.aplicarExclusividadDuplicada(jugadores().get(0), puntajeJugadorUno);
-                this.aplicarExclusividadDuplicada(jugadores().get(1), puntajeJugadorDos);
+                puntajeJugadorUno = this.aplicarExclusividad(puntajeJugadorUno, jugadores.get(0).getExclusividad());
+                puntajeJugadorDos = this.aplicarExclusividad(puntajeJugadorDos, jugadores.get(1).getExclusividad());
             }
+        }
+        if(((jugadores.get(0).usoExclusividadEnRonda() || jugadores.get(1).usoExclusividadEnRonda())) && (puntajeJugadorUno.valor() == puntajeJugadorDos.valor() )){
+            puntajeJugadorUno = new Puntaje(0);
+            puntajeJugadorDos = new Puntaje(0);
         }
 
         puntajeJugadorUno = this.aplicarMultiplicador(jugadores().get(0),puntajeJugadorUno);
         puntajeJugadorDos = this.aplicarMultiplicador(jugadores().get(1),puntajeJugadorDos);
 
+
         sistemaPuntaje.cambiarPuntaje(jugadores.get(0), puntajeJugadorUno);
         sistemaPuntaje.cambiarPuntaje(jugadores.get(1), puntajeJugadorDos);
+
+
     }
 
     public void crearJugador(String nombre){
@@ -59,9 +72,24 @@ public class Kahoot {
         jugadores.add(jugador);
     }
 
-    /*public void cargarPregunta(Pregunta pregunta){
-        preguntas.add(pregunta);
-    }*/
+    public void cargarPreguntas(){
+        /*ArrayList<Opcion>
+        try {
+            File myObj = new File("filename.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                while (myReader.hasNext(",")){
+
+                }
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }*/
+    }
 
     public void cargarPregunta(Pregunta pregunta){
         rondaActiva.cargarPregunta(pregunta);
@@ -89,6 +117,7 @@ public class Kahoot {
         for (Usuario jugador : jugadores){
             jugador.vaciarRespuestas();
             jugador.limpiarMultiplicador();
+            jugador.limpiarExclusividad();
         }
         rondaActiva = new Ronda();
         rondas.add(rondaActiva);
@@ -99,12 +128,8 @@ public class Kahoot {
         return rondaActiva.aplicarMultiplicador(jugadorAfectado,puntajeAMultiplicar);
     }
 
-    public Puntaje aplicarExclusividadDuplicada(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        return rondaActiva.aplicarExclusividadDuplicada(jugadorAfectado,puntajeAMultiplicar);
-    }
-
-    public Puntaje aplicarExclusividadCuadruplicada(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        return rondaActiva.aplicarExclusividadCuadruplicado(jugadorAfectado,puntajeAMultiplicar);
+    public Puntaje aplicarExclusividad(Puntaje puntajeAMultiplicar, ExclusividadDePuntaje exclusividadDePuntaje){
+        return rondaActiva.aplicarExclusividad(puntajeAMultiplicar, exclusividadDePuntaje);
     }
 
     public Ronda rondaActiva(){

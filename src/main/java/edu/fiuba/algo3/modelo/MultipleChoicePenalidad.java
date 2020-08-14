@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class MultipleChoicePenalidad extends MultipleChoice {
 
-    public MultipleChoicePenalidad(String enunciado, ArrayList<Opcion> opcionesCorrectas, ArrayList<Opcion> opcionesIncorrectas){
-        super(enunciado,opcionesCorrectas,opcionesIncorrectas);
+    public MultipleChoicePenalidad(String enunciado){
+        super(enunciado);
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
@@ -26,11 +26,7 @@ public class MultipleChoicePenalidad extends MultipleChoice {
         return multiplicador.aplicarValorDelMultiplicador(puntaje);
     }
 
-    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje;
-    }
-
-    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+    public Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
         return puntaje;
     }
 

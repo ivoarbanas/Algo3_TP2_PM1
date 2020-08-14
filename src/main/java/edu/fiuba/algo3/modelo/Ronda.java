@@ -18,12 +18,8 @@ public class Ronda {
         return pregunta.calcularPuntajeConMultiplicador(puntajeAMultiplicar, jugadorAfectado.getMultiplicador());
     }
 
-    public Puntaje aplicarExclusividadDuplicada(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        return pregunta.duplicarPuntajeConExclusividad(puntajeAMultiplicar, jugadorAfectado.getExclusividad());
-    }
-
-    public Puntaje aplicarExclusividadCuadruplicado(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
-        return pregunta.cuadruplicarPuntajeConExclusividad(puntajeAMultiplicar, jugadorAfectado.getExclusividad());
+    public Puntaje aplicarExclusividad(Puntaje puntajeAMultiplicar, ExclusividadDePuntaje exclusividadDePuntaje){
+        return pregunta.calcularPuntajeConExclusividad(puntajeAMultiplicar, exclusividadDePuntaje);
     }
 
     public Pregunta pregunta() {

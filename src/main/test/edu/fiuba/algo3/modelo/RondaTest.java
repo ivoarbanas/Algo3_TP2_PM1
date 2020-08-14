@@ -17,20 +17,18 @@ public class RondaTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcion4 = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcion4);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -55,20 +53,18 @@ public class RondaTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcion4 = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcion4);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -79,6 +75,8 @@ public class RondaTest {
         kahoot.jugadores().get(0).cargarRespuestas(respuestasDeUsuario1);
         kahoot.jugadores().get(1).cargarRespuestas(respuestasDeUsuario2);
         kahoot.verificarRonda();
+
+
         kahoot.cambiarRonda();
 
         ArrayList<Opcion> listaRespuestaJugador1 = new ArrayList<Opcion>();
@@ -90,7 +88,6 @@ public class RondaTest {
         Opcion opcion2PreguntaDos = new Opcion("Falso");
         listaRespuestaJugador1.add(opcion1PreguntaDos);
         listaRespuestaJugador2.add(opcion2PreguntaDos);
-
         kahoot.cargarPregunta(pregunta2);
         kahoot.jugadores().get(0).cargarRespuestas(listaRespuestaJugador1);
         kahoot.jugadores().get(1).cargarRespuestas(listaRespuestaJugador2);
@@ -111,20 +108,18 @@ public class RondaTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcion4 = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcion4);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -162,7 +157,7 @@ public class RondaTest {
     }
 
     @Test
-    public void HayTresondasYAmbosUsanMultiplicadoresPeroUnoEnPreguntaQueNoDebeYLosPuntosSeAsignanCorrectamente() {
+    public void HayTresRondasYAmbosUsanMultiplicadoresPeroUnoEnPreguntaQueNoDebeYLosPuntosSeAsignanCorrectamente() {
         Kahoot kahoot = new Kahoot();
 
         kahoot.crearJugador("Jorgito");
@@ -170,20 +165,18 @@ public class RondaTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcion4 = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcion4);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);
@@ -216,7 +209,6 @@ public class RondaTest {
         kahoot.cambiarRonda();
 
 
-        ArrayList<Opcion> listaOpcionesOrdenadas= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario1Pregunta3 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario2Pregunta3 = new ArrayList<Opcion>();
 
@@ -225,12 +217,12 @@ public class RondaTest {
         Opcion opcion3Pregunta3 = new Opcion("Seis");
         Opcion opcion4Pregunta3 = new Opcion("Diez");
 
-        listaOpcionesOrdenadas.add(opcion1Pregunta3);
-        listaOpcionesOrdenadas.add(opcion2Pregunta3);
-        listaOpcionesOrdenadas.add(opcion3Pregunta3);
-        listaOpcionesOrdenadas.add(opcion4Pregunta3);
+        OrderedChoice pregunta3 = new OrderedChoice("Ordenar numeros de menor a mayor");
 
-        OrderedChoice pregunta3 = new OrderedChoice("Ordenar numeros de menor a mayor", listaOpcionesOrdenadas);
+        pregunta3.cargarOpcionOrdenada(opcion1Pregunta3);
+        pregunta3.cargarOpcionOrdenada(opcion2Pregunta3);
+        pregunta3.cargarOpcionOrdenada(opcion3Pregunta3);
+        pregunta3.cargarOpcionOrdenada(opcion4Pregunta3);
 
         respuestasDelUsuario1Pregunta3.add(opcion1Pregunta3);
         respuestasDelUsuario1Pregunta3.add(opcion2Pregunta3);
@@ -263,20 +255,18 @@ public class RondaTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuario2 = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcion2 = new Opcion("Homero");
         Opcion opcion3 = new Opcion("Rafa");
         Opcion opcion4 = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcion2);
-        listaOpcionesCorrectas.add(opcion3);
-        listaOpcionesIncorrectas.add(opcion4);
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcion2);
+        pregunta.cargarOpcionCorrecta(opcion3);
+        pregunta.cargarOpcionIncorrecta(opcion4);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcion2);

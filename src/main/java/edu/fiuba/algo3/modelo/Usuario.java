@@ -12,6 +12,7 @@ public class Usuario {
     private ArrayList<Opcion> respuestasDelUsuario;
     private ArrayList<ExclusividadDePuntaje> exclusividadDePuntajes;
     private ExclusividadDePuntaje exclusividadPuntajeActivo;
+    private boolean usoExclusividadEnRonda;
 
     public Usuario (String nombre){
         this.nombre = nombre;
@@ -21,9 +22,10 @@ public class Usuario {
         puntaje = new Puntaje();
         respuestasDelUsuario = new ArrayList();
         exclusividadDePuntajes = new ArrayList<ExclusividadDePuntaje>();
-        exclusividadDePuntajes.add(new ExclusividadDePuntajeActivado());
-        exclusividadDePuntajes.add(new ExclusividadDePuntajeActivado());
+        exclusividadDePuntajes.add(new ExclusividadDePuntajeDoble());
+        exclusividadDePuntajes.add(new ExclusividadDePuntajeDoble());
         exclusividadPuntajeActivo = new ExclusividadDePuntajeNulo();
+        usoExclusividadEnRonda = false;
     }
 
 
@@ -89,17 +91,22 @@ public class Usuario {
         ExclusividadDePuntaje auxiliar = this.exclusividadDePuntajes.get(0);
         this.exclusividadDePuntajes.remove(0);
         exclusividadPuntajeActivo = auxiliar;
+        usoExclusividadEnRonda = true;
         //Aca tirar la excepcion OJO el test que no pasa !!!! (esta comentado pa que te to piola)
     }
 
     public void limpiarExclusividad(){
         exclusividadPuntajeActivo = new ExclusividadDePuntajeNulo();
+        usoExclusividadEnRonda = false;
     }
 
     public ExclusividadDePuntaje getExclusividad(){
         return exclusividadPuntajeActivo;
     }
 
+    public boolean usoExclusividadEnRonda(){
+        return usoExclusividadEnRonda;
+    }
 
     public String nombre(){
         return nombre;

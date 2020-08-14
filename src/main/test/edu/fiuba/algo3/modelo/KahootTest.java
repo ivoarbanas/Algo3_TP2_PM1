@@ -47,20 +47,18 @@ public class KahootTest {
 
         ArrayList<Opcion> respuestasDeUsuario1 = new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDeUsuarioDos = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesCorrectas = new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesIncorrectas = new ArrayList<Opcion>();
 
         Opcion opcion1 = new Opcion("Marge");
         Opcion opcionDos = new Opcion("Homero");
         Opcion opcionTres = new Opcion("Rafa");
         Opcion opcionCuatro = new Opcion("Juan Manuel Serrat");
 
-        listaOpcionesCorrectas.add(opcion1);
-        listaOpcionesCorrectas.add(opcionDos);
-        listaOpcionesCorrectas.add(opcionTres);
-        listaOpcionesIncorrectas.add(opcionCuatro);
+        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons");
 
-        MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad("Cual de estos es un personaje de los simpsons", listaOpcionesCorrectas, listaOpcionesIncorrectas);
+        pregunta.cargarOpcionCorrecta(opcion1);
+        pregunta.cargarOpcionCorrecta(opcionDos);
+        pregunta.cargarOpcionCorrecta(opcionTres);
+        pregunta.cargarOpcionIncorrecta(opcionCuatro);
 
         respuestasDeUsuario1.add(opcion1);
         respuestasDeUsuario1.add(opcionDos);

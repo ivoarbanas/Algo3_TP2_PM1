@@ -5,9 +5,8 @@ import java.util.ArrayList;
 public class OrderedChoice extends Pregunta {
 
 
-    public OrderedChoice(String enunciado, ArrayList<Opcion> opcionesOrdenadas){
+    public OrderedChoice(String enunciado){
         super(enunciado);
-        opciones = opcionesOrdenadas;
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas){
@@ -25,12 +24,12 @@ public class OrderedChoice extends Pregunta {
         return puntaje;
     }
 
-    public Puntaje duplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.duplicarPuntaje(exclusividad);
+    public Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
+        return exclusividad.aplicarExclusividad(puntaje);
     }
 
-    public Puntaje cuadruplicarPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad){
-        return puntaje.cuadriplicarPuntaje(exclusividad);
+    public void cargarOpcionOrdenada(Opcion opcion){
+        opciones.add(opcion);
     }
 
 }

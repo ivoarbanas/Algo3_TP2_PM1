@@ -10,17 +10,17 @@ public class GroupChoiceTest {
 
     @Test
     public void seCreaPreguntaGroupChoiceConOpcionesAgrupadasCorrectamente() {
-        ArrayList<Opcion> listaOpcionesGrupo1= new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesGrupoDos= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Amarillo");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcion4 = new Opcion("Rojo");
-        listaOpcionesGrupo1.add(opcion1);
-        listaOpcionesGrupo1.add(opcionTres);
-        listaOpcionesGrupoDos.add(opcionDos);
-        listaOpcionesGrupoDos.add(opcion4);
-        GroupChoice pregunta = new GroupChoice("Numeros", "Colores", listaOpcionesGrupo1, listaOpcionesGrupoDos);
+
+        GroupChoice pregunta = new GroupChoice("Numeros", "Colores");
+
+        pregunta.cargarOpcionesGrupoUno(opcion1);
+        pregunta.cargarOpcionesGrupoUno(opcionTres);
+        pregunta.cargarOpcionesGrupoDos(opcionDos);
+        pregunta.cargarOpcionesGrupoDos(opcion4);
 
         assertEquals(opcion1.valor(),pregunta.listaOpcionesGrupoUno().get(0).valor());
         assertEquals(opcionTres.valor(),pregunta.listaOpcionesGrupoUno().get(1).valor());
@@ -32,18 +32,18 @@ public class GroupChoiceTest {
     public void recibeUnaListaDeRespuestaGroupChoiceYAsignaPuntajeCorrectamente() {
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Manuel");
-        ArrayList<Opcion> listaOpcionesGrupo1= new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesGrupoDos= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Amarillo");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcion4 = new Opcion("Rojo");
-        listaOpcionesGrupo1.add(opcion1);
-        listaOpcionesGrupo1.add(opcionTres);
-        listaOpcionesGrupoDos.add(opcionDos);
-        listaOpcionesGrupoDos.add(opcion4);
-        GroupChoice pregunta = new GroupChoice("Numeros", "Colores", listaOpcionesGrupo1, listaOpcionesGrupoDos);
+
+        GroupChoice pregunta = new GroupChoice("Numeros", "Colores");
+
+        pregunta.cargarOpcionesGrupoUno(opcion1);
+        pregunta.cargarOpcionesGrupoUno(opcionTres);
+        pregunta.cargarOpcionesGrupoDos(opcionDos);
+        pregunta.cargarOpcionesGrupoDos(opcion4);
 
         // solo cargo respuestas del grupo1
         respuestasDelUsuario.add(opcion1);
@@ -61,18 +61,18 @@ public class GroupChoiceTest {
     public void recibeUnaListaDeRespuestaGroupChoiceAgrupandoMalYAsignaPuntajeCorrectamente() {
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Manuel");
-        ArrayList<Opcion> listaOpcionesGrupo1= new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesGrupoDos= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Amarillo");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcion4 = new Opcion("Rojo");
-        listaOpcionesGrupo1.add(opcion1);
-        listaOpcionesGrupo1.add(opcionTres);
-        listaOpcionesGrupoDos.add(opcionDos);
-        listaOpcionesGrupoDos.add(opcion4);
-        GroupChoice pregunta = new GroupChoice("Numeros", "Colores", listaOpcionesGrupo1, listaOpcionesGrupoDos);
+
+        GroupChoice pregunta = new GroupChoice("Numeros", "Colores");
+
+        pregunta.cargarOpcionesGrupoUno(opcion1);
+        pregunta.cargarOpcionesGrupoUno(opcionTres);
+        pregunta.cargarOpcionesGrupoDos(opcionDos);
+        pregunta.cargarOpcionesGrupoDos(opcion4);
 
         // solo cargo respuestas del grupo1
         respuestasDelUsuario.add(opcion1);
@@ -90,18 +90,18 @@ public class GroupChoiceTest {
     public void recibeUnaListaDeRespuestaGroupChoiceIncompletaYAsignaPuntajeCorrectamente() {
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Manuel");
-        ArrayList<Opcion> listaOpcionesGrupo1= new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesGrupoDos= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Amarillo");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcion4 = new Opcion("Rojo");
-        listaOpcionesGrupo1.add(opcion1);
-        listaOpcionesGrupo1.add(opcionTres);
-        listaOpcionesGrupoDos.add(opcionDos);
-        listaOpcionesGrupoDos.add(opcion4);
-        GroupChoice pregunta = new GroupChoice("Numeros", "Colores", listaOpcionesGrupo1, listaOpcionesGrupoDos);
+
+        GroupChoice pregunta = new GroupChoice("Numeros", "Colores");
+
+        pregunta.cargarOpcionesGrupoUno(opcion1);
+        pregunta.cargarOpcionesGrupoUno(opcionTres);
+        pregunta.cargarOpcionesGrupoDos(opcionDos);
+        pregunta.cargarOpcionesGrupoDos(opcion4);
 
         // solo cargo respuestas del grupo1
         respuestasDelUsuario.add(opcion1);
@@ -118,18 +118,18 @@ public class GroupChoiceTest {
     public void recibeUnaListaDeRespuestaGroupChoiceAgrupandoDeMasYAsignaPuntajeCorrectamente() {
         SistemaPuntaje sistemaPuntaje = new SistemaPuntaje();
         Usuario jugador1 = new Usuario("Manuel");
-        ArrayList<Opcion> listaOpcionesGrupo1= new ArrayList<Opcion>();
-        ArrayList<Opcion> listaOpcionesGrupoDos= new ArrayList<Opcion>();
         ArrayList<Opcion> respuestasDelUsuario= new ArrayList<Opcion>();
         Opcion opcion1 = new Opcion("Uno");
         Opcion opcionDos = new Opcion("Amarillo");
         Opcion opcionTres = new Opcion("Seis");
         Opcion opcion4 = new Opcion("Rojo");
-        listaOpcionesGrupo1.add(opcion1);
-        listaOpcionesGrupo1.add(opcionTres);
-        listaOpcionesGrupoDos.add(opcionDos);
-        listaOpcionesGrupoDos.add(opcion4);
-        GroupChoice pregunta = new GroupChoice("Numeros", "Colores", listaOpcionesGrupo1, listaOpcionesGrupoDos);
+
+        GroupChoice pregunta = new GroupChoice("Numeros", "Colores");
+
+        pregunta.cargarOpcionesGrupoUno(opcion1);
+        pregunta.cargarOpcionesGrupoUno(opcionTres);
+        pregunta.cargarOpcionesGrupoDos(opcionDos);
+        pregunta.cargarOpcionesGrupoDos(opcion4);
 
         // solo cargo respuestas del grupo1
         respuestasDelUsuario.add(opcion1);
