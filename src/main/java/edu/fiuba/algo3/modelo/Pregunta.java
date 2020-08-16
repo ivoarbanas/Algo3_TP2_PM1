@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-abstract class Pregunta {
+public abstract class Pregunta {
 
     protected String enunciado;
     protected ArrayList<Opcion> opciones;
@@ -25,4 +25,5 @@ abstract class Pregunta {
         return opciones;
     }
 
+    public abstract ArrayList<Opcion> opcionCorrecta();
 }

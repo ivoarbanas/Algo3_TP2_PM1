@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-abstract class MultipleChoice extends Pregunta {
+public abstract class MultipleChoice extends Pregunta {
 
     protected ArrayList<Opcion> listaOpcionesCorrectas;
     protected ArrayList<Opcion> listaOpcionesIncorrectas;
@@ -34,4 +34,7 @@ abstract class MultipleChoice extends Pregunta {
 
     public abstract Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador);
     public abstract Puntaje calcularPuntajeConExclusividad(Puntaje puntaje, ExclusividadDePuntaje exclusividad);
+    public ArrayList<Opcion> opcionCorrecta() {
+        return listaOpcionesCorrectas;
+    }
 }

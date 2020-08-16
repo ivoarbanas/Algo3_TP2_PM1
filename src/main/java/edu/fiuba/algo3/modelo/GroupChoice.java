@@ -65,4 +65,8 @@ public class GroupChoice extends Pregunta {
     public ArrayList<Opcion> listaOpcionesGrupoDos(){
         return listaOpcionesGrupoDos;
     }
+
+    public ArrayList<Opcion> opcionCorrecta() {
+        return null;
+    }
 }

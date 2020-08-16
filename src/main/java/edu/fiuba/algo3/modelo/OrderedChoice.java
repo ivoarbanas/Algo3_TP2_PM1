@@ -32,4 +32,7 @@ public class OrderedChoice extends Pregunta {
         opciones.add(opcion);
     }
 
+    public ArrayList<Opcion> opcionCorrecta() {
+        return null;
+    }
 }

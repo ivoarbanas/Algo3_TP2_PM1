@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Kahoot {
 
@@ -11,13 +8,15 @@ public class Kahoot {
     private ArrayList<Ronda> rondas;
     private Ronda rondaActiva;
     private SistemaPuntaje sistemaPuntaje;
+    private int ronda;
 
     public Kahoot() {
-        rondaActiva = new Ronda();
+
         sistemaPuntaje = new SistemaPuntaje();
         jugadores = new ArrayList<Usuario>();
         rondas = new ArrayList<Ronda>();
-        rondas.add(rondaActiva);
+        ronda = 0;
+        rondaActiva = new Ronda();
 
 
     }
@@ -73,6 +72,29 @@ public class Kahoot {
     }
 
     public void cargarPreguntas(){
+        ArrayList<Pregunta>preguntas = new ArrayList<>();
+        VerdaderoFalsoPenalidad pregunta1 = new VerdaderoFalsoPenalidad("Aprobe el parcial", false);
+        VerdaderoFalsoPenalidad pregunta4 = new VerdaderoFalsoPenalidad("Aprobe el parcial", false);
+        VerdaderoFalsoClasico pregunta2 = new VerdaderoFalsoClasico("Aprobe el recu", true);
+        MultipleChoiceParcial pregunta3 = new MultipleChoiceParcial("Profesores turno tarde");
+        pregunta3.cargarOpcionCorrecta(new Opcion("+U"));
+        pregunta3.cargarOpcionCorrecta(new Opcion("EDSON"));
+        pregunta3.cargarOpcionCorrecta(new Opcion("JPB"));
+        pregunta3.cargarOpcionIncorrecta(new Opcion("Cba"));
+        pregunta3.cargarOpcionCorrecta(new Opcion("Eugenio"));
+        Ronda ronda3 = new Ronda();
+        ronda3.cargarPregunta(pregunta3);
+        Ronda ronda4 = new Ronda();
+        ronda4.cargarPregunta(pregunta4);
+        Ronda ronda1 = new Ronda();
+        ronda1.cargarPregunta(pregunta1);
+        Ronda ronda2 = new Ronda();
+        ronda2.cargarPregunta(pregunta2);
+        rondas.add(ronda1);
+        rondas.add(ronda2);
+        rondas.add(ronda3);
+        rondas.add(ronda4);
+        rondaActiva = rondas.get(ronda);
         /*ArrayList<Opcion>
         try {
             File myObj = new File("filename.txt");
@@ -108,7 +130,7 @@ public class Kahoot {
     // NO SE USA TODAVIA
     public void presentarPreguntaALosUsuarios(){
         for (Usuario jugador : jugadores) {
-            jugador.elegirRespuesta(rondaActiva.pregunta());
+            jugador.elegirRespuesta(rondas.get(ronda).pregunta());
         }
     }
 
@@ -119,8 +141,8 @@ public class Kahoot {
             jugador.limpiarMultiplicador();
             jugador.limpiarExclusividad();
         }
-        rondaActiva = new Ronda();
-        rondas.add(rondaActiva);
+        rondaActiva = rondas.get(ronda + 1);
+        ronda += 1;
 
     }
 
@@ -133,6 +155,10 @@ public class Kahoot {
     }
 
     public Ronda rondaActiva(){
+        return rondaActiva;
+    }
+
+    public Ronda obtenerRondaActiva() {
         return rondaActiva;
     }
 }

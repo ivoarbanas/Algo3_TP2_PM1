@@ -18,6 +18,7 @@ public class App extends Application  {
     @Override
     public void start(Stage stage) {
         Kahoot kahoot = new Kahoot();
+        kahoot.cargarPreguntas();
         stage.setTitle("Kahoot 2");
 
         ContenedorNombres contenedorPrincipal = new ContenedorNombres(stage, kahoot);

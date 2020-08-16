@@ -9,7 +9,7 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso{
     }
 
     public  Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas) {
-        if (listaDeRespuestas.get(0).valor().equals(opcionCorrecta().valor())){
+        if (listaDeRespuestas.get(0).valor().equals(opcionCorrecta().get(0).valor())){
             Puntaje puntajePositivo = new Puntaje(1);
             return puntajePositivo;
         }
