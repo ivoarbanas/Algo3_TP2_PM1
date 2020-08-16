@@ -78,15 +78,4 @@ public class VerdaderoFalsoTest {
         assertEquals(opcionCorrecta.valor(), pregunta.opcionCorrecta().get(0).valor());
     }
 
-    @Test
-    public void chupala(){
-        Kahoot kahoot = new Kahoot();
-        VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad("Aprobé el parcial",true);
-        kahoot.cargarPregunta(pregunta);
-
-
-        assertEquals(5, kahoot.rondaActiva().pregunta().getClass());
-    }
-
-
 }

@@ -6,32 +6,37 @@ import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Pregunta;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class EnviarRespuestaMultipleChoiceHandler extends EnviarRespuestaHandler{
+public class EnviarRespuestaOrderedChoiceHandler extends EnviarRespuestaHandler {
 
-    ArrayList<CheckBox> botonesOpciones;
+    ArrayList<HBox> botonesOpciones;
 
-    public EnviarRespuestaMultipleChoiceHandler(Kahoot kahoot, Stage stage, ToggleGroup grupoMultiplicadores, ArrayList<CheckBox> botonesOpciones, ArrayList<ToggleButton> botonesMultiplicadores, Pregunta pregunta, ContenedorPregunta contenedor){
+    public EnviarRespuestaOrderedChoiceHandler(Kahoot kahoot, Stage stage, ToggleGroup grupoMultiplicadores, ArrayList<HBox> botonesOpciones, ArrayList<ToggleButton> botonesMultiplicadores, Pregunta pregunta, ContenedorPregunta contenedor){
         super(kahoot, stage,  grupoMultiplicadores,  botonesMultiplicadores,  pregunta,  contenedor);
         this.botonesOpciones = botonesOpciones;
-
-
     }
 
     @Override
     public void handle(ActionEvent event) {
-        ArrayList<Opcion> opcionElegida= new ArrayList<>();
-        for(CheckBox opcion : botonesOpciones){
-            if(opcion.isSelected()){
-                Opcion unaOpcionElegida = (Opcion) opcion.getUserData();
-                opcionElegida.add(unaOpcionElegida);
-                opcion.setSelected(false);
-            }
+        ArrayList<Opcion> opcionElegida = new ArrayList<>();
+        for(int ordenSpinner = 0; ordenSpinner < botonesOpciones.size(); ordenSpinner++){
+                Spinner spinner = (Spinner)botonesOpciones.get(ordenSpinner).getChildren().get(1);
+                if(spinner.getValue().equals(ordenSpinner+1)){
+                    opcionElegida.add((Opcion)spinner.getUserData());
+                }
+
         }
-        if(opcionElegida.size() == 0){
+        for(int ordenSpinner = 0; ordenSpinner < botonesOpciones.size(); ordenSpinner++){
+            Spinner spinner = (Spinner)botonesOpciones.get(ordenSpinner).getChildren().get(1);
+            spinner.decrement(6);
+
+        }
+
+        /*if(opcionElegida.size() != pregunta.obtenerOpciones().size()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText("Seleccione una opción:");
@@ -39,11 +44,11 @@ public class EnviarRespuestaMultipleChoiceHandler extends EnviarRespuestaHandler
             alert.setContentText(mensaje);
             alert.show();
         }
-        else{
+
+        else{*/
             contenedor.getJugadorActivo().cargarRespuestas(opcionElegida);
             EnviarRespuestaHandler multiplicadorHandler = new EnviarRespuestaHandler(kahoot, stage,  grupoMultiplicadores,  botonesMultiplicadores,  pregunta,  contenedor);
             multiplicadorHandler.handle(event);
-        }
+        //}
     }
 }
-

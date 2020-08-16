@@ -1,0 +1,46 @@
+[
+
+  {
+    "enunciado":"Ordene de menor a mayor",
+    "tipoDePregunta":"Ordered Choice",
+    "opciones":{
+                "opcionOrdenada":"Uno",
+                "opcionOrdenada":"Dos",
+                "opcionOrdenada":"Tres",
+                "opcionOrdenada":"Cuatro",
+                "opcionOrdenada":"Cinco"
+            }
+  },  
+  {
+    "enunciado":"Aprobe el parcial",
+    "tipoDePregunta":"Verdadero y Falso Clasico",
+    "opciones":false
+  },
+  {
+    "enunciado":"Aprobe el recu",
+    "tipoDePregunta":"Verdadero y Falso con Penalidad",
+    "opciones":true
+  },
+  {
+    "enunciado":"Que profes tenemos?",
+    "tipoDePregunta":"Multiple Choice Parcial",
+    "opciones":{
+                "opcionVerdadera":"Massuh",
+                "opcionVerdadera":"Suarez",
+                "opcionVerdadera":"Picco",
+                "opcionFalsa":"Acero",
+                "opcionFalsa":"Garea"
+            }
+  },
+  {
+    "enunciado":"Separar en numeros impares y pares",
+    "tipoDePregunta":"Group Choice",
+    "opciones":{
+                "opcionGrupo1":"1",
+                "opcionGrupo2":"2",
+                "opcionGrupo1":"3",
+                "opcionGrupo2":"4",
+                "opcionGrupo1":"5"
+            }
+  }
+]

@@ -1,6 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
 
 public class Kahoot {
 
@@ -72,45 +79,129 @@ public class Kahoot {
     }
 
     public void cargarPreguntas(){
-        ArrayList<Pregunta>preguntas = new ArrayList<>();
-        VerdaderoFalsoPenalidad pregunta1 = new VerdaderoFalsoPenalidad("Aprobe el parcial", false);
-        VerdaderoFalsoPenalidad pregunta4 = new VerdaderoFalsoPenalidad("Aprobe el parcial", false);
-        VerdaderoFalsoClasico pregunta2 = new VerdaderoFalsoClasico("Aprobe el recu", true);
-        MultipleChoiceParcial pregunta3 = new MultipleChoiceParcial("Profesores turno tarde");
-        pregunta3.cargarOpcionCorrecta(new Opcion("+U"));
-        pregunta3.cargarOpcionCorrecta(new Opcion("EDSON"));
-        pregunta3.cargarOpcionCorrecta(new Opcion("JPB"));
-        pregunta3.cargarOpcionIncorrecta(new Opcion("Cba"));
-        pregunta3.cargarOpcionCorrecta(new Opcion("Eugenio"));
-        Ronda ronda3 = new Ronda();
-        ronda3.cargarPregunta(pregunta3);
-        Ronda ronda4 = new Ronda();
-        ronda4.cargarPregunta(pregunta4);
-        Ronda ronda1 = new Ronda();
-        ronda1.cargarPregunta(pregunta1);
-        Ronda ronda2 = new Ronda();
-        ronda2.cargarPregunta(pregunta2);
-        rondas.add(ronda1);
-        rondas.add(ronda2);
-        rondas.add(ronda3);
-        rondas.add(ronda4);
-        rondaActiva = rondas.get(ronda);
-        /*ArrayList<Opcion>
         try {
-            File myObj = new File("filename.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                while (myReader.hasNext(",")){
+            JsonReader reader = new JsonReader(new FileReader("C:/Users/Ivo/Documents/GitHub/Algo3_TP2/preguntas.json"));
 
+            reader.beginArray();
+            while (reader.hasNext()) {
+
+                reader.beginObject();
+                while (reader.hasNext()) {
+                    String name = reader.nextName();
+                    if(name.equals("enunciado")){
+                        String enunciado = reader.nextString();
+                        name = reader.nextName();
+                        String tipoDePregunta = reader.nextString();
+                        Ronda ronda = new Ronda();
+                        if (tipoDePregunta.equals("Verdadero y Falso Clasico")) {
+                            name = reader.nextName();
+                            VerdaderoFalsoClasico pregunta = new VerdaderoFalsoClasico(enunciado,reader.nextBoolean());
+                            ronda.cargarPregunta(pregunta);
+                            rondas.add(ronda);
+
+                        } else if (tipoDePregunta.equals("Verdadero y Falso con Penalidad")) {
+                            name = reader.nextName();
+                            VerdaderoFalsoPenalidad pregunta = new VerdaderoFalsoPenalidad(enunciado,reader.nextBoolean());
+                            ronda.cargarPregunta(pregunta);
+                            rondas.add(ronda);
+
+                        } else if (tipoDePregunta.equals("Multiple Choice Clasico")) {
+
+                            MultipleChoiceClasico pregunta = new MultipleChoiceClasico(enunciado);
+                            reader.beginObject();
+                            while (reader.hasNext()) {
+                                String tipoDeOpcion = reader.nextName();
+                                Opcion opcionACargar = new Opcion(reader.nextString());
+                                if (tipoDeOpcion == "opcionVerdadera") {
+                                    pregunta.cargarOpcionCorrecta(opcionACargar);
+                                } else {
+                                    pregunta.cargarOpcionIncorrecta(opcionACargar);
+                                }
+
+                            }
+
+                            ronda.cargarPregunta(pregunta);
+                            rondas.add(ronda);
+
+                        } else if (tipoDePregunta.equals("Multiple Choice Penalidad")) {
+
+                            MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad(enunciado);
+                            reader.beginObject();
+                            while (reader.hasNext()) {
+                                String tipoDeOpcion = reader.nextName();
+                                Opcion opcionACargar = new Opcion(reader.nextString());
+                                if (tipoDeOpcion == "opcionVerdadera") {
+                                    pregunta.cargarOpcionCorrecta(opcionACargar);
+                                } else {
+                                    pregunta.cargarOpcionIncorrecta(opcionACargar);
+                                }
+
+                            }
+
+                            ronda.cargarPregunta(pregunta);
+                            rondas.add(ronda);
+
+                        } else if (tipoDePregunta.equals("Multiple Choice Parcial")) {
+
+                            MultipleChoiceParcial pregunta = new MultipleChoiceParcial(enunciado);
+                            name = reader.nextName();
+                            reader.beginObject();
+                            while (reader.hasNext()) {
+                                String tipoDeOpcion = reader.nextName();
+                                Opcion opcionACargar = new Opcion(reader.nextString());
+                                if (tipoDeOpcion.equals("opcionVerdadera")) {
+                                    pregunta.cargarOpcionCorrecta(opcionACargar);
+                                } else {
+                                    pregunta.cargarOpcionIncorrecta(opcionACargar);
+                                }
+
+                            }
+                            reader.endObject();
+                            ronda.cargarPregunta(pregunta);
+                            rondas.add(ronda);
+
+                        }
+                        else if (tipoDePregunta.equals("Ordered Choice")) {
+
+                            OrderedChoice pregunta = new OrderedChoice(enunciado);
+                            name = reader.nextName();
+                            reader.beginObject();
+                            while (reader.hasNext()) {
+                                String tipoDeOpcion = reader.nextName();
+                                Opcion opcionACargar = new Opcion(reader.nextString());
+                                pregunta.cargarOpcionOrdenada(opcionACargar);
+                            }
+                            reader.endObject();
+                            ronda.cargarPregunta(pregunta);
+                            rondas.add(ronda);
+
+                        }
+                        else if (tipoDePregunta.equals("Group Choice")) {
+
+                            //System.out.println(reader.nextInt());
+
+                        }
+                    }
+
+                    else {
+                        reader.skipValue();
+
+                    }
                 }
-                String data = myReader.nextLine();
-                System.out.println(data);
+                reader.endObject();
             }
-            myReader.close();
+            rondaActiva = rondas.get(0);
+
+            reader.endArray();
+
+            reader.close();
+
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
             e.printStackTrace();
-        }*/
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void cargarPregunta(Pregunta pregunta){
@@ -141,8 +232,14 @@ public class Kahoot {
             jugador.limpiarMultiplicador();
             jugador.limpiarExclusividad();
         }
-        rondaActiva = rondas.get(ronda + 1);
-        ronda += 1;
+        if(ronda + 1 < rondas.size()){
+            rondaActiva = rondas.get(ronda + 1);
+            ronda += 1;
+        }
+        else{
+            //System.out.println("Fin");
+        }
+
 
     }
 

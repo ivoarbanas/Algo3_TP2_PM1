@@ -39,7 +39,7 @@ public class MostrarResultadoHandler implements EventHandler<ActionEvent> {
         else{
             String opciones = opcionCorrecta.get(0).valor();
             for(int opcion = 1; opcion < opcionCorrecta.size(); opcion++){
-                opciones += " ," + opcionCorrecta.get(opcion).valor();
+                opciones += ", " + opcionCorrecta.get(opcion).valor();
             }
             label = new Label("Las respuestas correcta son: " + opciones);
         }

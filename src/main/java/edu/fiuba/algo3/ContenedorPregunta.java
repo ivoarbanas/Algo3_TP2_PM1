@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.Eventos.EnviarRespuestaMultipleChoiceHandler;
+import edu.fiuba.algo3.Eventos.EnviarRespuestaOrderedChoiceHandler;
 import edu.fiuba.algo3.Eventos.EnviarRespuestaVerdaderoFalsoHandler;
 import edu.fiuba.algo3.modelo.*;
 import javafx.scene.Scene;
@@ -104,9 +105,34 @@ public class ContenedorPregunta extends BorderPane {
                 }
 
             }
+
             EnviarRespuestaMultipleChoiceHandler enviarRespuestaHandler = new EnviarRespuestaMultipleChoiceHandler(kahoot,stage,grupoMultiplicadores,botonesOpciones,botonesMultiplicadores,pregunta,this);
             aceptar.setOnAction(enviarRespuestaHandler);
         }
+
+        if(pregunta instanceof OrderedChoice){
+            ArrayList<HBox> botonesOpciones = new ArrayList<>();
+            for (Opcion opcion : opciones) {
+                HBox contenedorOpcion = new HBox();
+                Spinner botonOpcion = new Spinner(1,opciones.size(),1);
+                Label nombreOpcion = new Label(opcion.valor());
+                contenedorOpcion.getChildren().addAll(nombreOpcion,botonOpcion);
+                botonOpcion.setUserData(opcion);
+                botonesOpciones.add(contenedorOpcion);
+            }
+            for (int opcion = 0; opcion < botonesOpciones.size(); opcion++) {
+                if (opcion % 2 != 1) {
+                    opcionesUno.getChildren().add(botonesOpciones.get(opcion));
+                } else {
+                    opcionesDos.getChildren().add(botonesOpciones.get(opcion));
+                }
+
+            }
+            EnviarRespuestaOrderedChoiceHandler enviarRespuestaHandler = new EnviarRespuestaOrderedChoiceHandler(kahoot,stage,grupoMultiplicadores,botonesOpciones,botonesMultiplicadores,pregunta,this);
+            aceptar.setOnAction(enviarRespuestaHandler);
+        }
+
+        if(pregunta instanceof GroupChoice){}
 
         todasLasOpciones.getChildren().addAll(opcionesUno, opcionesDos);
         preguntaYOpciones.getChildren().addAll(enunciado, todasLasOpciones, aceptar);
