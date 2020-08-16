@@ -80,7 +80,7 @@ public class Kahoot {
 
     public void cargarPreguntas(){
         try {
-            JsonReader reader = new JsonReader(new FileReader("C:/Users/Ivo/Documents/GitHub/Algo3_TP2/preguntas.json"));
+            JsonReader reader = new JsonReader(new FileReader("preguntas.json"));
 
             reader.beginArray();
             while (reader.hasNext()) {
