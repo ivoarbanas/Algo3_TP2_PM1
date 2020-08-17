@@ -35,27 +35,35 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         Toggle multiplicadoresTogger = grupoMultiplicadores.getSelectedToggle();
-        if(pregunta instanceof VerdaderoFalsoPenalidad || pregunta instanceof MultipleChoicePenalidad){
-
-            if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
+        if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
+            if(contenedor.getJugadorActivo().quedaX2() != 0){
                 contenedor.getJugadorActivo().utilizarMultiplicadorX2();
-                if(botonesMultiplicadores.get(0).getUserData() instanceof MultiplicadorInactivo){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Ya no te quedan multiplicadores X2 para usar");
-                    String mensaje = "Presione OK para continuar";
-                    alert.setContentText(mensaje);
-                    alert.show();
-                }
-
             }
-            else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
-                contenedor.getJugadorActivo().utilizarMultiplicadorX3();
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("Ya no te quedan multiplicadores X2 para usar");
+                String mensaje = "Presione OK para continuar";
+                alert.setContentText(mensaje);
+                alert.show();
             }
-
         }
 
-        else if(multiplicadoresTogger == botonesMultiplicadores.get(2)){
+        if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
+            if(contenedor.getJugadorActivo().quedaX3() != 0){
+                contenedor.getJugadorActivo().utilizarMultiplicadorX3();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("Ya no te quedan multiplicadores X3 para usar");
+                String mensaje = "Presione OK para continuar";
+                alert.setContentText(mensaje);
+                alert.show();
+            }
+        }
+
+        if(multiplicadoresTogger == botonesMultiplicadores.get(2)){
             if(contenedor.getJugadorActivo().quedaExclusividad() != 0){
                 contenedor.getJugadorActivo().utilizarExclusividadPuntaje();
             }
@@ -67,7 +75,6 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
                 alert.setContentText(mensaje);
                 alert.show();
             }
-            botonesMultiplicadores.get(2).setSelected(false);
         }
         botonesMultiplicadores.get(0).setSelected(false);
         botonesMultiplicadores.get(1).setSelected(false);

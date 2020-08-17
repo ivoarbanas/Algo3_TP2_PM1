@@ -40,15 +40,8 @@ public class ContenedorPregunta extends BorderPane {
         puntos = new VBox();
         multiplicadores = new VBox();
         grupoMultiplicadores = new ToggleGroup();
-        this.mostrarPregunta();
-    }
-
-    private void mostrarPregunta() {
-        jugadorActivo = kahoot.jugadores().get(0);
         ToggleButton x2 = new ToggleButton("X2");
-        x2.setUserData(jugadorActivo.getX2());
         ToggleButton x3 = new ToggleButton("X3");
-        x3.setUserData(jugadorActivo.getX3());
         ToggleButton exclusividad = new ToggleButton("Exclusividad");
         botonesMultiplicadores = new ArrayList<>();
         botonesMultiplicadores.add(x2);
@@ -58,6 +51,11 @@ public class ContenedorPregunta extends BorderPane {
         x3.setToggleGroup(grupoMultiplicadores);
         exclusividad.setToggleGroup(grupoMultiplicadores);
         multiplicadores.getChildren().addAll(x2, x3, exclusividad);
+        this.mostrarPregunta();
+    }
+
+    private void mostrarPregunta() {
+        jugadorActivo = kahoot.jugadores().get(0);
         preguntaYOpciones = new VBox();
         Label puntosJugadorUno = new Label(kahoot.jugadores().get(0).nombre() + ": " + kahoot.jugadores().get(0).puntaje().valor());
         Label puntosJugadorDos = new Label(kahoot.jugadores().get(1).nombre() + ": " + kahoot.jugadores().get(1).puntaje().valor());
