@@ -10,12 +10,13 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Spliterator;
 
 public class EnviarRespuestaOrderedChoiceHandler extends EnviarRespuestaHandler {
 
-    ArrayList<HBox> botonesOpciones;
+    ArrayList<Spinner> botonesOpciones;
 
-    public EnviarRespuestaOrderedChoiceHandler(Kahoot kahoot, Stage stage, ToggleGroup grupoMultiplicadores, ArrayList<HBox> botonesOpciones, ArrayList<ToggleButton> botonesMultiplicadores, Pregunta pregunta, ContenedorPregunta contenedor){
+    public EnviarRespuestaOrderedChoiceHandler(Kahoot kahoot, Stage stage, ToggleGroup grupoMultiplicadores, ArrayList<Spinner> botonesOpciones, ArrayList<ToggleButton> botonesMultiplicadores, Pregunta pregunta, ContenedorPregunta contenedor){
         super(kahoot, stage,  grupoMultiplicadores,  botonesMultiplicadores,  pregunta,  contenedor);
         this.botonesOpciones = botonesOpciones;
     }
@@ -23,20 +24,23 @@ public class EnviarRespuestaOrderedChoiceHandler extends EnviarRespuestaHandler 
     @Override
     public void handle(ActionEvent event) {
         ArrayList<Opcion> opcionElegida = new ArrayList<>();
-        for(int ordenSpinner = 0; ordenSpinner < botonesOpciones.size(); ordenSpinner++){
-                Spinner spinner = (Spinner)botonesOpciones.get(ordenSpinner).getChildren().get(1);
-                if(spinner.getValue().equals(ordenSpinner+1)){
-                    opcionElegida.add((Opcion)spinner.getUserData());
+        for (Spinner unaOpcion: botonesOpciones){
+            String valor = (String) unaOpcion.getValue();
+            opcionElegida.add(new Opcion(valor));
+            unaOpcion.decrement(6);
+        }
+        Boolean eligioRepetida = false;
+        for(int i = 0; i < opcionElegida.size(); i++){
+             Opcion unaOpcion = opcionElegida.get(i);
+            for(int j = 0; j < opcionElegida.size(); j++){
+                Opcion otraOpcion = opcionElegida.get(j);
+                if((i != j) && (unaOpcion.valor() == otraOpcion.valor())){
+                    eligioRepetida = true;
                 }
-
-        }
-        for(int ordenSpinner = 0; ordenSpinner < botonesOpciones.size(); ordenSpinner++){
-            Spinner spinner = (Spinner)botonesOpciones.get(ordenSpinner).getChildren().get(1);
-            spinner.decrement(6);
-
+            }
         }
 
-        /*if(opcionElegida.size() != pregunta.obtenerOpciones().size()) {
+        if(eligioRepetida) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText("Seleccione una opción:");
@@ -45,10 +49,10 @@ public class EnviarRespuestaOrderedChoiceHandler extends EnviarRespuestaHandler 
             alert.show();
         }
 
-        else{*/
+        else{
             contenedor.getJugadorActivo().cargarRespuestas(opcionElegida);
             EnviarRespuestaHandler multiplicadorHandler = new EnviarRespuestaHandler(kahoot, stage,  grupoMultiplicadores,  botonesMultiplicadores,  pregunta,  contenedor);
             multiplicadorHandler.handle(event);
-        //}
+        }
     }
 }

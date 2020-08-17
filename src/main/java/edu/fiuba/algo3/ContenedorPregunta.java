@@ -4,6 +4,8 @@ import edu.fiuba.algo3.Eventos.EnviarRespuestaMultipleChoiceHandler;
 import edu.fiuba.algo3.Eventos.EnviarRespuestaOrderedChoiceHandler;
 import edu.fiuba.algo3.Eventos.EnviarRespuestaVerdaderoFalsoHandler;
 import edu.fiuba.algo3.modelo.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -111,23 +113,21 @@ public class ContenedorPregunta extends BorderPane {
         }
 
         if(pregunta instanceof OrderedChoice){
-            ArrayList<HBox> botonesOpciones = new ArrayList<>();
-            for (Opcion opcion : opciones) {
-                HBox contenedorOpcion = new HBox();
-                Spinner botonOpcion = new Spinner(1,opciones.size(),1);
-                Label nombreOpcion = new Label(opcion.valor());
-                contenedorOpcion.getChildren().addAll(nombreOpcion,botonOpcion);
-                botonOpcion.setUserData(opcion);
-                botonesOpciones.add(contenedorOpcion);
-            }
-            for (int opcion = 0; opcion < botonesOpciones.size(); opcion++) {
-                if (opcion % 2 != 1) {
-                    opcionesUno.getChildren().add(botonesOpciones.get(opcion));
-                } else {
-                    opcionesDos.getChildren().add(botonesOpciones.get(opcion));
-                }
 
+            ArrayList<Spinner> botonesOpciones = new ArrayList<>();
+            ArrayList<String> nombresOpciones = new ArrayList<>();
+
+            for (Opcion opcion : opciones) {
+                nombresOpciones.add(opcion.valor());
             }
+
+            for (Opcion opcion : opciones) {
+                ObservableList <String> opcionesOrdenadas = FXCollections.observableList(nombresOpciones);
+                Spinner botonOpcion = new Spinner(opcionesOrdenadas);
+                botonesOpciones.add(botonOpcion);
+                todasLasOpciones.getChildren().add(botonOpcion);
+            }
+
             EnviarRespuestaOrderedChoiceHandler enviarRespuestaHandler = new EnviarRespuestaOrderedChoiceHandler(kahoot,stage,grupoMultiplicadores,botonesOpciones,botonesMultiplicadores,pregunta,this);
             aceptar.setOnAction(enviarRespuestaHandler);
         }

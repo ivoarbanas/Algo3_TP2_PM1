@@ -10,18 +10,15 @@ public class OrderedChoice extends Pregunta {
     }
 
     public Puntaje calcularPuntajeParaRespuesta(ArrayList<Opcion> listaDeRespuestas){
-        if(opciones.size() == listaDeRespuestas.size()){
-            for (int i=0; i < listaDeRespuestas.size();i++){
-                if(!opciones.get(i).valor().equals(listaDeRespuestas.get(i).valor())){
-                    Puntaje puntajeNulo = new Puntaje(0);
-                    return puntajeNulo;
-                }
+
+        for (int i=0; i < listaDeRespuestas.size();i++){
+            if(!opciones.get(i).valor().equals(listaDeRespuestas.get(i).valor())){
+                Puntaje puntajeNulo = new Puntaje(0);
+                return puntajeNulo;
             }
-            Puntaje puntajePositivo = new Puntaje(1);
-            return puntajePositivo;
         }
-        Puntaje puntajeNulo = new Puntaje(0);
-        return puntajeNulo;
+        Puntaje puntajePositivo = new Puntaje(1);
+        return puntajePositivo;
     }
 
     public Puntaje calcularPuntajeConMultiplicador(Puntaje puntaje, Multiplicador multiplicador){
