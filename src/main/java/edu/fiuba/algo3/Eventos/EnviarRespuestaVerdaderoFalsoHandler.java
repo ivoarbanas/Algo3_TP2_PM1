@@ -29,6 +29,7 @@ public class EnviarRespuestaVerdaderoFalsoHandler extends EnviarRespuestaHandler
 
         Toggle opcionTogger = grupoOpciones.getSelectedToggle();
         ArrayList<Opcion> opcionElegida = new ArrayList<>();
+
         if (opcionTogger == botonesOpciones.get(0)) {
             Opcion unaOpcionElegida = (Opcion) botonesOpciones.get(0).getUserData();
             opcionElegida.add(unaOpcionElegida);

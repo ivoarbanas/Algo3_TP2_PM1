@@ -1,15 +1,11 @@
--Buscar forma de presentar las opciones en un orden aleatorio
+-Excepcion x2, x3 y Exclusividad
 
--Cambiar utilizarX2 y utilizarX3 para poder avisar cuando el usuario se quedo sin multiplicador
-
--Verificar si ingresas un nombre valido
+-Ver fin de juego
 
 ----------------------------------------------------------------------------------------------------------
 
 -Agregar un temaiken y formato cheto
 
--Cambiar nombre de metodos acorde a lo que hacen
-
--Ver pantalla completa (esto ya esta pero pasa algo raro: cuando  la pantalla esta completa y desplegas el menu Ver "Pantalla completa" esta deshabilitado, eso bien, pero cuando tocas esc y salis de pantalla completa la opcion sigue deshabilitada. Esto no pasa si cuando estas en pantalla completa no desplegas el menu "ver", ahi anda bien)
+-Ver pantalla completa para que quede siempre en pantalla completa
 
 -Acerca de llenar integrantes

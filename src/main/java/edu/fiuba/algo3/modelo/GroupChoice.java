@@ -58,6 +58,14 @@ public class GroupChoice extends Pregunta {
         opciones.add(opcion);
     }
 
+    public String grupoUno(){
+        return grupoUno;
+    }
+
+    public String grupoDos(){
+        return grupoDos;
+    }
+
     public ArrayList<Opcion> listaOpcionesGrupoUno(){
         return listaOpcionesGrupoUno;
     }
@@ -67,6 +75,6 @@ public class GroupChoice extends Pregunta {
     }
 
     public ArrayList<Opcion> opcionCorrecta() {
-        return null;
+        return opciones;
     }
 }

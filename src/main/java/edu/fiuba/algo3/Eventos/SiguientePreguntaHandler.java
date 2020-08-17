@@ -19,12 +19,19 @@ public class SiguientePreguntaHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        ContenedorPregunta contenedorPregunta = new ContenedorPregunta(stage, kahoot);
-        Scene escenaPregunta = new Scene(contenedorPregunta, 512, 250);
+        if(kahoot.finDeJuego()){
+            FinDeJuegoHandler finDeJuegoHandler = new FinDeJuegoHandler(stage,kahoot);
+            finDeJuegoHandler.handle(event);
+        }
+        else{
+            kahoot.cambiarRonda();
+            ContenedorPregunta contenedorPregunta = new ContenedorPregunta(stage, kahoot);
+            Scene escenaPregunta = new Scene(contenedorPregunta, 512, 250);
 
-        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerPreguntas = new AplicacionOnKeyPressEventHandler(stage, contenedorPregunta.getBarraDeMenu());
-        escenaPregunta.setOnKeyPressed(aplicacionOnKeyPressEventHandlerPreguntas);
+            AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerPreguntas = new AplicacionOnKeyPressEventHandler(stage, contenedorPregunta.getBarraDeMenu());
+            escenaPregunta.setOnKeyPressed(aplicacionOnKeyPressEventHandlerPreguntas);
 
-        stage.setScene(escenaPregunta);
+            stage.setScene(escenaPregunta);
+        }
     }
 }

@@ -1,16 +1,17 @@
 [
-
-  {
-    "enunciado":"Ordene de menor a mayor",
-    "tipoDePregunta":"Ordered Choice",
+   {
+    "enunciado":"Separar en numeros impares y pares",
+    "tipoDePregunta":"Group Choice",
+    "opcionGrupo1":"Impares",
+    "opcionGrupo2":"Pares",    
     "opciones":{
-                "opcionOrdenada":"Uno",
-                "opcionOrdenada":"Dos",
-                "opcionOrdenada":"Tres",
-                "opcionOrdenada":"Cuatro",
-                "opcionOrdenada":"Cinco"
+                "opcionGrupo1":"1",
+                "opcionGrupo2":"2",
+                "opcionGrupo1":"3",
+                "opcionGrupo2":"4",
+                "opcionGrupo1":"5"
             }
-  },  
+  }, 
   {
     "enunciado":"Aprobe el parcial",
     "tipoDePregunta":"Verdadero y Falso Clasico",
@@ -23,7 +24,7 @@
   },
   {
     "enunciado":"Que profes tenemos?",
-    "tipoDePregunta":"Multiple Choice Parcial",
+    "tipoDePregunta":"Multiple Choice Penalidad",
     "opciones":{
                 "opcionVerdadera":"Massuh",
                 "opcionVerdadera":"Suarez",
@@ -33,14 +34,15 @@
             }
   },
   {
-    "enunciado":"Separar en numeros impares y pares",
-    "tipoDePregunta":"Group Choice",
+    "enunciado":"Ordene de menor a mayor",
+    "tipoDePregunta":"Ordered Choice",
     "opciones":{
-                "opcionGrupo1":"1",
-                "opcionGrupo2":"2",
-                "opcionGrupo1":"3",
-                "opcionGrupo2":"4",
-                "opcionGrupo1":"5"
+                "opcionOrdenada":"Uno",
+                "opcionOrdenada":"Dos",
+                "opcionOrdenada":"Tres",
+                "opcionOrdenada":"Cuatro",
+                "opcionOrdenada":"Cinco"
             }
-  }
+  } 
+  
 ]

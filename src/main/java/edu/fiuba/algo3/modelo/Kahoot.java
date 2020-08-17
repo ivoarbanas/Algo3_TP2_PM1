@@ -30,16 +30,7 @@ public class Kahoot {
     public ArrayList<Usuario> jugadores(){
         return jugadores;
     }
-    //main
-    /*public void comenzarJuego(){
-        //cargarJugadores();
-        while(ronda < 10 ){
-            presentarPreguntaALosUsuarios();
-            verificarRonda();
-            ronda++;
-        }
-        //finalizar juego
-    }*/
+
 
     public void verificarRonda() {
 
@@ -108,36 +99,38 @@ public class Kahoot {
                         } else if (tipoDePregunta.equals("Multiple Choice Clasico")) {
 
                             MultipleChoiceClasico pregunta = new MultipleChoiceClasico(enunciado);
+                            name = reader.nextName();
                             reader.beginObject();
                             while (reader.hasNext()) {
                                 String tipoDeOpcion = reader.nextName();
                                 Opcion opcionACargar = new Opcion(reader.nextString());
-                                if (tipoDeOpcion == "opcionVerdadera") {
+                                if (tipoDeOpcion.equals("opcionVerdadera")) {
                                     pregunta.cargarOpcionCorrecta(opcionACargar);
                                 } else {
                                     pregunta.cargarOpcionIncorrecta(opcionACargar);
                                 }
 
                             }
-
+                            reader.endObject();
                             ronda.cargarPregunta(pregunta);
                             rondas.add(ronda);
 
                         } else if (tipoDePregunta.equals("Multiple Choice Penalidad")) {
 
                             MultipleChoicePenalidad pregunta = new MultipleChoicePenalidad(enunciado);
+                            name = reader.nextName();
                             reader.beginObject();
                             while (reader.hasNext()) {
                                 String tipoDeOpcion = reader.nextName();
                                 Opcion opcionACargar = new Opcion(reader.nextString());
-                                if (tipoDeOpcion == "opcionVerdadera") {
+                                if (tipoDeOpcion.equals("opcionVerdadera")) {
                                     pregunta.cargarOpcionCorrecta(opcionACargar);
                                 } else {
                                     pregunta.cargarOpcionIncorrecta(opcionACargar);
                                 }
 
                             }
-
+                            reader.endObject();
                             ronda.cargarPregunta(pregunta);
                             rondas.add(ronda);
 
@@ -177,8 +170,25 @@ public class Kahoot {
 
                         }
                         else if (tipoDePregunta.equals("Group Choice")) {
-
-                            //System.out.println(reader.nextInt());
+                            name = reader.nextName();
+                            String grupo1 = reader.nextString();
+                            name = reader.nextName();
+                            String grupo2 = reader.nextString();
+                            GroupChoice pregunta = new GroupChoice(grupo1,grupo2);
+                            name = reader.nextName();
+                            reader.beginObject();
+                            while (reader.hasNext()) {
+                                String tipoDeOpcion = reader.nextName();
+                                Opcion opcionACargar = new Opcion(reader.nextString());
+                                if (tipoDeOpcion.equals("opcionGrupo1")) {
+                                    pregunta.cargarOpcionesGrupoUno(opcionACargar);
+                                } else {
+                                    pregunta.cargarOpcionesGrupoDos(opcionACargar);
+                                }
+                            }
+                            reader.endObject();
+                            ronda.cargarPregunta(pregunta);
+                            rondas.add(ronda);
 
                         }
                     }
@@ -208,23 +218,6 @@ public class Kahoot {
         rondaActiva.cargarPregunta(pregunta);
     }
 
-    public void crearPreguntas(){
-        //lee el archivo y envia mensaje a las clases dependiendo lo que va leyendo
-    }
-
-    //hago el metodo para agregar una pregunta especifica ¿¿¿¿¿¿¿¿PARA QUE SIRVE????????
-   /* public void agregarPreguntaParticular(Pregunta pregunta){
-
-        preguntas.add(pregunta);
-    }*/
-
-    // NO SE USA TODAVIA
-    public void presentarPreguntaALosUsuarios(){
-        for (Usuario jugador : jugadores) {
-            jugador.elegirRespuesta(rondas.get(ronda).pregunta());
-        }
-    }
-
     public void cambiarRonda(){
 
         for (Usuario jugador : jugadores){
@@ -237,10 +230,19 @@ public class Kahoot {
             ronda += 1;
         }
         else{
-            //System.out.println("Fin");
+
         }
 
 
+    }
+
+    public boolean finDeJuego(){
+        if(ronda + 1 < rondas.size()){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public Puntaje aplicarMultiplicador(Usuario jugadorAfectado, Puntaje puntajeAMultiplicar){
@@ -255,7 +257,4 @@ public class Kahoot {
         return rondaActiva;
     }
 
-    public Ronda obtenerRondaActiva() {
-        return rondaActiva;
-    }
 }

@@ -28,6 +28,13 @@ public class Usuario {
         usoExclusividadEnRonda = false;
     }
 
+    public Multiplicador getX2(){
+        return x2;
+    }
+
+    public Multiplicador getX3(){
+        return x3;
+    }
 
     public void vaciarRespuestas(){
         respuestasDelUsuario.clear();
@@ -50,25 +57,6 @@ public class Usuario {
         return puntaje;
     }
 
-    // TODAVIA NO IMPLEMENTAMOS >> REEMPLAZO POR CARGAR_RESPUESTA
-
-    public void elegirRespuesta(Pregunta pregunta) {
-
-        //System.out.println("Elija una opcion, numeros"); aca va javafx
-
-        // EL SCANNER DEBERIA IR AÑADIENDO OPCION A OPCION EN LA LISTADERESPUESTAS Y LUEGO CARGARLA AL USUARIO
-        Scanner scanner = new Scanner(System.in);
-        int eleccion = scanner.nextInt();
-
-        ArrayList <Opcion> listaDeRespuestas = new ArrayList<Opcion>();
-        cargarRespuestas(listaDeRespuestas);
-    }
-
-    /*
-    public void elegirRespuestaParaPrueba(Pregunta pregunta,int eleccion) {
-        nuevaRespuesta(pregunta.opciones().get(eleccion));
-    }*/
-
     public void utilizarMultiplicadorX2(){
         multiplicadorActivo = x2;
         x2 = new MultiplicadorInactivo();
@@ -76,7 +64,7 @@ public class Usuario {
 
     public void utilizarMultiplicadorX3(){
         multiplicadorActivo = x3;
-        x3 = new MultiplicadorInactivo();;
+        x3 = new MultiplicadorInactivo();
     }
 
     public void limpiarMultiplicador(){
@@ -92,7 +80,6 @@ public class Usuario {
         this.exclusividadDePuntajes.remove(0);
         exclusividadPuntajeActivo = auxiliar;
         usoExclusividadEnRonda = true;
-        //Aca tirar la excepcion OJO el test que no pasa !!!! (esta comentado pa que te to piola)
     }
 
     public void limpiarExclusividad(){
@@ -110,6 +97,10 @@ public class Usuario {
 
     public String nombre(){
         return nombre;
+    }
+
+    public int quedaExclusividad(){
+        return exclusividadDePuntajes.size();
     }
 }
 

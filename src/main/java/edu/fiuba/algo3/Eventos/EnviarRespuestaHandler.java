@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.Eventos;
 
 import edu.fiuba.algo3.ContenedorPregunta;
-import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.Pregunta;
+import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -33,24 +33,57 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+
         Toggle multiplicadoresTogger = grupoMultiplicadores.getSelectedToggle();
-        if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
-            contenedor.getJugadorActivo().utilizarMultiplicadorX2();
-            botonesMultiplicadores.get(0).setSelected(false);
+        if(pregunta instanceof VerdaderoFalsoPenalidad || pregunta instanceof MultipleChoicePenalidad){
+
+            if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
+                contenedor.getJugadorActivo().utilizarMultiplicadorX2();
+                if(botonesMultiplicadores.get(0).getUserData() instanceof MultiplicadorInactivo){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Ya no te quedan multiplicadores X2 para usar");
+                    String mensaje = "Presione OK para continuar";
+                    alert.setContentText(mensaje);
+                    alert.show();
+                }
+
+            }
+            else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
+                contenedor.getJugadorActivo().utilizarMultiplicadorX3();
+            }
+
         }
-        else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
-            contenedor.getJugadorActivo().utilizarMultiplicadorX3();
-            botonesMultiplicadores.get(1).setSelected(false);
-        }
+
         else if(multiplicadoresTogger == botonesMultiplicadores.get(2)){
-            contenedor.getJugadorActivo().utilizarExclusividadPuntaje();
+            if(contenedor.getJugadorActivo().quedaExclusividad() != 0){
+                contenedor.getJugadorActivo().utilizarExclusividadPuntaje();
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("Ya no te quedan exclusividades de puntajes para usar");
+                String mensaje = "Presione OK para continuar";
+                alert.setContentText(mensaje);
+                alert.show();
+            }
+            botonesMultiplicadores.get(2).setSelected(false);
         }
+        botonesMultiplicadores.get(0).setSelected(false);
+        botonesMultiplicadores.get(1).setSelected(false);
+        botonesMultiplicadores.get(2).setSelected(false);
         if(contenedor.getJugadorActivo() == kahoot.jugadores().get(1)){
             contenedor.jugadorActivo(kahoot.jugadores().get(0));
             kahoot.verificarRonda();
-            kahoot.cambiarRonda();
-            MostrarResultadoHandler mostrarResultadoHandler = new MostrarResultadoHandler(pregunta.opcionCorrecta(),contenedor,kahoot,stage);
-            mostrarResultadoHandler.handle(event);
+            if(pregunta instanceof GroupChoice){
+                MostrarResultadoGroupHandler mostrarResultadoGroupHandler = new MostrarResultadoGroupHandler(((GroupChoice)pregunta).listaOpcionesGrupoUno(),((GroupChoice)pregunta).listaOpcionesGrupoDos(),contenedor,kahoot,stage);
+                mostrarResultadoGroupHandler.handle(event);
+            }
+            else{
+                MostrarResultadoHandler mostrarResultadoHandler = new MostrarResultadoHandler(pregunta.opcionCorrecta(),contenedor,kahoot,stage);
+                mostrarResultadoHandler.handle(event);
+            }
+
         }
         else{
             contenedor.jugadorActivo(kahoot.jugadores().get(1));
