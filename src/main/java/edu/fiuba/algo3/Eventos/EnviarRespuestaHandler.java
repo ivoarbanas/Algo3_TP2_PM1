@@ -51,6 +51,14 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
             }
             else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
                 contenedor.getJugadorActivo().utilizarMultiplicadorX3();
+                if(botonesMultiplicadores.get(1).getUserData() instanceof MultiplicadorInactivo){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Ya no te quedan multiplicadores X3 para usar");
+                    String mensaje = "Presione OK para continuar";
+                    alert.setContentText(mensaje);
+                    alert.show();
+                }
             }
 
         }
