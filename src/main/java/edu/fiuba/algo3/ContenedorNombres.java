@@ -24,7 +24,6 @@ public class ContenedorNombres extends BorderPane {
 
 
     private void setContenido() {
-
         HBox cajaJugadorUno = new HBox();
         HBox cajaJugadorDos = new HBox();
         VBox cajaY = new VBox();
@@ -43,8 +42,7 @@ public class ContenedorNombres extends BorderPane {
     }
 
     private void setMenu(Stage stage) {
-        Scene vacia = new Scene(new VBox());
-        this.menuBar = new BarraDeMenu(vacia,stage);
+        this.menuBar = new BarraDeMenu(kahoot,stage);
         this.setTop(menuBar);
 
     }

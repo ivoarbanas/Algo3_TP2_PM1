@@ -2,7 +2,3 @@
 ----------------------------------------------------------------------------------------------------------
 
 -Agregar un temaiken y formato cheto
-
--Ver pantalla completa para que quede siempre en pantalla completa
-
--Acerca de llenar integrantes

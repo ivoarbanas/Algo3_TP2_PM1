@@ -47,7 +47,7 @@ public class MostrarResultadoHandler implements EventHandler<ActionEvent> {
         Label puntosJugador1 = new Label(kahoot.jugadores().get(0).nombre() + ": " + kahoot.jugadores().get(0).puntaje().valor());
         Label puntosJugadorDos = new Label(kahoot.jugadores().get(1).nombre() + ": " + kahoot.jugadores().get(1).puntaje().valor());
         Button siguiente = new Button("Siguiente Pregunta");
-        SiguientePreguntaHandler siguientePreguntaHandler = new SiguientePreguntaHandler(kahoot,stage);
+        SiguientePreguntaHandler siguientePreguntaHandler = new SiguientePreguntaHandler(kahoot,stage,contenedor);
         siguiente.setOnAction(siguientePreguntaHandler);
         puntosJugadores.getChildren().addAll(puntosJugador1,puntosJugadorDos);
         cajaY.getChildren().addAll(label,siguiente);

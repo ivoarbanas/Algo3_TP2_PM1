@@ -10,13 +10,11 @@ import javafx.stage.Stage;
 public class ContenedorBienvenidos extends BorderPane {
 
     BarraDeMenu menuBar;
-    Scene proximaEscena;
     Kahoot kahoot;
     Stage stage;
 
 
-    public ContenedorBienvenidos(Stage stage, Scene proximaEscena, Kahoot kahoot){
-        this.proximaEscena = proximaEscena;
+    public ContenedorBienvenidos(Stage stage, Kahoot kahoot){
         this.kahoot = kahoot;
         this.stage = stage;
         this.setMenu(stage);
@@ -32,7 +30,7 @@ public class ContenedorBienvenidos extends BorderPane {
     }
 
     private void setMenu(Stage stage) {
-        this.menuBar = new BarraDeMenu(proximaEscena,stage);
+        this.menuBar = new BarraDeMenu(kahoot,stage);
         this.setTop(menuBar);
 
     }

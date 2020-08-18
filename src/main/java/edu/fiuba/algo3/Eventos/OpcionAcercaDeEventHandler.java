@@ -11,7 +11,7 @@ public class OpcionAcercaDeEventHandler implements EventHandler<ActionEvent> {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Acerca de...");
         alert.setHeaderText("Grupo PM1");
-        String mensaje = "Integrantes";
+        String mensaje = "Integrantes: Ignacio Zarlenga, Ivo Arbanas, Manuel Longo Elia, Luciano Nicolás Montes ";
         alert.setContentText(mensaje);
         alert.show();
     }

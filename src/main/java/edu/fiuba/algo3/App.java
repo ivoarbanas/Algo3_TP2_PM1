@@ -20,14 +20,9 @@ public class App extends Application  {
         Kahoot kahoot = new Kahoot();
         kahoot.cargarPreguntas();
         stage.setTitle("Kahoot 2");
+        stage.setFullScreen(true);
 
-        ContenedorNombres contenedorPrincipal = new ContenedorNombres(stage, kahoot);
-        Scene escenaNombres = new Scene(contenedorPrincipal, 512, 250);
-
-        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerNombres = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
-        escenaNombres.setOnKeyPressed(aplicacionOnKeyPressEventHandlerNombres);
-
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaNombres,kahoot);
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, kahoot);
         Scene escenaInicial = new Scene(contenedorBienvenidos, 512, 250);
 
         AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerInicial = new AplicacionOnKeyPressEventHandler(stage, contenedorBienvenidos.getBarraDeMenu());

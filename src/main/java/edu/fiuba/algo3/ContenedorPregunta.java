@@ -35,15 +35,15 @@ public class ContenedorPregunta extends BorderPane {
         this.stage = stage;
         this.kahoot = kahoot;
         this.setMenu(stage);
+        this.mostrarPregunta();
+    }
+
+    public void mostrarPregunta() {
         general = new HBox();
         aceptar = new Button("Aceptar");
         puntos = new VBox();
         multiplicadores = new VBox();
         grupoMultiplicadores = new ToggleGroup();
-        this.mostrarPregunta();
-    }
-
-    private void mostrarPregunta() {
         jugadorActivo = kahoot.jugadores().get(0);
         ToggleButton x2 = new ToggleButton("X2");
         x2.setUserData(jugadorActivo.getX2());
@@ -175,8 +175,7 @@ public class ContenedorPregunta extends BorderPane {
     }
 
     private void setMenu(Stage stage) {
-        Scene vacia = new Scene(new VBox());
-        this.menuBar = new BarraDeMenu(vacia,stage);
+        this.menuBar = new BarraDeMenu(kahoot,stage);
         this.setTop(menuBar);
 
     }

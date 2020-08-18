@@ -43,7 +43,7 @@ public class EnviarRespuestaOrderedChoiceHandler extends EnviarRespuestaHandler 
         if(eligioRepetida) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
-            alert.setHeaderText("Seleccione una opción:");
+            alert.setHeaderText("Seleccione una respuesta válida:");
             String mensaje = "Presione OK para continuar";
             alert.setContentText(mensaje);
             alert.show();

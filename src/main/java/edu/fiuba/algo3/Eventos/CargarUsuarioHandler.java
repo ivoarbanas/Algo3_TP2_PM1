@@ -45,6 +45,7 @@ public class CargarUsuarioHandler implements EventHandler<ActionEvent> {
             escenaPregunta.setOnKeyPressed(aplicacionOnKeyPressEventHandlerPreguntas);
 
             stage.setScene(escenaPregunta);
+            stage.setFullScreen(true);
         }
     }
 }

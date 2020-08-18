@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.Eventos.*;
+import edu.fiuba.algo3.modelo.Kahoot;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -12,7 +13,7 @@ public class BarraDeMenu extends MenuBar{
 
     MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
 
-    public BarraDeMenu(Scene proximaEscena, Stage stage) {
+    public BarraDeMenu(Kahoot kahoot, Stage stage) {
 
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
@@ -29,7 +30,7 @@ public class BarraDeMenu extends MenuBar{
         OpcionReglasHandler opcionReglasHandler = new OpcionReglasHandler();
         opcionReglas.setOnAction(opcionReglasHandler);
 
-        OpcionNuevoHandler opcionNuevoHandler = new OpcionNuevoHandler(proximaEscena, stage);
+        OpcionNuevoHandler opcionNuevoHandler = new OpcionNuevoHandler(kahoot, stage);
         opcionNuevo.setOnAction(opcionNuevoHandler);
 
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
@@ -38,7 +39,7 @@ public class BarraDeMenu extends MenuBar{
         OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
-        //opcionPantallaCompleta.setDisable(true);
+        opcionPantallaCompleta.setDisable(true);
 
         menuArchivo.getItems().addAll(opcionNuevo, new SeparatorMenuItem(), opcionSalir);
         menuAyuda.getItems().addAll(opcionReglas,opcionAcercaDe);
