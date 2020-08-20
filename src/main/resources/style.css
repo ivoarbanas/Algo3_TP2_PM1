@@ -1,0 +1,7 @@
+.nombre{
+	-fx-font-family: "Viga";
+    -fx-text-fill: pink;
+    -fx-font-smoothing-type: gray;
+    -fx-font-size: 50px;
+    -fx-padding: 80px 80px 80px 80px;
+}

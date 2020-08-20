@@ -1,11 +1,1 @@
--Agregar barra de menu y boton reiniciar en pantalla de fin de juego
 
--Agregar un temaiken y formato cheto
-
--Sacar botones exclusividad, x2 y x3 cuando no se pueden usar en la pregunta o ya no quedan mas
-
--cambiar borderpane, usar setLeft setRight setCenter
-
--Aclarar tipo de pregunta y que persona esta jugando
-
--Cuando no completas un nombre que te indique cual falta (o si faltan ambos)

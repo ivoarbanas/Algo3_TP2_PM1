@@ -5,6 +5,9 @@ import edu.fiuba.algo3.modelo.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.io.File;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * JavaFX App
@@ -22,10 +25,16 @@ public class App extends Application  {
         stage.setTitle("Kahoot 2");
         stage.setFullScreen(true);
 
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, kahoot);
-        Scene escenaInicial = new Scene(contenedorBienvenidos, 512, 250);
+        String musicFile = "kahoot.mp3";
 
-        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerInicial = new AplicacionOnKeyPressEventHandler(stage, contenedorBienvenidos.getBarraDeMenu());
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
+        ContenedorNombres contenedorNombres = new ContenedorNombres(stage, kahoot,mediaPlayer);
+        Scene escenaInicial = new Scene(contenedorNombres, 1024, 500);
+
+        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerInicial = new AplicacionOnKeyPressEventHandler(stage, contenedorNombres.getBarraDeMenu());
         escenaInicial.setOnKeyPressed(aplicacionOnKeyPressEventHandlerInicial);
 
         stage.setScene(escenaInicial);

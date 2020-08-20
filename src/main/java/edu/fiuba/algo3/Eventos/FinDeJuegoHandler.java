@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Kahoot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -45,10 +46,19 @@ public class FinDeJuegoHandler implements EventHandler<ActionEvent> {
 
         HBox mensajePuntos = new HBox(puntos);
 
-        general.getChildren().addAll(mensajeFin,mensajeGanador,mensajePuntos);
+        Button fin = new Button("Finalizar");
+        OpcionSalirEventHandler salir = new OpcionSalirEventHandler();
+        fin.setOnAction(salir);
+        Button nuevo = new Button("Juego Nuevo");
+        ReiniciarHandler reiniciar = new ReiniciarHandler(stage);
+        nuevo.setOnAction(reiniciar);
+        HBox botones = new HBox();
+        botones.getChildren().addAll(nuevo,fin);
+
+        general.getChildren().addAll(mensajeFin,mensajeGanador,mensajePuntos,botones);
 
         Scene escenaFin = new Scene(general, 512, 250);
-
         stage.setScene(escenaFin);
+        stage.setFullScreen(true);
     }
 }

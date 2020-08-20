@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opcion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -32,7 +33,6 @@ public class MostrarResultadoGroupHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         VBox cajaY = new VBox();
-        HBox cajaX = new HBox();
         VBox puntosJugadores = new VBox();
         String opcionesGrupo1 = opcionGrupo1.get(0).valor();
         for(int opcion = 1; opcion < opcionGrupo1.size(); opcion++){
@@ -50,7 +50,9 @@ public class MostrarResultadoGroupHandler implements EventHandler<ActionEvent> {
         siguiente.setOnAction(siguientePreguntaHandler);
         puntosJugadores.getChildren().addAll(puntosJugador1,puntosJugadorDos);
         cajaY.getChildren().addAll(label,siguiente);
-        cajaX.getChildren().addAll(puntosJugadores,cajaY);
-        contenedor.setCenter(cajaX);
+        contenedor.setRight(null);
+        contenedor.setLeft(puntosJugadores);
+        contenedor.setCenter(cajaY);
+        stage.setFullScreen(true);
     }
 }

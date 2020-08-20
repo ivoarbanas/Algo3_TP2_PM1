@@ -30,7 +30,6 @@ public class MostrarResultadoHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         VBox cajaY = new VBox();
-        HBox cajaX = new HBox();
         VBox puntosJugadores = new VBox();
         Label label;
         if(opcionCorrecta.size() == 1){
@@ -51,7 +50,9 @@ public class MostrarResultadoHandler implements EventHandler<ActionEvent> {
         siguiente.setOnAction(siguientePreguntaHandler);
         puntosJugadores.getChildren().addAll(puntosJugador1,puntosJugadorDos);
         cajaY.getChildren().addAll(label,siguiente);
-        cajaX.getChildren().addAll(puntosJugadores,cajaY);
-        contenedor.setCenter(cajaX);
+        contenedor.setRight(null);
+        contenedor.setLeft(puntosJugadores);
+        contenedor.setCenter(cajaY);
+        stage.setFullScreen(true);
     }
 }

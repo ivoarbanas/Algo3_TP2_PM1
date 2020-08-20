@@ -21,7 +21,7 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
     ContenedorPregunta contenedor;
     Stage stage;
 
-    public EnviarRespuestaHandler(Kahoot kahoot, Stage stage, ToggleGroup grupoMultiplicadores, ArrayList<ToggleButton> botonesMultiplicadores, Pregunta pregunta,  ContenedorPregunta contenedor){
+    public EnviarRespuestaHandler(Kahoot kahoot, Stage stage, ToggleGroup grupoMultiplicadores, ArrayList<ToggleButton> botonesMultiplicadores, Pregunta pregunta, ContenedorPregunta contenedor) {
         this.kahoot = kahoot;
         this.grupoMultiplicadores = grupoMultiplicadores;
         this.botonesMultiplicadores = botonesMultiplicadores;
@@ -35,66 +35,34 @@ public class EnviarRespuestaHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         Toggle multiplicadoresTogger = grupoMultiplicadores.getSelectedToggle();
-        if(pregunta instanceof VerdaderoFalsoPenalidad || pregunta instanceof MultipleChoicePenalidad){
 
-            if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
-                contenedor.getJugadorActivo().utilizarMultiplicadorX2();
-                if(botonesMultiplicadores.get(0).getUserData() instanceof MultiplicadorInactivo){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Ya no te quedan multiplicadores X2 para usar");
-                    String mensaje = "Presione OK para continuar";
-                    alert.setContentText(mensaje);
-                    alert.show();
-                }
-
-            }
-            else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
-                contenedor.getJugadorActivo().utilizarMultiplicadorX3();
-                if(botonesMultiplicadores.get(1).getUserData() instanceof MultiplicadorInactivo){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Ya no te quedan multiplicadores X3 para usar");
-                    String mensaje = "Presione OK para continuar";
-                    alert.setContentText(mensaje);
-                    alert.show();
-                }
-            }
-
+        if(multiplicadoresTogger == botonesMultiplicadores.get(0)){
+            contenedor.getJugadorActivo().utilizarMultiplicadorX2();
+            botonesMultiplicadores.get(0).setSelected(false);
         }
-
+        else if(multiplicadoresTogger == botonesMultiplicadores.get(1)){
+            contenedor.getJugadorActivo().utilizarMultiplicadorX3();
+            botonesMultiplicadores.get(1).setSelected(false);
+        }
         else if(multiplicadoresTogger == botonesMultiplicadores.get(2)){
-            if(contenedor.getJugadorActivo().quedaExclusividad() != 0){
-                contenedor.getJugadorActivo().utilizarExclusividadPuntaje();
-            }
-            else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText("Ya no te quedan exclusividades de puntajes para usar");
-                String mensaje = "Presione OK para continuar";
-                alert.setContentText(mensaje);
-                alert.show();
-            }
+            contenedor.getJugadorActivo().utilizarExclusividadPuntaje();
             botonesMultiplicadores.get(2).setSelected(false);
         }
-        botonesMultiplicadores.get(0).setSelected(false);
-        botonesMultiplicadores.get(1).setSelected(false);
-        botonesMultiplicadores.get(2).setSelected(false);
-        if(contenedor.getJugadorActivo() == kahoot.jugadores().get(1)){
+
+        if (contenedor.getJugadorActivo() == kahoot.jugadores().get(1)) {
             contenedor.jugadorActivo(kahoot.jugadores().get(0));
             kahoot.verificarRonda();
-            if(pregunta instanceof GroupChoice){
-                MostrarResultadoGroupHandler mostrarResultadoGroupHandler = new MostrarResultadoGroupHandler(((GroupChoice)pregunta).listaOpcionesGrupoUno(),((GroupChoice)pregunta).listaOpcionesGrupoDos(),contenedor,kahoot,stage);
+            if (pregunta instanceof GroupChoice) {
+                MostrarResultadoGroupHandler mostrarResultadoGroupHandler = new MostrarResultadoGroupHandler(((GroupChoice) pregunta).listaOpcionesGrupoUno(), ((GroupChoice) pregunta).listaOpcionesGrupoDos(), contenedor, kahoot, stage);
                 mostrarResultadoGroupHandler.handle(event);
-            }
-            else{
-                MostrarResultadoHandler mostrarResultadoHandler = new MostrarResultadoHandler(pregunta.opcionCorrecta(),contenedor,kahoot,stage);
+            } else {
+                MostrarResultadoHandler mostrarResultadoHandler = new MostrarResultadoHandler(pregunta.opcionCorrecta(), contenedor, kahoot, stage);
                 mostrarResultadoHandler.handle(event);
             }
 
-        }
-        else{
-            contenedor.jugadorActivo(kahoot.jugadores().get(1));
+        } else {
+                contenedor.jugadorActivo(kahoot.jugadores().get(1));
+                contenedor.mostrarPregunta();
         }
     }
 }

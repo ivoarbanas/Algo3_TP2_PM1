@@ -7,11 +7,11 @@ import edu.fiuba.algo3.Eventos.EnviarRespuestaVerdaderoFalsoHandler;
 import edu.fiuba.algo3.modelo.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,51 +23,68 @@ public class ContenedorPregunta extends BorderPane {
     Stage stage;
     Usuario jugadorActivo;
     VBox preguntaYOpciones;
+    MediaPlayer mediaPlayer;
     Label enunciado;
-    HBox general;
     Button aceptar;
     VBox puntos;
     VBox multiplicadores;
     ToggleGroup grupoMultiplicadores;
+    Label tipoDePregunta;
     ArrayList<ToggleButton> botonesMultiplicadores;
 
-    public ContenedorPregunta(Stage stage, Kahoot kahoot){
+    public ContenedorPregunta(Stage stage, Kahoot kahoot, MediaPlayer mediaPlayer){
         this.stage = stage;
         this.kahoot = kahoot;
+        this.mediaPlayer = mediaPlayer;
         this.setMenu(stage);
+        jugadorActivo = kahoot.jugadores().get(0);
         this.mostrarPregunta();
     }
 
     public void mostrarPregunta() {
-        general = new HBox();
         aceptar = new Button("Aceptar");
         puntos = new VBox();
         multiplicadores = new VBox();
         grupoMultiplicadores = new ToggleGroup();
-        jugadorActivo = kahoot.jugadores().get(0);
-        ToggleButton x2 = new ToggleButton("X2");
-        x2.setUserData(jugadorActivo.getX2());
-        ToggleButton x3 = new ToggleButton("X3");
-        x3.setUserData(jugadorActivo.getX3());
-        ToggleButton exclusividad = new ToggleButton("Exclusividad");
-        botonesMultiplicadores = new ArrayList<>();
-        botonesMultiplicadores.add(x2);
-        botonesMultiplicadores.add(x3);
-        botonesMultiplicadores.add(exclusividad);
-        x2.setToggleGroup(grupoMultiplicadores);
-        x3.setToggleGroup(grupoMultiplicadores);
-        exclusividad.setToggleGroup(grupoMultiplicadores);
-        multiplicadores.getChildren().addAll(x2, x3, exclusividad);
         preguntaYOpciones = new VBox();
         Label puntosJugadorUno = new Label(kahoot.jugadores().get(0).nombre() + ": " + kahoot.jugadores().get(0).puntaje().valor());
         Label puntosJugadorDos = new Label(kahoot.jugadores().get(1).nombre() + ": " + kahoot.jugadores().get(1).puntaje().valor());
+        Label turno = new Label("Turno de: " + jugadorActivo.nombre());
+        tipoDePregunta = new Label("Pregunta " + kahoot.rondaActiva().pregunta().getClass().getSimpleName());
         enunciado = new Label(kahoot.rondaActiva().pregunta().enunciado());
-        puntos.getChildren().addAll(puntosJugadorUno, puntosJugadorDos);
+        puntos.getChildren().addAll(puntosJugadorUno, puntosJugadorDos,turno);
         setContenido(kahoot.rondaActiva().pregunta());
 
     }
 
     private void setContenido(Pregunta pregunta){
+
+        botonesMultiplicadores = new ArrayList<>();
+        ToggleButton x2 = new ToggleButton("X2");
+        ToggleButton x3 = new ToggleButton("X3");
+        ToggleButton exclusividad = new ToggleButton("Exclusividad");
+        x2.setUserData(jugadorActivo.getX2());
+        x2.setToggleGroup(grupoMultiplicadores);
+        x3.setUserData(jugadorActivo.getX3());
+        x3.setToggleGroup(grupoMultiplicadores);
+        exclusividad.setUserData(jugadorActivo.getExclusividad());
+        exclusividad.setToggleGroup(grupoMultiplicadores);
+        botonesMultiplicadores.add(x2);
+        botonesMultiplicadores.add(x3);
+        botonesMultiplicadores.add(exclusividad);
+
+        if(pregunta instanceof VerdaderoFalsoPenalidad || pregunta instanceof MultipleChoicePenalidad){
+            if(!(jugadorActivo.getX2() instanceof MultiplicadorInactivo)){
+                multiplicadores.getChildren().add(x2);
+            }
+           if(!(jugadorActivo.getX3() instanceof MultiplicadorInactivo)){
+               multiplicadores.getChildren().add(x3);
+           }
+        }
+        else if(jugadorActivo.quedaExclusividad() != 0){
+            multiplicadores.getChildren().add(exclusividad);
+        }
+
         VBox opcionesUno = new VBox();
         VBox opcionesDos = new VBox();
         HBox todasLasOpciones = new HBox();
@@ -169,13 +186,14 @@ public class ContenedorPregunta extends BorderPane {
         }
 
         todasLasOpciones.getChildren().addAll(opcionesUno, opcionesDos);
-        preguntaYOpciones.getChildren().addAll(enunciado, todasLasOpciones, aceptar);
-        general.getChildren().addAll(puntos, preguntaYOpciones, multiplicadores);
-        this.setCenter(general);
+        preguntaYOpciones.getChildren().addAll(tipoDePregunta,enunciado, todasLasOpciones, aceptar);
+        this.setCenter(preguntaYOpciones);
+        this.setLeft(puntos);
+        this.setRight(multiplicadores);
     }
 
     private void setMenu(Stage stage) {
-        this.menuBar = new BarraDeMenu(kahoot,stage);
+        this.menuBar = new BarraDeMenu(kahoot,stage,mediaPlayer);
         this.setTop(menuBar);
 
     }
