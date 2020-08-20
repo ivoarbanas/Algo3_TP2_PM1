@@ -22,17 +22,10 @@ public class OpcionNuevoHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        ContenedorNombres contenedorPrincipal = new ContenedorNombres(stage, kahoot,mediaPlayer);
-        Scene escenaNombres = new Scene(contenedorPrincipal, 1024, 500);
 
-        /*escenaNombres.getStylesheets().add("style.css");
-        escenaNombres.getStylesheets().add("https://fonts.googleapis.com/css2?family=Viga&display=swap");*/
+        ReiniciarHandler reiniciarHandler = new ReiniciarHandler(stage);
+        reiniciarHandler.handle(actionEvent);
 
-
-        AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandlerNombres = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
-        escenaNombres.setOnKeyPressed(aplicacionOnKeyPressEventHandlerNombres);
-        stage.setScene(escenaNombres);
-        stage.setFullScreen(true);
 
     }
 }

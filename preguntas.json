@@ -2,14 +2,14 @@
    {
     "enunciado":"Separar en numeros impares y pares",
     "tipoDePregunta":"Group Choice",
-    "opcionGrupo1":"Impares",
-    "opcionGrupo2":"Pares",    
+    "opcionGrupo1":"Mamiferos",
+    "opcionGrupo2":"Reptiles",    
     "opciones":{
-                "opcionGrupo1":"1",
-                "opcionGrupo2":"2",
-                "opcionGrupo1":"3",
-                "opcionGrupo2":"4",
-                "opcionGrupo1":"5"
+                "opcionGrupo1":"Leon",
+                "opcionGrupo1":"Elefante",
+                "opcionGrupo2":"Serpiente",
+                "opcionGrupo2":"Iguana",
+                "opcionGrupo2":"Camaleon"
             }
   }, 
   {

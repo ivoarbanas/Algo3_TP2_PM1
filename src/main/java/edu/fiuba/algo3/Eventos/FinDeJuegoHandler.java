@@ -4,11 +4,16 @@ import edu.fiuba.algo3.ContenedorPregunta;
 import edu.fiuba.algo3.modelo.Kahoot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class FinDeJuegoHandler implements EventHandler<ActionEvent> {
@@ -24,10 +29,15 @@ public class FinDeJuegoHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-
-
+        HBox aux2 = new HBox();
+        ImageView aux3 = new ImageView("file:src/main/java/edu/fiuba/algo3/imagenes/logo_purple.png");
+        aux2.getChildren().add(aux3);
+        BorderPane aux = new BorderPane();
         VBox general = new VBox();
-        HBox mensajeFin = new HBox(new Label("Fin del juego"));
+        Label finDeJuego = new Label("Fin del juego");
+        finDeJuego.setFont(Font.font("Sans Serif", FontWeight.BOLD, 25));
+        finDeJuego.setTextFill(Color.web("#FFFFFF"));
+        HBox mensajeFin = new HBox(finDeJuego);
         Label ganador = new Label();
         int puntosJugadorUno = kahoot.jugadores().get(0).puntaje().valor();
         int puntosJugadorDos= kahoot.jugadores().get(1).puntaje().valor();
@@ -40,10 +50,13 @@ public class FinDeJuegoHandler implements EventHandler<ActionEvent> {
         else {
             ganador.setText("Hubo un empate");
         }
+        ganador.setFont(Font.font("Sans Serif", FontWeight.BOLD, 25));
+        ganador.setTextFill(Color.web("#FFFFFF"));
         HBox mensajeGanador = new HBox(ganador);
 
         Label puntos = new Label(kahoot.jugadores().get(0).nombre() + ": "+ puntosJugadorUno + "\n" + kahoot.jugadores().get(1).nombre() + ": " + puntosJugadorDos);
-
+        puntos.setFont(Font.font("Sans Serif", FontWeight.BOLD, 25));
+        puntos.setTextFill(Color.web("#FFFFFF"));
         HBox mensajePuntos = new HBox(puntos);
 
         Button fin = new Button("Finalizar");
@@ -57,8 +70,17 @@ public class FinDeJuegoHandler implements EventHandler<ActionEvent> {
 
         general.getChildren().addAll(mensajeFin,mensajeGanador,mensajePuntos,botones);
 
-        Scene escenaFin = new Scene(general, 512, 250);
+        Image fondo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo.png");
+        BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+
+        aux.setBackground(new Background(imagenDeFondo));
+        general.setAlignment(Pos.CENTER);
+        aux2.getChildren().add(general);
+        aux2.setAlignment(Pos.CENTER);
+        aux.setCenter(aux2);
+        Scene escenaFin = new Scene(aux, 512, 250);
         stage.setScene(escenaFin);
         stage.setFullScreen(true);
+        stage.show();
     }
 }
