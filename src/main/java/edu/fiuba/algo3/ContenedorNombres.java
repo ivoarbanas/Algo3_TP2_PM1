@@ -50,13 +50,14 @@ public class ContenedorNombres extends BorderPane {
         //labelJugadorUno.getStyleClass().add("nombre");
         TextField cajaNombreJugadorUno = new TextField();
         cajaNombreJugadorUno.setFont(Font.font("Verdana", FontWeight.BOLD, 70));
-
+        cajaNombreJugadorUno.setFocusTraversable(false);
         //cajaNombreJugadorUno.setAlignment(Pos.CENTER);
         cajaNombreJugadorUno.setPromptText("Ingrese nombre de jugador 1: ");
         cajaJugadorUno.getChildren().addAll(cajaNombreJugadorUno);
         //Label labelJugadorDos = new Label("Ingrese nombre de jugador 2: ");
         //labelJugadorDos.getStyleClass().add("nombre");
         TextField cajaNombreJugadorDos = new TextField();
+        cajaNombreJugadorDos.setFocusTraversable(false);
         cajaNombreJugadorUno.setFont(Font.font("Sans Serif", FontWeight.BOLD, 25));
         //cajaNombreJugadorDos.setAlignment(Pos.CENTER);
         cajaNombreJugadorDos.setPromptText("Ingrese nombre de jugador 2: ");
